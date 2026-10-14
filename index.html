@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal portfolio of Lydia Sierra — Software Developer.">
+  <meta name="description" content="Personal developer portfolio of Lydia Sierra — Junior Software Developer. Explore projects, technical skills, experience, and contact information.">
   <meta name="author" content="Lydia Sierra">
   <title>Lydia Sierra — Personal Developer Portfolio</title>
 
@@ -17,18 +17,524 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Accessible Skip Link -->
+  <!-- Accessible Skip-to-Content Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Minimal Foundation Landmark -->
-  <main id="main-content" class="container" style="padding-block: var(--space-12); text-align: center;">
-    <h1 style="font-family: var(--font-display); font-size: var(--text-4xl); color: var(--color-text-main); margin-bottom: var(--space-4);">
-      Lydia Sierra
-    </h1>
-    <p style="color: var(--color-text-muted); max-width: 48ch; margin-inline: auto;">
-      Personal developer portfolio project foundation initialized.
-    </p>
+  <!-- 1. Header and Navigation Landmark -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-link" aria-label="Lydia Sierra — Home">
+        <svg class="brand-icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <span class="brand-name">Lydia Sierra</span>
+      </a>
+
+      <!-- Mobile Navigation Toggle -->
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <nav id="primary-nav" class="nav-menu" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#languages" class="nav-link">Languages</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <a href="assets/documents/Lydia_Sierra_CV.pdf" class="btn btn-primary btn-sm" aria-disabled="true" title="CV document pending upload">
+          <svg class="btn-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download CV</span>
+          <span class="badge-pending" aria-hidden="true">(Soon)</span>
+        </a>
+
+        <button type="button" id="theme-toggle" class="btn-icon-toggle" aria-label="Switch visual theme" title="Toggle visual theme">
+          <svg class="theme-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="main-content">
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="hero-section" aria-labelledby="hero-title">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <p class="badge badge-greeting">
+            Hi, I'm Lydia <span role="img" aria-label="coffee cup">☕</span>
+          </p>
+
+          <h1 id="hero-title" class="hero-title">
+            Full Stack Developer who loves building <span class="accent-text"><em>meaningful</em></span> digital experiences.
+          </h1>
+
+          <p class="hero-subtitle">
+            I'm a Software Development student at SENA and currently doing my internship at Globant. I enjoy turning ideas into clean, efficient and user-focused applications.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              View my projects <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a href="assets/documents/Lydia_Sierra_CV.pdf" class="btn btn-secondary" aria-disabled="true" title="CV document pending upload">
+              <svg class="btn-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span>Download CV</span>
+              <span class="badge-pending" aria-hidden="true">(Soon)</span>
+            </a>
+          </div>
+
+          <ul class="hero-meta-list" aria-label="Key professional attributes">
+            <li>
+              <svg class="meta-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Pereira, Colombia</span>
+            </li>
+            <li>
+              <svg class="meta-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span>English C2 (EF SET)</span>
+            </li>
+            <li>
+              <span class="status-indicator-dot" aria-hidden="true"></span>
+              <span>Open to opportunities</span>
+            </li>
+          </ul>
+        </div>
+
+        <figure class="hero-visual">
+          <img src="assets/images/hero-workspace.jpg" alt="Developer workspace desk setup with laptop displaying code, coffee cup, and open notebook" width="600" height="400" loading="eager">
+        </figure>
+      </div>
+    </section>
+
+    <!-- 3. About Section -->
+    <section id="about" class="about-section" aria-labelledby="about-title">
+      <div class="container about-container">
+        <h2 id="about-title" class="section-title">About me</h2>
+        <div class="about-body">
+          <p>
+            I'm passionate about clean code, thoughtful design and continuous learning. I enjoy working across the stack, solving problems and creating products that make people's lives better.
+          </p>
+          <p>
+            When I'm not coding, you'll find me learning Japanese, drawing or playing the guitar.
+          </p>
+          <p class="signature" aria-label="Personal signature: Lydia Sierra">
+            Lydia Sierra
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Skills Section -->
+    <section id="skills" class="skills-section" aria-labelledby="skills-title">
+      <div class="container skills-container">
+        <div class="section-header">
+          <h2 id="skills-title" class="section-title">Tech stack</h2>
+          <span class="badge badge-subtle">Core &amp; Tools</span>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-category">
+            <h3 class="skill-category-title">Frontend</h3>
+            <ul class="skill-list">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Angular</li>
+              <li>React</li>
+            </ul>
+          </article>
+
+          <article class="skill-category">
+            <h3 class="skill-category-title">Backend</h3>
+            <ul class="skill-list">
+              <li>PHP (Laravel)</li>
+              <li>Java</li>
+              <li>REST APIs</li>
+              <li>Node.js</li>
+            </ul>
+          </article>
+
+          <article class="skill-category">
+            <h3 class="skill-category-title">Databases</h3>
+            <ul class="skill-list">
+              <li>MySQL</li>
+              <li>PostgreSQL</li>
+              <li>MongoDB</li>
+            </ul>
+          </article>
+
+          <article class="skill-category">
+            <h3 class="skill-category-title">Tools</h3>
+            <ul class="skill-list">
+              <li>Git &amp; GitHub</li>
+              <li>VS Code</li>
+              <li>Linux</li>
+              <li>Docker (learning)</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Featured Projects Section -->
+    <section id="projects" class="projects-section" aria-labelledby="projects-title">
+      <div class="container projects-container">
+        <div class="section-header">
+          <h2 id="projects-title" class="section-title">Featured projects</h2>
+          <span class="badge badge-subtle">Selected Works</span>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: Flashcards App -->
+          <article class="project-card">
+            <div class="project-media-placeholder" aria-hidden="true">
+              <span>Preview: Flashcards App</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Flashcards App</h3>
+              <p class="project-description">
+                A modern flashcards web app to learn anything effectively. Built with Angular, Signals and Local Storage.
+              </p>
+              <ul class="project-tags" aria-label="Technologies used in Flashcards App">
+                <li>Angular</li>
+                <li>TypeScript</li>
+                <li>Tailwind CSS</li>
+              </ul>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View live demo of Flashcards App">
+                  Live demo <span aria-hidden="true">&rarr;</span>
+                </a>
+                <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code of Flashcards App on GitHub">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: Fintech Dashboard -->
+          <article class="project-card">
+            <div class="project-media-placeholder" aria-hidden="true">
+              <span>Preview: Fintech Dashboard</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Fintech Dashboard</h3>
+              <p class="project-description">
+                Financial analytics dashboard with real-time data, charts and user management.
+              </p>
+              <ul class="project-tags" aria-label="Technologies used in Fintech Dashboard">
+                <li>React</li>
+                <li>Node.js</li>
+                <li>MongoDB</li>
+                <li>Chart.js</li>
+              </ul>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View live demo of Fintech Dashboard">
+                  Live demo <span aria-hidden="true">&rarr;</span>
+                </a>
+                <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code of Fintech Dashboard on GitHub">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: E-commerce Platform -->
+          <article class="project-card">
+            <div class="project-media-placeholder" aria-hidden="true">
+              <span>Preview: E-commerce Platform</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">E-commerce Platform</h3>
+              <p class="project-description">
+                Full-stack e-commerce with product management, cart, payments and order tracking.
+              </p>
+              <ul class="project-tags" aria-label="Technologies used in E-commerce Platform">
+                <li>Laravel</li>
+                <li>MySQL</li>
+                <li>Stripe</li>
+                <li>Tailwind CSS</li>
+              </ul>
+              <div class="project-links">
+                <a href="#" class="project-link" aria-label="View live demo of E-commerce Platform">
+                  Live demo <span aria-hidden="true">&rarr;</span>
+                </a>
+                <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code of E-commerce Platform on GitHub">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Experience and Education Section -->
+    <section id="experience" class="experience-section" aria-labelledby="experience-title">
+      <div class="container experience-container">
+        <h2 id="experience-title" class="section-title">Experience &amp; Education</h2>
+
+        <div class="experience-grid">
+          <!-- Career Timeline -->
+          <div class="timeline-column">
+            <h3 class="subheading">Career History</h3>
+            <ol class="timeline-list">
+              <li class="timeline-item">
+                <time datetime="2024" class="timeline-date">2024 &mdash; Present</time>
+                <h4 class="timeline-role">
+                  Software Development Intern &middot; <span class="timeline-company">Globant</span>
+                </h4>
+                <p class="timeline-desc">
+                  Working on enterprise applications using low-code technologies. Collaborating with cross-functional teams in agile environments.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <time datetime="2023" class="timeline-date">2023 &mdash; 2024</time>
+                <h4 class="timeline-role">
+                  Academic Projects &amp; Freelance &middot; <span class="timeline-company">Personal</span>
+                </h4>
+                <p class="timeline-desc">
+                  Developed multiple full-stack projects, focused on clean architecture and great user experience.
+                </p>
+              </li>
+
+              <li class="timeline-item">
+                <time datetime="2022" class="timeline-date">2022 &mdash; 2023</time>
+                <h4 class="timeline-role">
+                  Web Developer &middot; <span class="timeline-company">Freelance</span>
+                </h4>
+                <p class="timeline-desc">
+                  Built websites and web apps for small businesses and personal clients.
+                </p>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Education & Numbers Summary Column -->
+          <div class="education-numbers-column">
+            <div class="education-block">
+              <h3 class="subheading">Formal Education</h3>
+              <div class="education-item">
+                <time datetime="2023" class="education-date">2023 &mdash; Present</time>
+                <h4 class="education-degree">
+                  Software Analysis and Development &middot; <span class="education-institution">SENA</span>
+                </h4>
+                <p class="education-desc">
+                  Comprehensive training in software lifecycle methodologies, relational databases, backend architectures, and web application development.
+                </p>
+              </div>
+            </div>
+
+            <div class="metrics-block">
+              <h3 class="subheading">By the numbers</h3>
+              <ul class="metrics-grid" aria-label="Key highlights and metrics">
+                <li class="metric-card">
+                  <span class="metric-value">20+</span>
+                  <span class="metric-label">Projects completed</span>
+                </li>
+                <li class="metric-card">
+                  <span class="metric-value">1.2k+</span>
+                  <span class="metric-label">Contributions on GitHub</span>
+                </li>
+                <li class="metric-card">
+                  <span class="metric-value">In love</span>
+                  <span class="metric-label">with clean code and coffee</span>
+                </li>
+                <li class="metric-card">
+                  <span class="metric-value">Always</span>
+                  <span class="metric-label">learning something new</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Languages Section -->
+    <section id="languages" class="languages-section" aria-labelledby="languages-title">
+      <div class="container languages-container">
+        <h2 id="languages-title" class="section-title">Languages</h2>
+        <ul class="languages-grid" aria-label="Spoken and written language proficiency">
+          <li class="language-card">
+            <h3 class="language-name">Spanish</h3>
+            <p class="language-level">Native</p>
+            <p class="language-detail">Native proficiency in professional, technical, and conversational contexts.</p>
+          </li>
+
+          <li class="language-card">
+            <h3 class="language-name">English</h3>
+            <p class="language-level">C2 Proficient &middot; EF SET</p>
+            <p class="language-detail">Full professional proficiency for international team collaboration and documentation.</p>
+          </li>
+
+          <li class="language-card">
+            <h3 class="language-name">Japanese</h3>
+            <p class="language-level">Elementary &middot; Active Learner</p>
+            <p class="language-detail">Personal interest and ongoing daily study of grammar, kanji, and listening.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8. Contact Section -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <div class="container contact-container">
+        <div class="contact-editorial">
+          <h2 id="contact-title" class="contact-heading">
+            Let's build something <span class="accent-text"><em>amazing</em></span> together.
+          </h2>
+          <p class="contact-subtitle">
+            I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          </p>
+
+          <ul class="contact-channels" aria-label="Direct contact details">
+            <li>
+              <svg class="contact-icon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <a href="mailto:hello@lydiasierra.dev">hello@lydiasierra.dev</a>
+            </li>
+            <li>
+              <svg class="contact-icon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Pereira, Colombia</span>
+            </li>
+            <li>
+              <svg class="contact-icon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              <a href="https://linkedin.com/in/lydiasierra" target="_blank" rel="noopener noreferrer">linkedin.com/in/lydiasierra</a>
+            </li>
+            <li>
+              <svg class="contact-icon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+              <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer">github.com/lydiasierra</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-form-wrapper">
+          <form id="contact-form" class="contact-form" action="mailto:hello@lydiasierra.dev" method="post" enctype="text/plain">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Name</label>
+                <input type="text" id="contact-name" name="name" class="form-input" required autocomplete="name" placeholder="Your name">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Email</label>
+                <input type="email" id="contact-email" name="email" class="form-input" required autocomplete="email" placeholder="Your email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Message</label>
+              <textarea id="contact-message" name="message" class="form-textarea" rows="4" required placeholder="How can I help you?"></textarea>
+            </div>
+
+            <p class="form-notice">
+              Clicking "Send message" will open your default email application with your message pre-filled. You can also email directly at <a href="mailto:hello@lydiasierra.dev">hello@lydiasierra.dev</a>.
+            </p>
+
+            <button type="submit" class="btn btn-primary">
+              <span>Send message</span>
+              <svg class="btn-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m22 2-7 20-4-9-9-4Z"/>
+                <path d="M22 2 11 13"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- 9. Footer Landmark -->
+  <footer id="footer" class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="brand-link" aria-label="Back to top">
+          <span class="brand-name">Lydia Sierra</span>
+        </a>
+      </div>
+
+      <p class="footer-copy">
+        &copy; 2024 Lydia Sierra. All rights reserved.
+      </p>
+
+      <ul class="footer-socials" aria-label="Social and repository links">
+        <li>
+          <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" aria-label="Lydia Sierra on GitHub">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+              <path d="M9 18c-4.51 2-5-2-7-2"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://linkedin.com/in/lydiasierra" target="_blank" rel="noopener noreferrer" aria-label="Lydia Sierra on LinkedIn">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect width="4" height="12" x="2" y="9"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="mailto:hello@lydiasierra.dev" aria-label="Send email to Lydia Sierra">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
 
   <!-- Scripts -->
   <script type="module" src="js/main.js"></script>

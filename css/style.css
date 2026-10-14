@@ -74,6 +74,11 @@ a {
   text-decoration-skip-ink: auto;
 }
 
+[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 /* Container Utility */
 .container {
   width: 100%;
