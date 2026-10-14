@@ -1,0 +1,223 @@
+/**
+ * Lydia Sierra — Personal Developer Portfolio
+ * Header & Navigation Styles
+ * Conforming to DESIGN_SPEC.md & Visual Mockup
+ */
+
+/* ==========================================================================
+   Header Landmark & Bar Layout
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background-color: rgba(248, 245, 242, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border-subtle);
+  padding-block: 1rem;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+[data-theme="dark"] .site-header {
+  background-color: rgba(24, 22, 20, 0.94);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .site-header {
+    background-color: rgba(24, 22, 20, 0.94);
+  }
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+/* ==========================================================================
+   Brand Wordmark
+   ========================================================================== */
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  color: var(--color-text-main);
+  transition: opacity var(--transition-fast);
+}
+
+.brand-link:hover {
+  opacity: 0.85;
+  color: var(--color-text-main);
+}
+
+.brand-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.375rem; /* ~22px */
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--color-text-main);
+}
+
+/* ==========================================================================
+   Primary Navigation Menu
+   ========================================================================== */
+.nav-menu {
+  display: block;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 0.75rem + 1vw, 2rem);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  padding: 0.35rem 0.25rem;
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-primary);
+}
+
+/* Active Page Indicator Underline */
+.nav-link.active,
+.nav-link[aria-current="page"] {
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+.nav-link.active::after,
+.nav-link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 2px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   Header Action Controls Group
+   ========================================================================== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Mobile Navigation Toggle Button */
+.nav-toggle {
+  display: none; /* Hidden on desktop */
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.nav-toggle:hover {
+  background-color: var(--color-surface-subtle);
+  border-color: var(--color-primary);
+}
+
+/* Accessible Hamburger Icon Bars */
+.nav-toggle-icon {
+  display: block;
+  position: relative;
+  width: 18px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 1px;
+}
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 18px;
+  height: 2px;
+  background-color: currentColor;
+  border-radius: 1px;
+  transition: transform var(--transition-fast);
+}
+
+.nav-toggle-icon::before {
+  top: -6px;
+}
+
+.nav-toggle-icon::after {
+  top: 6px;
+}
+
+/* ==========================================================================
+   Responsive Header Breakpoint (Tablet & Mobile Stacking)
+   ========================================================================== */
+@media (max-width: 899px) {
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* Desktop horizontal nav collapses for clean bar */
+  .nav-menu {
+    display: none; /* Dedicated mobile drawer menu will be implemented in interactive task */
+  }
+
+  .header-actions .btn-sm span:not(.badge-pending) {
+    display: inline;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-container {
+    gap: var(--space-2);
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  .header-actions .btn-sm {
+    padding-inline: 0.65rem;
+  }
+
+  .header-actions .btn-sm span {
+    font-size: var(--text-xs);
+  }
+}

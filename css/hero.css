@@ -1,0 +1,228 @@
+/**
+ * Lydia Sierra — Personal Developer Portfolio
+ * Hero Section Styles
+ * Conforming to DESIGN_SPEC.md & Visual Mockup
+ */
+
+/* ==========================================================================
+   Hero Section Container & Layout Grid
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  padding-block-start: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  padding-block-end: clamp(2.5rem, 2rem + 3vw, 5rem);
+  overflow: visible;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  align-items: center;
+  gap: clamp(2rem, 1.5rem + 3vw, 4.5rem);
+}
+
+/* ==========================================================================
+   Hero Narrative Column
+   ========================================================================== */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+/* Greeting Pill */
+.hero-content .badge-greeting {
+  margin-bottom: var(--space-4);
+  box-shadow: 0 1px 3px rgba(46, 42, 39, 0.04);
+}
+
+/* Editorial Hero Title */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 1.75rem + 2.5vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--color-text-main);
+  margin-bottom: var(--space-5);
+  max-inline-size: 18ch;
+}
+
+.hero-title .accent-text {
+  color: var(--color-turquoise-text);
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* Hero Bio Introduction */
+.hero-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  max-inline-size: 46ch;
+  margin-bottom: var(--space-6);
+}
+
+/* Action Controls Row */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+/* Quick Facts / Attributes Pills List */
+.hero-meta-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-meta-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-text-main);
+  box-shadow: var(--shadow-sm);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.hero-meta-list li:hover {
+  border-color: var(--color-primary);
+}
+
+.hero-meta-list .meta-icon {
+  color: var(--color-primary);
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+}
+
+/* ==========================================================================
+   Hero Visual Column & Botanical Accent
+   ========================================================================== */
+.hero-visual-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface);
+  z-index: 2;
+}
+
+.hero-visual img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 11;
+  object-fit: cover;
+  display: block;
+}
+
+/* Botanical Watercolor Accent Illustration Flanking the Image */
+.hero-botanical {
+  position: absolute;
+  right: -36px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  transition: opacity var(--transition-base);
+}
+
+[data-theme="dark"] .hero-botanical {
+  opacity: 0.45;
+}
+
+/* ==========================================================================
+   Responsive Adaptations (Tablet & Mobile Stacking)
+   ========================================================================== */
+@media (max-width: 960px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .hero-content {
+    align-items: flex-start;
+  }
+
+  .hero-visual-wrapper {
+    max-width: 580px;
+    margin-inline: auto;
+  }
+
+  .hero-botanical {
+    right: -16px;
+    opacity: 0.6;
+    height: 180px;
+    width: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-title {
+    max-inline-size: 100%;
+  }
+
+  .hero-subtitle {
+    max-inline-size: 100%;
+  }
+
+  .hero-botanical {
+    display: none; /* Avoid horizontal viewport overflow on narrow screens */
+  }
+}
+
+@media (max-width: 440px) {
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-meta-list {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .hero-meta-list li {
+    justify-content: flex-start;
+  }
+}
