@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/about-skills.css">
   <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/languages.css">
 </head>
 <body>
   <!-- Accessible Skip-to-Content Link -->
@@ -413,109 +415,342 @@
     <!-- 6. Experience and Education Section -->
     <section id="experience" class="experience-section" aria-labelledby="experience-title">
       <div class="container experience-container">
-        <h2 id="experience-title" class="section-title">Experience &amp; Education</h2>
-
-        <div class="experience-grid">
-          <!-- Career Timeline -->
-          <div class="timeline-column">
-            <h3 class="subheading">Career History</h3>
-            <ol class="timeline-list">
-              <li class="timeline-item">
-                <time datetime="2024" class="timeline-date">2024 &mdash; Present</time>
-                <h4 class="timeline-role">
-                  Software Development Intern &middot; <span class="timeline-company">Globant</span>
-                </h4>
-                <p class="timeline-desc">
-                  Working on enterprise applications using low-code technologies. Collaborating with cross-functional teams in agile environments.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <time datetime="2023" class="timeline-date">2023 &mdash; 2024</time>
-                <h4 class="timeline-role">
-                  Academic Projects &amp; Freelance &middot; <span class="timeline-company">Personal</span>
-                </h4>
-                <p class="timeline-desc">
-                  Developed multiple full-stack projects, focused on clean architecture and great user experience.
-                </p>
-              </li>
-
-              <li class="timeline-item">
-                <time datetime="2022" class="timeline-date">2022 &mdash; 2023</time>
-                <h4 class="timeline-role">
-                  Web Developer &middot; <span class="timeline-company">Freelance</span>
-                </h4>
-                <p class="timeline-desc">
-                  Built websites and web apps for small businesses and personal clients.
-                </p>
-              </li>
-            </ol>
+        <div class="experience-panel surface-card">
+          <div class="experience-header-bar">
+            <h2 id="experience-title" class="section-title">Experience &amp; Education</h2>
+            <span class="badge badge-subtle">Career &amp; Academic Journey</span>
           </div>
 
-          <!-- Education & Numbers Summary Column -->
-          <div class="education-numbers-column">
-            <div class="education-block">
-              <h3 class="subheading">Formal Education</h3>
-              <div class="education-item">
-                <time datetime="2023" class="education-date">2023 &mdash; Present</time>
-                <h4 class="education-degree">
-                  Software Analysis and Development &middot; <span class="education-institution">SENA</span>
-                </h4>
-                <p class="education-desc">
-                  Comprehensive training in software lifecycle methodologies, relational databases, backend architectures, and web application development.
-                </p>
+          <div class="journey-grid">
+            <!-- Column 1: Professional Experience -->
+            <div class="journey-column experience-column">
+              <div class="column-header">
+                <div class="column-icon-wrapper" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                </div>
+                <h3 class="journey-heading">Work Experience</h3>
+                <span class="journey-type-badge journey-type--work">Professional</span>
               </div>
+
+              <ol class="timeline-list" aria-label="Professional work experience timeline">
+                <!-- Globant -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2024" class="timeline-date">2024 &mdash; Present</time>
+                    <span class="experience-tag">Internship</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    Software Development Intern &middot; <span class="timeline-company">Globant</span>
+                  </h4>
+                  <p class="timeline-desc">
+                    Collaborating within agile engineering teams to support enterprise web applications using modern low-code and web technologies. Contributing to component development, QA testing cycles, workflow automation, and cross-functional sprint planning while adhering to code standards and team best practices.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Core technologies used at Globant">
+                    <li>Enterprise Web Apps</li>
+                    <li>Low-Code Platforms</li>
+                    <li>Agile / Scrum</li>
+                    <li>Quality Assurance</li>
+                  </ul>
+                </li>
+
+                <!-- Academic Projects & Independent -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2023" class="timeline-date">2023 &mdash; 2024</time>
+                    <span class="experience-tag">Independent</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    Full-Stack Project Development &middot; <span class="timeline-company">Independent &amp; Academic</span>
+                  </h4>
+                  <p class="timeline-desc">
+                    Engineered multiple full-stack applications—including document management systems (GeDocs) and reactive client-side learning tools—focusing on clean MVC patterns, relational database schemas, and responsive user experiences.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Technologies used in independent projects">
+                    <li>Angular &amp; Signals</li>
+                    <li>PHP (Laravel)</li>
+                    <li>MySQL</li>
+                    <li>REST APIs</li>
+                  </ul>
+                </li>
+
+                <!-- Freelance -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2022" class="timeline-date">2022 &mdash; 2023</time>
+                    <span class="experience-tag">Freelance</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    Web Developer &middot; <span class="timeline-company">Freelance</span>
+                  </h4>
+                  <p class="timeline-desc">
+                    Developed and maintained accessible, responsive websites and digital presences for small local businesses, handling semantic markup, performance optimization, and cross-device compatibility.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Technologies used in freelance work">
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript</li>
+                    <li>Responsive UI</li>
+                    <li>SEO &amp; Performance</li>
+                  </ul>
+                </li>
+              </ol>
             </div>
 
-            <div class="metrics-block">
-              <h3 class="subheading">By the numbers</h3>
-              <ul class="metrics-grid" aria-label="Key highlights and metrics">
-                <li class="metric-card">
-                  <span class="metric-value">20+</span>
-                  <span class="metric-label">Projects completed</span>
+            <!-- Column 2: Formal Education & Academic Foundation -->
+            <div class="journey-column education-column">
+              <div class="column-header">
+                <div class="column-icon-wrapper" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </div>
+                <h3 class="journey-heading">Education &amp; Training</h3>
+                <span class="journey-type-badge journey-type--edu">Academic</span>
+              </div>
+
+              <ol class="timeline-list" aria-label="Education and academic timeline">
+                <!-- SENA -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2023" class="timeline-date">2023 &mdash; Present</time>
+                    <span class="experience-tag">Technologist</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    Software Analysis and Development (ADSO) &middot; <span class="education-institution">SENA</span>
+                  </h4>
+                  <p class="timeline-desc">
+                    Comprehensive national technologist program covering software lifecycle management, relational database architecture (MySQL, PostgreSQL), backend development (PHP/Laravel, Java, RESTful APIs), and clean coding methodologies.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Academic competencies acquired at SENA">
+                    <li>Software Architecture</li>
+                    <li>Relational Databases</li>
+                    <li>Object-Oriented Programming</li>
+                    <li>Requirements Engineering</li>
+                  </ul>
                 </li>
-                <li class="metric-card">
-                  <span class="metric-value">1.2k+</span>
-                  <span class="metric-label">Contributions on GitHub</span>
+
+                <!-- Technical Specializations / Continuous Learning -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2023" class="timeline-date">2023 &mdash; Present</time>
+                    <span class="experience-tag">Self-Directed</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    Frontend Architecture &amp; Modern Frameworks &middot; <span class="education-institution">Continuous Learning</span>
+                  </h4>
+                  <p class="timeline-desc">
+                    Targeted self-directed study in modern reactive frontend development, mastering Angular Signals, TypeScript type safety, web accessibility standards (WCAG 2.1 AA), and clean interface design.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Areas of continuous technical specialization">
+                    <li>Angular &amp; TypeScript</li>
+                    <li>Web Accessibility (a11y)</li>
+                    <li>Modern CSS &amp; Design Systems</li>
+                  </ul>
                 </li>
-                <li class="metric-card">
-                  <span class="metric-value">In love</span>
-                  <span class="metric-label">with clean code and coffee</span>
-                </li>
-                <li class="metric-card">
-                  <span class="metric-value">Always</span>
-                  <span class="metric-label">learning something new</span>
-                </li>
-              </ul>
+              </ol>
             </div>
+          </div>
+
+          <!-- Bottom Summary Milestones -->
+          <div class="experience-milestones">
+            <h3 class="milestones-heading">By the numbers</h3>
+            <ul class="metrics-grid" aria-label="Key milestones and metrics">
+              <li class="metric-card">
+                <div class="metric-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                </div>
+                <span class="metric-value">20+</span>
+                <span class="metric-label">Projects completed</span>
+              </li>
+
+              <li class="metric-card">
+                <div class="metric-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                  </svg>
+                </div>
+                <span class="metric-value">1.2k+</span>
+                <span class="metric-label">Contributions on GitHub</span>
+              </li>
+
+              <li class="metric-card">
+                <div class="metric-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                    <line x1="6" y1="1" x2="6" y2="4"/>
+                    <line x1="10" y1="1" x2="10" y2="4"/>
+                    <line x1="14" y1="1" x2="14" y2="4"/>
+                  </svg>
+                </div>
+                <span class="metric-value">In love</span>
+                <span class="metric-label">with clean code and coffee</span>
+              </li>
+
+              <li class="metric-card">
+                <div class="metric-icon-wrap" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                    <path d="M6 2v20"/>
+                  </svg>
+                </div>
+                <span class="metric-value">Always</span>
+                <span class="metric-label">learning something new</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 7. Languages Section -->
+    <!-- 7. Languages & Credentials Section -->
     <section id="languages" class="languages-section" aria-labelledby="languages-title">
       <div class="container languages-container">
-        <h2 id="languages-title" class="section-title">Languages</h2>
-        <ul class="languages-grid" aria-label="Spoken and written language proficiency">
-          <li class="language-card">
-            <h3 class="language-name">Spanish</h3>
-            <p class="language-level">Native</p>
-            <p class="language-detail">Native proficiency in professional, technical, and conversational contexts.</p>
-          </li>
+        <div class="languages-panel surface-card">
+          <div class="languages-header-bar">
+            <div>
+              <h2 id="languages-title" class="section-title">Languages &amp; Credentials</h2>
+              <p class="languages-subtitle">
+                Verified proficiencies, formal assessments, and active self-study for international engineering teams.
+              </p>
+            </div>
+            <span class="badge badge-subtle">Communication</span>
+          </div>
 
-          <li class="language-card">
-            <h3 class="language-name">English</h3>
-            <p class="language-level">C2 Proficient &middot; EF SET</p>
-            <p class="language-detail">Full professional proficiency for international team collaboration and documentation.</p>
-          </li>
+          <ul class="languages-grid" aria-label="Spoken and written language proficiencies and credentials">
+            <!-- English Card (Highlighted for international recruiters) -->
+            <li class="language-card-wrapper">
+              <article class="language-card language-card-highlight">
+                <header class="language-card-header">
+                  <div class="language-title-group">
+                    <span class="language-locale-tag" aria-hidden="true">EN</span>
+                    <h3 class="language-name">English</h3>
+                  </div>
+                  <span class="language-status-badge status-certified">
+                    <svg class="status-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                    <span>Formally Certified</span>
+                  </span>
+                </header>
 
-          <li class="language-card">
-            <h3 class="language-name">Japanese</h3>
-            <p class="language-level">Elementary &middot; Active Learner</p>
-            <p class="language-detail">Personal interest and ongoing daily study of grammar, kanji, and listening.</p>
-          </li>
-        </ul>
+                <div class="language-level-box">
+                  <span class="language-level-tier">C2 Proficient</span>
+                  <span class="language-standard">CEFR Level &middot; EF SET Certificate</span>
+                </div>
+
+                <p class="language-detail">
+                  Bilingual fluency for global distributed teams. Fully proficient in technical documentation, architectural reviews, and daily cross-timezone collaboration.
+                </p>
+
+                <footer class="language-card-footer">
+                  <div class="credential-meta">
+                    <span class="credential-label">Assessment:</span>
+                    <span class="credential-value">EF Standard English Test (EF SET)</span>
+                  </div>
+                  <div class="credential-meta">
+                    <span class="credential-label">Verified Score:</span>
+                    <span class="credential-value">C2 Proficient (Score 71+/100)</span>
+                  </div>
+                </footer>
+              </article>
+            </li>
+
+            <!-- Spanish Card -->
+            <li class="language-card-wrapper">
+              <article class="language-card">
+                <header class="language-card-header">
+                  <div class="language-title-group">
+                    <span class="language-locale-tag" aria-hidden="true">ES</span>
+                    <h3 class="language-name">Spanish</h3>
+                  </div>
+                  <span class="language-status-badge status-native">
+                    <span>Native Language</span>
+                  </span>
+                </header>
+
+                <div class="language-level-box">
+                  <span class="language-level-tier">Native Fluency</span>
+                  <span class="language-standard">Mother Tongue</span>
+                </div>
+
+                <p class="language-detail">
+                  Native competence across professional, technical, and colloquial contexts. Clear, structured communicator in both written and spoken Spanish.
+                </p>
+
+                <footer class="language-card-footer">
+                  <div class="credential-meta">
+                    <span class="credential-label">Origin:</span>
+                    <span class="credential-value">Pereira, Colombia</span>
+                  </div>
+                  <div class="credential-meta">
+                    <span class="credential-label">Context:</span>
+                    <span class="credential-value">Native Academic &amp; Technical</span>
+                  </div>
+                </footer>
+              </article>
+            </li>
+
+            <!-- Japanese Card (Explicit distinction: study in progress, NOT JLPT certified) -->
+            <li class="language-card-wrapper">
+              <article class="language-card">
+                <header class="language-card-header">
+                  <div class="language-title-group">
+                    <span class="language-locale-tag" aria-hidden="true">JA</span>
+                    <h3 class="language-name">Japanese</h3>
+                  </div>
+                  <span class="language-status-badge status-study">
+                    <svg class="status-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span>Self-Assessed &middot; In Study</span>
+                  </span>
+                </header>
+
+                <div class="language-level-box">
+                  <span class="language-level-tier">N4 Target Level</span>
+                  <span class="language-standard">Elementary &middot; Self-Directed Study</span>
+                </div>
+
+                <p class="language-detail">
+                  Dedicated self-study focused on JLPT N4 grammar, vocabulary, and approximately 300 Kanji. Capable of basic daily conversations and reading simple passages.
+                </p>
+
+                <footer class="language-card-footer">
+                  <div class="credential-meta">
+                    <span class="credential-label">Certification Status:</span>
+                    <span class="credential-value disclaimer-text">In active study (No JLPT certificate held)</span>
+                  </div>
+                  <div class="credential-meta">
+                    <span class="credential-label">Focus:</span>
+                    <span class="credential-value">JLPT N4 grammar &amp; Kanji</span>
+                  </div>
+                </footer>
+              </article>
+            </li>
+          </ul>
+
+          <!-- Credentials Note / Transparency Footer -->
+          <div class="languages-transparency-note">
+            <svg class="transparency-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <p>
+              <strong>Verification policy:</strong> Language certifications conform to international standards (CEFR &amp; EF SET). In-progress language studies are explicitly identified to ensure transparent, authentic qualifications.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 

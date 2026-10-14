@@ -1,0 +1,394 @@
+/**
+ * Lydia Sierra — Personal Developer Portfolio
+ * Languages & Credentials Component Stylesheet
+ * Conforming to DESIGN_SPEC.md & Visual Direction
+ */
+
+/* ==========================================================================
+   Languages Section & Surface Panel
+   ========================================================================== */
+.languages-section {
+  position: relative;
+  padding-block: var(--space-4);
+}
+
+.languages-panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.75rem, 1.25rem + 1.8vw, 2.75rem);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+/* ==========================================================================
+   Languages Section Header Bar
+   ========================================================================== */
+.languages-header-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.languages-header-bar .section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--color-text-main);
+  line-height: 1.2;
+  margin-bottom: var(--space-1);
+}
+
+.languages-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  max-width: 55ch;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Languages Cards Grid
+   ========================================================================== */
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+  margin-bottom: var(--space-6);
+  padding: 0;
+  list-style: none;
+}
+
+.language-card-wrapper {
+  display: flex;
+  height: 100%;
+}
+
+.language-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-base);
+}
+
+.language-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border);
+}
+
+/* Featured / Recruiter Highlight Card (English C2) */
+.language-card-highlight {
+  border-color: var(--color-accent-turquoise);
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(123, 203, 196, 0.08) 0%,
+    var(--color-surface-subtle) 40%
+  );
+}
+
+[data-theme="dark"] .language-card-highlight {
+  border-color: rgba(123, 203, 196, 0.45);
+  background: linear-gradient(
+    180deg,
+    rgba(123, 203, 196, 0.06) 0%,
+    var(--color-surface-subtle) 45%
+  );
+}
+
+.language-card-highlight:hover {
+  border-color: var(--color-turquoise-text);
+}
+
+[data-theme="dark"] .language-card-highlight:hover {
+  border-color: var(--color-accent-turquoise);
+}
+
+/* ==========================================================================
+   Language Card Header & Title Group
+   ========================================================================== */
+.language-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.language-title-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.language-locale-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.45rem;
+  border-radius: var(--radius-xs);
+  background-color: rgba(46, 42, 39, 0.06);
+  color: var(--color-text-muted);
+}
+
+[data-theme="dark"] .language-locale-tag {
+  background-color: rgba(245, 242, 238, 0.08);
+  color: var(--color-text-muted);
+}
+
+.language-name {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  color: var(--color-text-main);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Status Badges (Certified vs Native vs Self-Assessed)
+   ========================================================================== */
+.language-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.language-status-badge .status-icon {
+  flex-shrink: 0;
+}
+
+/* Formally Certified Badge */
+.status-certified {
+  background-color: rgba(74, 93, 78, 0.12);
+  color: var(--color-primary);
+  border: 1px solid rgba(74, 93, 78, 0.25);
+}
+
+[data-theme="dark"] .status-certified {
+  background-color: rgba(110, 142, 116, 0.2);
+  color: #9EC4A7;
+  border-color: rgba(110, 142, 116, 0.4);
+}
+
+/* Native Language Badge */
+.status-native {
+  background-color: rgba(242, 213, 213, 0.45);
+  color: var(--color-text-main);
+  border: 1px solid rgba(212, 139, 139, 0.35);
+}
+
+[data-theme="dark"] .status-native {
+  background-color: rgba(242, 213, 213, 0.15);
+  color: var(--color-text-main);
+  border-color: rgba(242, 213, 213, 0.25);
+}
+
+/* Self-Assessed / Active Study Badge */
+.status-study {
+  background-color: rgba(230, 225, 220, 0.6);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme="dark"] .status-study {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+
+/* ==========================================================================
+   Level Tier Box
+   ========================================================================== */
+.language-level-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-block: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: var(--space-3);
+}
+
+.language-level-tier {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  color: var(--color-text-main);
+  line-height: 1.2;
+}
+
+.language-standard {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Card Body Description
+   ========================================================================== */
+.language-detail {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-5);
+  flex-grow: 1;
+}
+
+/* ==========================================================================
+   Card Footer & Credential Metadata
+   ========================================================================== */
+.language-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+  font-size: var(--text-xs);
+}
+
+.credential-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.credential-label {
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.credential-value {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-main);
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+.credential-value.disclaimer-text {
+  font-family: var(--font-body);
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 0.75rem;
+}
+
+/* ==========================================================================
+   Transparency Note Banner
+   ========================================================================== */
+.languages-transparency-note {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.transparency-icon {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  margin-top: 2px;
+}
+
+[data-theme="dark"] .transparency-icon {
+  color: #9EC4A7;
+}
+
+.languages-transparency-note p {
+  margin: 0;
+}
+
+.languages-transparency-note strong {
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 960px) {
+  .languages-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .language-card {
+    padding: var(--space-4);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 960px) {
+  .languages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .languages-header-bar {
+    margin-bottom: var(--space-6);
+  }
+
+  .languages-panel {
+    padding: var(--space-5) var(--space-4);
+  }
+
+  .language-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .credential-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .credential-value {
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .language-card {
+    transition: none;
+  }
+
+  .language-card:hover {
+    transform: none;
+  }
+}
