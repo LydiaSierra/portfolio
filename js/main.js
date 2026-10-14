@@ -5,6 +5,7 @@
 
 import { renderProjects } from './projects.js';
 import { initContactForm, initEmailCopy } from './contact.js';
+import { detectLanguage, setLanguage, initLanguageSelector } from './i18n.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Prevent navigation on pending actions (e.g. CV upload pending)
@@ -14,12 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Render verified featured projects from dedicated data module
-  renderProjects('.projects-grid');
-
   // Initialize accessible contact form and email copying
   initContactForm();
   initEmailCopy();
+
+  // Initialize language selector controls and apply detected language
+  initLanguageSelector();
+  const initialLang = detectLanguage();
+  setLanguage(initialLang, false);
 
   console.info('Lydia Sierra Portfolio: Application loaded successfully.');
 });
