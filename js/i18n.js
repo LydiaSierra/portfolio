@@ -7,6 +7,7 @@
 
 import { renderProjects } from './projects.js';
 import { setContactLanguage } from './contact.js';
+import { updateThemeButtonUI } from './theme.js';
 
 export const SUPPORTED_LANGUAGES = ['en', 'es'];
 export const DEFAULT_LANGUAGE = 'en';
@@ -41,6 +42,10 @@ export const translations = {
     'actions.cvTitle': 'CV document pending upload',
     'actions.themeToggleAria': 'Switch visual theme',
     'actions.themeToggleTitle': 'Toggle visual theme',
+    'theme.toDark': 'Switch to dark theme',
+    'theme.toLight': 'Switch to light theme',
+    'theme.darkAnnounce': 'Dark theme activated.',
+    'theme.lightAnnounce': 'Light theme activated.',
     'actions.langBtnAria': 'Change language. Current language: English',
     'actions.langMenuAria': 'Language selection',
 
@@ -242,6 +247,10 @@ export const translations = {
     'actions.cvTitle': 'Documento de CV pendiente de subida',
     'actions.themeToggleAria': 'Cambiar tema visual',
     'actions.themeToggleTitle': 'Cambiar tema visual',
+    'theme.toDark': 'Cambiar a tema oscuro',
+    'theme.toLight': 'Cambiar a tema claro',
+    'theme.darkAnnounce': 'Tema oscuro activado.',
+    'theme.lightAnnounce': 'Tema claro activado.',
     'actions.langBtnAria': 'Cambiar idioma. Idioma actual: Español',
     'actions.langMenuAria': 'Selección de idioma',
 
@@ -575,6 +584,11 @@ export function setLanguage(lang, persist = true) {
 
   // 7. Update navbar language selector UI
   updateLanguageSelectorUI(lang);
+
+  // 7b. Update theme toggle labels for active language
+  if (typeof updateThemeButtonUI === 'function') {
+    updateThemeButtonUI();
+  }
 
   // 8. Polite screen reader announcement
   const announcer = document.getElementById('i18n-announcer');

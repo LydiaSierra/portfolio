@@ -6,6 +6,8 @@
 import { renderProjects } from './projects.js';
 import { initContactForm, initEmailCopy } from './contact.js';
 import { detectLanguage, setLanguage, initLanguageSelector } from './i18n.js';
+import { initTheme } from './theme.js';
+import { initNavigation } from './navigation.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Prevent navigation on pending actions (e.g. CV upload pending)
@@ -14,6 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault();
     });
   });
+
+  // Initialize light/dark theme system
+  initTheme();
+
+  // Initialize responsive navigation, drawer, smooth scroll & active section tracking
+  initNavigation();
 
   // Initialize accessible contact form and email copying
   initContactForm();
