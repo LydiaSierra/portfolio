@@ -1,5 +1,15 @@
-/* Modern CSS Reset & Base Foundation */
-*, *::before, *::after {
+/**
+ * Lydia Sierra — Personal Developer Portfolio
+ * Foundational Stylesheet (Reset, Base, Typography, Surfaces, Buttons & Badges)
+ * Conforming to DESIGN_SPEC.md
+ */
+
+/* ==========================================================================
+   1. Modern CSS Reset & Browser Defaults
+   ========================================================================== */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -9,6 +19,7 @@ html {
   font-size: 100%;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  tab-size: 4;
 }
 
 body {
@@ -21,44 +32,37 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Accessibility: Focus Indicators */
-:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
+/* Consistent Text Selection */
+::selection {
+  background-color: var(--color-selection-bg);
+  color: var(--color-selection-text);
 }
 
-/* Accessibility: Skip Link */
-.skip-link {
-  position: absolute;
-  top: -100px;
-  left: 1rem;
-  z-index: 9999;
-  padding: 0.75rem 1.25rem;
-  background-color: var(--color-primary);
-  color: var(--color-surface);
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  transition: top var(--transition-fast);
-}
-
-.skip-link:focus {
-  top: 1rem;
-}
-
-/* Responsive Images & Media */
-img, picture, svg, video {
+/* Clean Media Defaults */
+img,
+picture,
+svg,
+video,
+canvas {
   display: block;
   max-width: 100%;
   height: auto;
 }
 
-/* Accessible Interactive Elements */
-button, input, select, textarea {
+/* Reset List Styles on Semantic Lists */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Form Controls Font & Styling Reset */
+button,
+input,
+select,
+textarea {
   font: inherit;
   color: inherit;
 }
@@ -69,17 +73,157 @@ button {
   background: none;
 }
 
-a {
-  color: inherit;
-  text-decoration-skip-ink: auto;
+/* ==========================================================================
+   2. Accessibility & Keyboard Focus Indicators
+   ========================================================================== */
+:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
 }
 
-[aria-disabled="true"] {
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+/* Skip-to-Content Link */
+.skip-link {
+  position: absolute;
+  top: -120px;
+  left: 1.25rem;
+  z-index: 10000;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 1.25rem;
+}
+
+/* Disabled & Pending States */
+[aria-disabled="true"],
+:disabled {
   cursor: not-allowed;
   opacity: 0.65;
 }
 
-/* Container Utility */
+/* Reduced Motion User Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   3. Base Typography
+   ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-main);
+  text-wrap: balance;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h4 {
+  font-family: var(--font-body);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+p {
+  color: var(--color-text-main);
+  max-inline-size: 68ch;
+}
+
+/* Monospace & Technical Elements */
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* Accent Text & Editorial Highlights */
+.accent-text {
+  color: var(--color-turquoise-text);
+  font-style: italic;
+  font-family: var(--font-display);
+}
+
+/* Personal Signature Treatment */
+.signature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-3xl);
+  color: #D48B8B;
+  line-height: 1;
+  user-select: none;
+}
+
+[data-theme="dark"] .signature {
+  color: var(--color-accent-pink);
+}
+
+/* Interactive Base Links */
+a {
+  color: inherit;
+  text-decoration-skip-ink: auto;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   4. Layout Containers, Surfaces & Section Spacing
+   ========================================================================== */
 .container {
   width: 100%;
   max-width: var(--container-max-width);
@@ -87,12 +231,180 @@ a {
   padding-inline: var(--container-padding);
 }
 
-/* Accessibility: Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+section {
+  margin-block-end: var(--section-gap);
+}
+
+/* Reusable Content Surfaces */
+.surface-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.25rem, 1rem + 1.5vw, 2.5rem);
+}
+
+.surface-subtle {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+/* ==========================================================================
+   5. Reusable Button Components
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px; /* Accessible minimum touch target */
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.btn:active:not([aria-disabled="true"]):not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Primary Button Variant */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border: 1px solid transparent;
+}
+
+.btn-primary:hover:not([aria-disabled="true"]):not(:disabled) {
+  background-color: var(--color-primary-hover);
+  color: var(--color-primary-contrast);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active:not([aria-disabled="true"]):not(:disabled) {
+  background-color: var(--color-primary-active);
+}
+
+/* Secondary Button Variant */
+.btn-secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover:not([aria-disabled="true"]):not(:disabled) {
+  background-color: var(--color-surface-subtle);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.btn-secondary:active:not([aria-disabled="true"]):not(:disabled) {
+  background-color: var(--color-border-subtle);
+}
+
+/* Compact Button Modifier */
+.btn-sm {
+  min-height: 38px;
+  padding: 0.45rem 0.875rem;
+  font-size: var(--text-xs);
+  border-radius: var(--radius-sm);
+}
+
+/* Circular Icon Toggle Button */
+.btn-icon-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.btn-icon-toggle:hover {
+  background-color: var(--color-surface-subtle);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Button Icon Helper */
+.btn-icon {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ==========================================================================
+   6. Reusable Badges & Status Indicators
+   ========================================================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Greeting Badge (Hero) */
+.badge-greeting {
+  background-color: var(--color-accent-pink);
+  color: #2E2A27; /* Guaranteed AAA contrast against blush fill */
+  box-shadow: var(--shadow-sm);
+}
+
+/* Subtle Pill Badge */
+.badge-subtle {
+  background-color: var(--color-surface-subtle);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border-subtle);
+}
+
+/* Pending Indicator Tag (e.g. CV Coming Soon) */
+.badge-pending {
+  display: inline-block;
+  font-size: 0.75em;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-inline-start: 0.35rem;
+  vertical-align: baseline;
+}
+
+/* Glowing Status Indicator Dot */
+.status-indicator-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: #34A853;
+  box-shadow: 0 0 0 3px rgba(52, 168, 83, 0.25);
+  flex-shrink: 0;
 }
