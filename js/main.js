@@ -4,6 +4,7 @@
  */
 
 import { renderProjects } from './projects.js';
+import { initContactForm, initEmailCopy } from './contact.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Prevent navigation on pending actions (e.g. CV upload pending)
@@ -15,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render verified featured projects from dedicated data module
   renderProjects('.projects-grid');
+
+  // Initialize accessible contact form and email copying
+  initContactForm();
+  initEmailCopy();
 
   console.info('Lydia Sierra Portfolio: Application loaded successfully.');
 });
