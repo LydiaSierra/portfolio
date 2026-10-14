@@ -1,0 +1,324 @@
+/**
+ * Lydia Sierra — Personal Developer Portfolio
+ * Featured Projects Section Styles
+ * Conforming to DESIGN_SPEC.md & Visual Mockup
+ */
+
+/* ==========================================================================
+   Featured Projects Panel & Grid
+   ========================================================================== */
+.projects-section {
+  position: relative;
+  padding-block: var(--space-4);
+}
+
+.projects-panel {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(1.75rem, 1.25rem + 2vw, 3rem);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.projects-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.projects-header-bar .section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--color-text-main);
+  line-height: 1.2;
+}
+
+/* 2-Column Responsive Project Grid (Balancing Deep Project Insights) */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+}
+
+/* ==========================================================================
+   Individual Project Card Anatomy
+   ========================================================================== */
+.project-card {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+/* Screenshot / Preview Media Frame */
+.project-media-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var(--color-bg);
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition-base);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.02);
+}
+
+/* Card Content Area */
+.project-content {
+  padding: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: var(--space-4);
+}
+
+/* Project Heading & Role */
+.project-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  color: var(--color-text-main);
+  line-height: 1.25;
+}
+
+.project-subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* Problem & Contribution Narrative Block */
+.project-narrative {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-narrative-item {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.narrative-label {
+  color: var(--color-text-main);
+  font-weight: 600;
+  display: inline;
+  margin-right: 0.35rem;
+}
+
+/* Key Features / Technical Decisions */
+.project-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.details-heading {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.project-highlights {
+  margin: 0;
+  padding-left: 1.25rem;
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-main);
+  line-height: 1.5;
+}
+
+/* Technology Tags */
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.project-tag--primary {
+  background-color: rgba(74, 93, 78, 0.12);
+  color: var(--color-primary);
+}
+
+.project-tag--turquoise {
+  background-color: rgba(123, 203, 196, 0.18);
+  color: var(--color-turquoise-text);
+}
+
+.project-tag--pink {
+  background-color: rgba(242, 213, 213, 0.4);
+  color: #2E2A27;
+}
+
+.project-tag--neutral {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-main);
+}
+
+/* Dark Mode Tag Overrides */
+[data-theme="dark"] .project-tag--primary {
+  background-color: rgba(110, 142, 116, 0.2);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .project-tag--turquoise {
+  background-color: rgba(123, 203, 196, 0.25);
+  color: var(--color-accent-turquoise);
+}
+
+[data-theme="dark"] .project-tag--pink {
+  background-color: rgba(242, 213, 213, 0.25);
+  color: #F5F2EE;
+}
+
+[data-theme="dark"] .project-tag--neutral {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text-main);
+}
+
+/* Action Controls Row */
+.project-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.project-actions-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-status-badge {
+  font-size: var(--text-xs);
+  padding: 0.35rem 0.75rem;
+}
+
+.project-repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-main);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.project-repo-link:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}
+
+@media (max-width: 580px) {
+  .projects-panel {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .projects-header-bar {
+    flex-wrap: wrap;
+  }
+
+  .project-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .project-actions-left,
+  .project-actions-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .project-repo-link {
+    justify-content: center;
+  }
+}

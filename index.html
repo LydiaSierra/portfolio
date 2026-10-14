@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/hero.css">
   <link rel="stylesheet" href="css/about-skills.css">
+  <link rel="stylesheet" href="css/projects.css">
 </head>
 <body>
   <!-- Accessible Skip-to-Content Link -->
@@ -262,91 +263,149 @@
     <!-- 5. Featured Projects Section -->
     <section id="projects" class="projects-section" aria-labelledby="projects-title">
       <div class="container projects-container">
-        <div class="section-header">
-          <h2 id="projects-title" class="section-title">Featured projects</h2>
-          <span class="badge badge-subtle">Selected Works</span>
-        </div>
+        <div class="projects-panel surface-card">
+          <div class="projects-header-bar">
+            <h2 id="projects-title" class="section-title">Featured projects</h2>
+            <span class="badge badge-subtle">Selected Works</span>
+          </div>
 
-        <div class="projects-grid">
-          <!-- Project 1: Flashcards App -->
-          <article class="project-card">
-            <div class="project-media-placeholder" aria-hidden="true">
-              <span>Preview: Flashcards App</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Flashcards App</h3>
-              <p class="project-description">
-                A modern flashcards web app to learn anything effectively. Built with Angular, Signals and Local Storage.
-              </p>
-              <ul class="project-tags" aria-label="Technologies used in Flashcards App">
-                <li>Angular</li>
-                <li>TypeScript</li>
-                <li>Tailwind CSS</li>
-              </ul>
-              <div class="project-links">
-                <a href="#" class="project-link" aria-label="View live demo of Flashcards App">
-                  Live demo <span aria-hidden="true">&rarr;</span>
-                </a>
-                <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code of Flashcards App on GitHub">
-                  GitHub
-                </a>
+          <div class="projects-grid">
+            <!-- Project 1: Flashcards App -->
+            <article class="project-card" id="project-flashcards-app">
+              <div class="project-media-frame">
+                <img
+                  src="assets/images/project-flashcards.svg"
+                  alt="Flashcards App interface preview showing a study card on Angular Signals with progress tracking and navigation buttons"
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                  class="project-image"
+                >
               </div>
-            </div>
-          </article>
 
-          <!-- Project 2: Fintech Dashboard -->
-          <article class="project-card">
-            <div class="project-media-placeholder" aria-hidden="true">
-              <span>Preview: Fintech Dashboard</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Fintech Dashboard</h3>
-              <p class="project-description">
-                Financial analytics dashboard with real-time data, charts and user management.
-              </p>
-              <ul class="project-tags" aria-label="Technologies used in Fintech Dashboard">
-                <li>React</li>
-                <li>Node.js</li>
-                <li>MongoDB</li>
-                <li>Chart.js</li>
-              </ul>
-              <div class="project-links">
-                <a href="#" class="project-link" aria-label="View live demo of Fintech Dashboard">
-                  Live demo <span aria-hidden="true">&rarr;</span>
-                </a>
-                <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code of Fintech Dashboard on GitHub">
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </article>
+              <div class="project-content">
+                <div class="project-header">
+                  <h3 class="project-title">Flashcards App</h3>
+                  <p class="project-subtitle">Interactive web application for active recall and spaced-repetition learning</p>
+                </div>
 
-          <!-- Project 3: E-commerce Platform -->
-          <article class="project-card">
-            <div class="project-media-placeholder" aria-hidden="true">
-              <span>Preview: E-commerce Platform</span>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">E-commerce Platform</h3>
-              <p class="project-description">
-                Full-stack e-commerce with product management, cart, payments and order tracking.
-              </p>
-              <ul class="project-tags" aria-label="Technologies used in E-commerce Platform">
-                <li>Laravel</li>
-                <li>MySQL</li>
-                <li>Stripe</li>
-                <li>Tailwind CSS</li>
-              </ul>
-              <div class="project-links">
-                <a href="#" class="project-link" aria-label="View live demo of E-commerce Platform">
-                  Live demo <span aria-hidden="true">&rarr;</span>
-                </a>
-                <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View source code of E-commerce Platform on GitHub">
-                  GitHub
-                </a>
+                <div class="project-narrative">
+                  <p class="project-narrative-item">
+                    <strong class="narrative-label">Problem &amp; Objective:</strong>
+                    <span>Self-directed learners need an intuitive, distraction-free study environment to organize card decks, test memory retention, and track learning progress without complicated backend overhead.</span>
+                  </p>
+                  <p class="project-narrative-item">
+                    <strong class="narrative-label">My Contribution:</strong>
+                    <span>Designed the complete frontend architecture from the ground up, utilizing modern Angular Signals for reactive state and offline-first Local Storage persistence.</span>
+                  </p>
+                </div>
+
+                <div class="project-details">
+                  <h4 class="details-heading">Key Technical Decisions:</h4>
+                  <ul class="project-highlights">
+                    <li>Fine-grained reactivity with Angular Signals for smooth card state transitions without Zone.js overhead</li>
+                    <li>Client-side Local Storage persistence preserving decks, cards, and study progress across sessions</li>
+                    <li>Accessible keyboard controls allowing rapid card flipping, self-assessment, and deck traversal</li>
+                    <li>Responsive, clean UI styled with utility-first Tailwind CSS, optimized for mobile and desktop screens</li>
+                  </ul>
+                </div>
+
+                <ul class="project-tags" aria-label="Technologies used in Flashcards App">
+                  <li class="project-tag project-tag--primary">Angular</li>
+                  <li class="project-tag project-tag--neutral">TypeScript</li>
+                  <li class="project-tag project-tag--turquoise">Signals</li>
+                  <li class="project-tag project-tag--pink">Tailwind CSS</li>
+                  <li class="project-tag project-tag--neutral">Local Storage</li>
+                </ul>
+
+                <div class="project-actions">
+                  <div class="project-actions-left">
+                    <span class="badge badge-subtle project-status-badge" title="Live demo coming soon">
+                      <span class="status-indicator-dot" aria-hidden="true" style="background-color: var(--color-primary); box-shadow: none;"></span>
+                      <span>Live demo coming soon</span>
+                    </span>
+                  </div>
+                  <div class="project-actions-right">
+                    <a href="https://github.com/LydiaSierra" class="project-repo-link" target="_blank" rel="noopener noreferrer" aria-label="View Flashcards App on GitHub">
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                        <path d="M9 18c-4.51 2-5-2-7-2"/>
+                      </svg>
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+
+            <!-- Project 2: GeDocs -->
+            <article class="project-card" id="project-gedocs">
+              <div class="project-media-frame">
+                <img
+                  src="assets/images/project-gedocs.svg"
+                  alt="GeDocs administrative interface preview displaying document records, categories, search filtering, and approval status"
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                  class="project-image"
+                >
+              </div>
+
+              <div class="project-content">
+                <div class="project-header">
+                  <h3 class="project-title">GeDocs — Document Management</h3>
+                  <p class="project-subtitle">Centralized administrative tracking and document archive platform</p>
+                </div>
+
+                <div class="project-narrative">
+                  <p class="project-narrative-item">
+                    <strong class="narrative-label">Problem &amp; Objective:</strong>
+                    <span>Academic and administrative teams often experience lost documentation, misrouted approvals, and lack of searchable audit trails when handling files manually across departments.</span>
+                  </p>
+                  <p class="project-narrative-item">
+                    <strong class="narrative-label">My Contribution:</strong>
+                    <span>Led the relational database schema design, RESTful controller architecture, and document lifecycle workflows as part of the SENA Software Analysis and Development capstone curriculum.</span>
+                  </p>
+                </div>
+
+                <div class="project-details">
+                  <h4 class="details-heading">Key Technical Decisions:</h4>
+                  <ul class="project-highlights">
+                    <li>Relational schema design in MySQL with normalized tables, foreign keys, and audit logging</li>
+                    <li>RESTful backend architecture facilitating document registration, review stages, and status queries</li>
+                    <li>Role-based access permissions separating administrative, reviewing, and standard contributor capabilities</li>
+                    <li>Search filtering by category, date range, and status chips, with structured data export</li>
+                  </ul>
+                </div>
+
+                <ul class="project-tags" aria-label="Technologies used in GeDocs — Document Management">
+                  <li class="project-tag project-tag--primary">PHP (Laravel)</li>
+                  <li class="project-tag project-tag--neutral">MySQL</li>
+                  <li class="project-tag project-tag--turquoise">REST APIs</li>
+                  <li class="project-tag project-tag--neutral">MVC Architecture</li>
+                  <li class="project-tag project-tag--pink">Bootstrap / CSS</li>
+                </ul>
+
+                <div class="project-actions">
+                  <div class="project-actions-left">
+                    <span class="badge badge-subtle project-status-badge" title="Institutional capstone project">
+                      <span class="status-indicator-dot" aria-hidden="true" style="background-color: var(--color-primary); box-shadow: none;"></span>
+                      <span>Institutional capstone project</span>
+                    </span>
+                  </div>
+                  <div class="project-actions-right">
+                    <a href="https://github.com/LydiaSierra" class="project-repo-link" target="_blank" rel="noopener noreferrer" aria-label="View GeDocs on GitHub">
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                        <path d="M9 18c-4.51 2-5-2-7-2"/>
+                      </svg>
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
