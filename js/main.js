@@ -9,7 +9,7 @@ import { detectLanguage, setLanguage, initLanguageSelector } from './i18n.js';
 import { initTheme } from './theme.js';
 import { initNavigation } from './navigation.js';
 
-document.addEventListener('DOMContentLoaded', () => {
+function bootstrap() {
   // Prevent navigation on pending actions (e.g. CV upload pending)
   document.querySelectorAll('a[aria-disabled="true"]').forEach((element) => {
     element.addEventListener('click', (event) => {
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize light/dark theme system
   initTheme();
 
-  // Initialize responsive navigation, drawer, smooth scroll & active section tracking
+  // Initialize responsive navigation, drawer, smooth scroll, progressive overflow & scroll-aware navbar
   initNavigation();
 
   // Initialize accessible contact form and email copying
@@ -33,4 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
   setLanguage(initialLang, false);
 
   console.info('Lydia Sierra Portfolio: Application loaded successfully.');
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrap);
+} else {
+  bootstrap();
+}

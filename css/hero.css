@@ -9,8 +9,8 @@
    ========================================================================== */
 .hero-section {
   position: relative;
-  padding-block-start: clamp(2rem, 1.5rem + 2.5vw, 4rem);
-  padding-block-end: clamp(2.5rem, 2rem + 3vw, 5rem);
+  padding-block-start: clamp(1.5rem, 1rem + 1.5vw, 2.75rem);
+  padding-block-end: clamp(1.5rem, 1.25rem + 1.5vw, 2.75rem);
   overflow: visible;
 }
 
@@ -18,7 +18,7 @@
   display: grid;
   grid-template-columns: 1.15fr 0.95fr;
   align-items: center;
-  gap: clamp(2rem, 1.5rem + 3vw, 4.5rem);
+  gap: clamp(1.75rem, 1.25rem + 2vw, 3.25rem);
 }
 
 /* ==========================================================================
@@ -33,7 +33,7 @@
 
 /* Greeting Pill */
 .hero-content .badge-greeting {
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-3);
   box-shadow: 0 1px 3px rgba(46, 42, 39, 0.04);
 }
 
@@ -45,7 +45,7 @@
   line-height: 1.15;
   letter-spacing: -0.015em;
   color: var(--color-text-main);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   max-inline-size: 18ch;
 }
 
@@ -60,9 +60,9 @@
   font-family: var(--font-body);
   font-size: var(--text-base);
   color: var(--color-text-muted);
-  line-height: 1.65;
+  line-height: 1.6;
   max-inline-size: 46ch;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-5);
 }
 
 /* Action Controls Row */
@@ -71,7 +71,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-5);
 }
 
 /* Quick Facts / Attributes Pills List */

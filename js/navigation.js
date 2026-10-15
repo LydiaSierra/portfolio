@@ -2,13 +2,15 @@
  * Lydia Sierra — Personal Developer Portfolio
  * Navigation & Interaction Module (ES Module)
  * Handles responsive mobile navigation drawer, smooth in-page scrolling
- * with prefers-reduced-motion respect, keyboard accessibility, and active-section tracking.
+ * with prefers-reduced-motion respect, keyboard accessibility, active-section tracking,
+ * and dynamic desktop/tablet progressive overflow dropdown navigation.
  */
 
 const SECTION_IDS = ['hero', 'about', 'skills', 'projects', 'experience', 'languages', 'contact'];
 
 let activeObserver = null;
 let isMenuOpen = false;
+let isOverflowMenuOpen = false;
 
 /**
  * Checks if the user prefers reduced motion.
@@ -72,6 +74,166 @@ export function toggleMobileMenu() {
 }
 
 /**
+ * Opens the progressive overflow dropdown menu.
+ */
+export function openOverflowMenu() {
+  const navOverflowBtn = document.getElementById('nav-overflow-btn');
+  const navOverflowMenu = document.getElementById('nav-overflow-menu');
+  if (!navOverflowBtn || !navOverflowMenu) return;
+
+  isOverflowMenuOpen = true;
+  navOverflowBtn.setAttribute('aria-expanded', 'true');
+  navOverflowMenu.removeAttribute('hidden');
+
+  const firstLink = navOverflowMenu.querySelector('.nav-link');
+  if (firstLink) {
+    firstLink.focus();
+  }
+}
+
+/**
+ * Closes the progressive overflow dropdown menu.
+ * @param {boolean} [returnFocus=true] - Whether to return focus to the overflow button.
+ */
+export function closeOverflowMenu(returnFocus = true) {
+  const navOverflowBtn = document.getElementById('nav-overflow-btn');
+  const navOverflowMenu = document.getElementById('nav-overflow-menu');
+  if (!navOverflowBtn || !navOverflowMenu) return;
+
+  if (isOverflowMenuOpen) {
+    isOverflowMenuOpen = false;
+    navOverflowBtn.setAttribute('aria-expanded', 'false');
+    navOverflowMenu.setAttribute('hidden', '');
+
+    if (returnFocus) {
+      navOverflowBtn.focus();
+    }
+  }
+}
+
+/**
+ * Toggles the progressive overflow dropdown menu state.
+ */
+export function toggleOverflowMenu() {
+  if (isOverflowMenuOpen) {
+    closeOverflowMenu(true);
+  } else {
+    openOverflowMenu();
+  }
+}
+
+/**
+ * Restores all navigation list items back into the main nav-list before nav-overflow-item,
+ * preserving their original canonical order defined by SECTION_IDS.
+ */
+export function restoreAllNavItemsToMainList() {
+  const navList = document.getElementById('nav-list');
+  const navOverflowItem = document.getElementById('nav-overflow-item');
+  const navOverflowMenu = document.getElementById('nav-overflow-menu');
+  if (!navList || !navOverflowItem || !navOverflowMenu) return;
+
+  const allItems = [
+    ...Array.from(navList.children).filter((el) => el !== navOverflowItem),
+    ...Array.from(navOverflowMenu.children)
+  ];
+
+  allItems.sort((a, b) => {
+    const idA = a.getAttribute('data-nav-id') || '';
+    const idB = b.getAttribute('data-nav-id') || '';
+    return SECTION_IDS.indexOf(idA) - SECTION_IDS.indexOf(idB);
+  });
+
+  allItems.forEach((item) => {
+    navList.insertBefore(item, navOverflowItem);
+  });
+}
+
+/**
+ * Updates the active indicator state on the overflow button if an active link
+ * currently resides inside the overflow dropdown menu.
+ */
+export function updateActiveOverflowState() {
+  const navOverflowBtn = document.getElementById('nav-overflow-btn');
+  const navOverflowMenu = document.getElementById('nav-overflow-menu');
+  if (!navOverflowBtn || !navOverflowMenu) return;
+
+  const hasActiveChild = !!navOverflowMenu.querySelector('.nav-link.active');
+  if (hasActiveChild) {
+    navOverflowBtn.classList.add('has-active');
+  } else {
+    navOverflowBtn.classList.remove('has-active');
+  }
+}
+
+/**
+ * Recalculates visible vs overflowing navigation links based on available horizontal space.
+ * Only applies on desktop & tablet viewports (>= 900px).
+ */
+export function updateNavOverflow() {
+  if (typeof window === 'undefined') return;
+
+  const navList = document.getElementById('nav-list');
+  const navOverflowItem = document.getElementById('nav-overflow-item');
+  const navOverflowMenu = document.getElementById('nav-overflow-menu');
+  const navMenu = document.getElementById('primary-nav');
+  const headerContainer = document.querySelector('.header-container');
+
+  if (!navList || !navOverflowItem || !navOverflowMenu || !navMenu) return;
+
+  // On mobile (< 900px), always preserve all items in canonical drawer order
+  if (window.innerWidth < 900) {
+    closeOverflowMenu(false);
+    restoreAllNavItemsToMainList();
+    navOverflowItem.hidden = true;
+    return;
+  }
+
+  // Restore everything to measure natural layout widths
+  restoreAllNavItemsToMainList();
+  navOverflowItem.hidden = true;
+
+  const checkOverflow = () => {
+    return (
+      navList.scrollWidth > navMenu.clientWidth + 2 ||
+      (headerContainer && headerContainer.scrollWidth > headerContainer.clientWidth + 2)
+    );
+  };
+
+  if (!checkOverflow()) {
+    // Fits comfortably without overflow menu
+    navOverflowItem.hidden = true;
+    closeOverflowMenu(false);
+    updateActiveOverflowState();
+    return;
+  }
+
+  // Items overflow: reveal overflow menu item
+  navOverflowItem.hidden = false;
+
+  // Shift items from the end of visible links into the overflow dropdown until it fits
+  let iterations = 0;
+  while (checkOverflow() && iterations < SECTION_IDS.length) {
+    iterations++;
+    const visibleItems = Array.from(navList.children).filter((el) => el !== navOverflowItem);
+    // Maintain at least the first 2 primary links visible
+    if (visibleItems.length <= 2) {
+      break;
+    }
+    const lastItem = visibleItems[visibleItems.length - 1];
+    navOverflowMenu.insertBefore(lastItem, navOverflowMenu.firstChild);
+  }
+
+  if (navOverflowMenu.children.length === 0) {
+    navOverflowItem.hidden = true;
+    closeOverflowMenu(false);
+  } else {
+    navOverflowItem.hidden = false;
+  }
+
+  updateActiveOverflowState();
+}
+
+/**
  * Updates the active link indicator in the primary navigation.
  * @param {string} sectionId - The ID of the currently active section.
  */
@@ -87,6 +249,8 @@ export function setActiveSection(sectionId) {
       link.removeAttribute('aria-current');
     }
   });
+
+  updateActiveOverflowState();
 }
 
 /**
@@ -97,7 +261,6 @@ function initActiveSectionObserver() {
   if (!sections.length) return;
 
   if ('IntersectionObserver' in window) {
-    // Disconnect any existing observer
     if (activeObserver) {
       activeObserver.disconnect();
     }
@@ -122,22 +285,26 @@ function initActiveSectionObserver() {
   } else {
     // Fallback: Throttled scroll listener for older browsers
     let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollPos = window.scrollY + 120;
-          for (let i = sections.length - 1; i >= 0; i--) {
-            const section = sections[i];
-            if (section.offsetTop <= scrollPos) {
-              setActiveSection(section.id);
-              break;
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollPos = window.scrollY + 120;
+            for (let i = sections.length - 1; i >= 0; i--) {
+              const section = sections[i];
+              if (section.offsetTop <= scrollPos) {
+                setActiveSection(section.id);
+                break;
+              }
             }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
   }
 }
 
@@ -153,7 +320,6 @@ function initSmoothScroll() {
     const href = anchor.getAttribute('href');
     if (!href || href === '#' || href === '#!') return;
 
-    // Handle skip-to-content link specially if needed, but smooth scroll is also fine
     const targetId = href.slice(1);
     const targetElement = document.getElementById(targetId);
     if (!targetElement) return;
@@ -161,6 +327,11 @@ function initSmoothScroll() {
     // Close mobile menu if open
     if (isMenuOpen) {
       closeMobileMenu(false);
+    }
+
+    // Close overflow dropdown if open
+    if (isOverflowMenuOpen) {
+      closeOverflowMenu(false);
     }
 
     event.preventDefault();
@@ -222,21 +393,167 @@ function initMobileNavigation() {
 
   // Close menu when resizing beyond mobile breakpoint (899px)
   let resizeTimeout;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      if (window.innerWidth >= 900 && isMenuOpen) {
-        closeMobileMenu(false);
-      }
-    }, 100);
-  }, { passive: true });
+  window.addEventListener(
+    'resize',
+    () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (window.innerWidth >= 900 && isMenuOpen) {
+          closeMobileMenu(false);
+        }
+      }, 100);
+    },
+    { passive: true }
+  );
+}
+
+/**
+ * Initializes progressive overflow menu interactions and keyboard accessibility.
+ */
+function initOverflowMenu() {
+  const navOverflowBtn = document.getElementById('nav-overflow-btn');
+  const navOverflowMenu = document.getElementById('nav-overflow-menu');
+  const navOverflowItem = document.getElementById('nav-overflow-item');
+  if (!navOverflowBtn || !navOverflowMenu || !navOverflowItem) return;
+
+  // Toggle button click
+  navOverflowBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleOverflowMenu();
+  });
+
+  // Keyboard navigation on overflow button
+  navOverflowBtn.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      openOverflowMenu();
+    }
+  });
+
+  // Keyboard traversal inside overflow menu
+  navOverflowMenu.addEventListener('keydown', (e) => {
+    const links = Array.from(navOverflowMenu.querySelectorAll('.nav-link'));
+    if (!links.length) return;
+    const currentIndex = links.indexOf(document.activeElement);
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const nextIndex = (currentIndex + 1) % links.length;
+      links[nextIndex].focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prevIndex = (currentIndex - 1 + links.length) % links.length;
+      links[prevIndex].focus();
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      closeOverflowMenu(true);
+    } else if (e.key === 'Tab') {
+      closeOverflowMenu(false);
+    }
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    if (isOverflowMenuOpen && !navOverflowItem.contains(e.target)) {
+      closeOverflowMenu(false);
+    }
+  });
+
+  // Global escape to close dropdown
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOverflowMenuOpen) {
+      closeOverflowMenu(true);
+    }
+  });
+}
+
+const SCROLL_THRESHOLD = 15;
+let isNavbarScrolled = false;
+let scrollTicking = false;
+
+/**
+ * Updates the navbar's scroll appearance class (.is-scrolled) based on window.scrollY.
+ */
+export function updateNavbarScroll() {
+  const header = document.getElementById('header') || document.querySelector('.site-header');
+  if (!header) return;
+
+  const shouldBeScrolled = typeof window !== 'undefined' ? window.scrollY > SCROLL_THRESHOLD : false;
+  if (shouldBeScrolled !== isNavbarScrolled) {
+    isNavbarScrolled = shouldBeScrolled;
+    if (isNavbarScrolled) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+  }
+}
+
+/**
+ * Throttled scroll listener handler using requestAnimationFrame.
+ */
+function onNavbarScroll() {
+  if (!scrollTicking) {
+    window.requestAnimationFrame(() => {
+      updateNavbarScroll();
+      scrollTicking = false;
+    });
+    scrollTicking = true;
+  }
+}
+
+/**
+ * Initializes the scroll-aware navbar appearance listener.
+ */
+export function initNavbarScroll() {
+  // Evaluate initial scroll position immediately (handles page refresh & browser scroll restoration)
+  updateNavbarScroll();
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('scroll', onNavbarScroll, { passive: true });
+  }
 }
 
 /**
  * Main initialization entry point for navigation and interaction features.
  */
 export function initNavigation() {
+  initNavbarScroll();
   initMobileNavigation();
+  initOverflowMenu();
   initSmoothScroll();
   initActiveSectionObserver();
+
+  // Resize and language change listeners for dynamic overflow calculations
+  let resizeTimer;
+  const onResize = () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      updateNavOverflow();
+    }, 60);
+  };
+
+  window.addEventListener('resize', onResize, { passive: true });
+  window.addEventListener('languagechange', () => {
+    setTimeout(updateNavOverflow, 50);
+  });
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      updateNavOverflow();
+    });
+  }
+
+  if (typeof ResizeObserver !== 'undefined') {
+    const headerContainer = document.querySelector('.header-container');
+    if (headerContainer) {
+      const ro = new ResizeObserver(() => {
+        updateNavOverflow();
+      });
+      ro.observe(headerContainer);
+    }
+  }
+
+  // Initial calculation after current event loop turn
+  setTimeout(updateNavOverflow, 0);
 }

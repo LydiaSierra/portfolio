@@ -9,7 +9,7 @@
    ========================================================================== */
 .contact-section {
   position: relative;
-  padding-block: var(--space-4) var(--space-12);
+  padding-block: 0;
 }
 
 .contact-panel {
@@ -17,10 +17,10 @@
   border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
-  padding: clamp(1.75rem, 1.25rem + 2.2vw, 3.5rem);
+  padding: var(--panel-padding);
   display: grid;
   grid-template-columns: 1fr 1.15fr;
-  gap: clamp(2rem, 1.5rem + 2.5vw, 4rem);
+  gap: clamp(1.5rem, 1rem + 1.8vw, 3rem);
   transition:
     background-color var(--transition-base),
     border-color var(--transition-base),

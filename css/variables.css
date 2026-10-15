@@ -4,7 +4,8 @@
  * Conforming to DESIGN_SPEC.md v1.0
  */
 
-:root {
+:root,
+[data-theme="light"] {
   /* ==========================================================================
      Color System — Light Theme (Default)
      ========================================================================== */
@@ -67,8 +68,16 @@
   --space-20: 5rem;     /* 80px */
   --space-24: 6rem;     /* 96px */
 
-  /* Fluid Section Spacing */
-  --section-gap: clamp(2.75rem, 2rem + 3.5vw, 4.5rem);
+  /* Fluid Section Spacing (Mobile: ~2rem - 2.5rem, Desktop: ~3rem - 3.75rem) */
+  --section-gap: clamp(2rem, 1.5rem + 1.8vw, 3.5rem);
+  --section-padding-y: clamp(2rem, 1.5rem + 1.8vw, 3.5rem);
+
+  /* Heading to Content Gap (Mobile: ~1rem - 1.25rem, Desktop: ~1.5rem - 1.75rem) */
+  --heading-gap: clamp(1rem, 0.85rem + 0.8vw, 1.75rem);
+
+  /* Surface & Panel Padding */
+  --panel-padding: clamp(1.25rem, 1rem + 1.2vw, 2.25rem);
+  --card-padding-sm: clamp(0.75rem, 0.65rem + 0.5vw, 1.25rem);
 
   /* ==========================================================================
      Corner Radii Hierarchy
@@ -88,10 +97,10 @@
   --shadow-lg: 0 12px 32px rgba(46, 42, 39, 0.08), 0 4px 12px rgba(46, 42, 39, 0.04);
 
   /* ==========================================================================
-     Layout Boundaries
+     Layout Boundaries (Mobile: ~1rem - 1.25rem, Desktop: ~1.5rem - 1.75rem)
      ========================================================================== */
   --container-max-width: 1140px;
-  --container-padding: clamp(1rem, 0.8rem + 1vw, 2rem);
+  --container-padding: clamp(1rem, 0.75rem + 1vw, 1.75rem);
 
   /* ==========================================================================
      Transitions

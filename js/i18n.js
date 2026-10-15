@@ -37,6 +37,8 @@ export const translations = {
     'nav.experience': 'Experience',
     'nav.languages': 'Languages',
     'nav.contact': 'Contact',
+    'nav.more': 'More',
+    'nav.moreLinks': 'More navigation links',
     'actions.downloadCv': 'Download CV',
     'actions.cvSoon': '(Soon)',
     'actions.cvTitle': 'CV document pending upload',
@@ -242,6 +244,8 @@ export const translations = {
     'nav.experience': 'Experiencia',
     'nav.languages': 'Idiomas',
     'nav.contact': 'Contacto',
+    'nav.more': 'Más',
+    'nav.moreLinks': 'Más enlaces de navegación',
     'actions.downloadCv': 'Descargar CV',
     'actions.cvSoon': '(Pronto)',
     'actions.cvTitle': 'Documento de CV pendiente de subida',
@@ -594,6 +598,11 @@ export function setLanguage(lang, persist = true) {
   const announcer = document.getElementById('i18n-announcer');
   if (announcer && dict['a11y.langAnnounce']) {
     announcer.textContent = dict['a11y.langAnnounce'];
+  }
+
+  // 9. Dispatch custom languagechange event for navigation overflow or layout recalculations
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent('languagechange', { detail: { lang } }));
   }
 }
 

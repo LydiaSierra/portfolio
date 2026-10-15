@@ -38,16 +38,22 @@ const ICONS = {
 
 let currentTheme = THEME_LIGHT;
 let hasExplicitUserPreference = false;
+let isThemeInitialized = false;
+let mediaQueryList = null;
+let mediaQueryListener = null;
 
 /**
  * Safely reads the theme preference from localStorage.
- * @returns {string|null} - 'light', 'dark', or null if not set or storage is blocked.
+ * Only returns 'light' or 'dark'; returns null if not set or invalid.
+ * @returns {string|null}
  */
-function getStoredTheme() {
+export function getStoredTheme() {
   try {
-    const stored = localStorage.getItem(THEME_STORAGE_KEY);
-    if (stored === THEME_LIGHT || stored === THEME_DARK) {
-      return stored;
+    if (typeof localStorage !== 'undefined') {
+      const stored = localStorage.getItem(THEME_STORAGE_KEY);
+      if (stored === THEME_LIGHT || stored === THEME_DARK) {
+        return stored;
+      }
     }
   } catch (err) {
     console.warn('localStorage not accessible for reading theme:', err);
@@ -59,9 +65,15 @@ function getStoredTheme() {
  * Safely persists the theme preference to localStorage.
  * @param {string} theme - 'light' or 'dark'
  */
-function setStoredTheme(theme) {
+export function setStoredTheme(theme) {
   try {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+    if (typeof localStorage !== 'undefined') {
+      if (theme === THEME_LIGHT || theme === THEME_DARK) {
+        localStorage.setItem(THEME_STORAGE_KEY, theme);
+      } else {
+        localStorage.removeItem(THEME_STORAGE_KEY);
+      }
+    }
   } catch (err) {
     console.warn('localStorage not accessible for saving theme:', err);
   }
@@ -71,9 +83,13 @@ function setStoredTheme(theme) {
  * Determines whether the user's OS prefers dark mode.
  * @returns {boolean}
  */
-function getSystemPrefersDark() {
-  if (typeof window !== 'undefined' && window.matchMedia) {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+export function getSystemPrefersDark() {
+  try {
+    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+  } catch (err) {
+    console.warn('Unable to query matchMedia for system theme preference:', err);
   }
   return false;
 }
@@ -102,9 +118,11 @@ export function setTheme(theme, persist = true, announce = false) {
   }
 
   // Update HTML data-theme attribute
-  document.documentElement.setAttribute('data-theme', targetTheme);
+  if (typeof document !== 'undefined' && document.documentElement) {
+    document.documentElement.setAttribute('data-theme', targetTheme);
+  }
 
-  // Update the toggle button icon, aria-label, and title
+  // Update all theme toggle buttons' icons, aria-labels, and titles
   updateThemeButtonUI();
 
   // Announce to screen reader if requested
@@ -114,11 +132,10 @@ export function setTheme(theme, persist = true, announce = false) {
 }
 
 /**
- * Updates the theme toggle button's icon and accessible text based on current theme and language.
+ * Updates all theme toggle controls' icons and accessible text based on current theme and language.
  */
 export function updateThemeButtonUI() {
-  const btn = document.getElementById('theme-toggle');
-  if (!btn) return;
+  if (typeof document === 'undefined') return;
 
   const lang = typeof getCurrentLanguage === 'function' ? getCurrentLanguage() : 'en';
   const dict = (translations && translations[lang]) || {};
@@ -132,9 +149,28 @@ export function updateThemeButtonUI() {
 
   const labelText = dict[labelKey] || defaultLabel;
 
-  btn.setAttribute('aria-label', labelText);
-  btn.setAttribute('title', labelText);
-  btn.innerHTML = isDark ? ICONS.sun : ICONS.moon;
+  // 1. Desktop icon-only button
+  const desktopBtn = document.getElementById('theme-toggle');
+  if (desktopBtn) {
+    desktopBtn.setAttribute('aria-label', labelText);
+    desktopBtn.setAttribute('title', labelText);
+    desktopBtn.innerHTML = isDark ? ICONS.sun : ICONS.moon;
+  }
+
+  // 2. Mobile drawer button (with icon slot and text label)
+  const drawerBtns = document.querySelectorAll('.btn-theme-drawer');
+  drawerBtns.forEach((drawerBtn) => {
+    drawerBtn.setAttribute('aria-label', labelText);
+    drawerBtn.setAttribute('title', labelText);
+    const iconSlot = drawerBtn.querySelector('.theme-icon-slot');
+    if (iconSlot) {
+      iconSlot.innerHTML = isDark ? ICONS.sun : ICONS.moon;
+    }
+    const textSlot = drawerBtn.querySelector('.theme-drawer-text');
+    if (textSlot) {
+      textSlot.textContent = labelText;
+    }
+  });
 }
 
 /**
@@ -142,6 +178,7 @@ export function updateThemeButtonUI() {
  * @param {string} theme - 'light' or 'dark'
  */
 function announceThemeChange(theme) {
+  if (typeof document === 'undefined') return;
   const announcer = document.getElementById('i18n-announcer');
   if (!announcer) return;
 
@@ -158,11 +195,15 @@ function announceThemeChange(theme) {
 
 /**
  * Initializes the theme module:
- * - Detects initial theme from storage or system preferences.
- * - Applies theme and configures button event listeners.
- * - Listens for OS theme preference changes if user has not stored an explicit choice.
+ * 1. Checks explicit stored preference in localStorage.
+ * 2. If no saved choice, detects and applies operating system preference.
+ * 3. Binds click listeners via event delegation on all theme buttons.
+ * 4. Listens for OS theme preference changes (only active when no manual choice exists).
  */
 export function initTheme() {
+  if (isThemeInitialized) return;
+  isThemeInitialized = true;
+
   const stored = getStoredTheme();
 
   if (stored) {
@@ -174,28 +215,49 @@ export function initTheme() {
     setTheme(initial, false, false);
   }
 
-  // Bind click listener on theme toggle button
-  const btn = document.getElementById('theme-toggle');
-  if (btn) {
-    btn.addEventListener('click', () => {
+  // Delegated click listener for theme toggle buttons (handles desktop, drawer, and SVGs)
+  if (typeof document !== 'undefined') {
+    document.addEventListener('click', (event) => {
+      const toggleBtn = event.target.closest('[data-action="theme-toggle"], #theme-toggle');
+      if (!toggleBtn) return;
+
+      event.preventDefault();
       const nextTheme = currentTheme === THEME_DARK ? THEME_LIGHT : THEME_DARK;
       setTheme(nextTheme, true, true);
     });
   }
 
-  // Listen for system theme changes when user has not set an explicit override
-  if (window.matchMedia) {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleSystemChange = (e) => {
+  // Listen for operating system theme changes when user has not set an explicit override
+  if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+    mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQueryListener = (e) => {
       if (!hasExplicitUserPreference) {
-        setTheme(e.matches ? THEME_DARK : THEME_LIGHT, false, false);
+        const nextTheme = e.matches ? THEME_DARK : THEME_LIGHT;
+        setTheme(nextTheme, false, false);
       }
     };
 
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', handleSystemChange);
-    } else if (typeof mediaQuery.addListener === 'function') {
-      mediaQuery.addListener(handleSystemChange);
+    if (typeof mediaQueryList.addEventListener === 'function') {
+      mediaQueryList.addEventListener('change', mediaQueryListener);
+    } else if (typeof mediaQueryList.addListener === 'function') {
+      mediaQueryList.addListener(mediaQueryListener);
     }
   }
+}
+
+/**
+ * Cleans up media query listeners and resets initialization state (useful for testing).
+ */
+export function cleanupTheme() {
+  if (mediaQueryList && mediaQueryListener) {
+    if (typeof mediaQueryList.removeEventListener === 'function') {
+      mediaQueryList.removeEventListener('change', mediaQueryListener);
+    } else if (typeof mediaQueryList.removeListener === 'function') {
+      mediaQueryList.removeListener(mediaQueryListener);
+    }
+    mediaQueryList = null;
+    mediaQueryListener = null;
+  }
+  isThemeInitialized = false;
+  hasExplicitUserPreference = false;
 }
