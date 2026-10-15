@@ -140,7 +140,7 @@
 .hero-visual img {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 3 / 2;
   object-fit: cover;
   display: block;
 }

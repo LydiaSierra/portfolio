@@ -259,6 +259,7 @@ export function createProjectCardHTML(project, lang = 'en') {
           width="800"
           height="500"
           loading="lazy"
+          decoding="async"
           class="project-image"
         >
       </div>

@@ -535,6 +535,21 @@ export function setLanguage(lang, persist = true) {
     ogDesc.setAttribute('content', dict['meta.description']);
   }
 
+  const twTitle = document.querySelector('meta[name="twitter:title"]');
+  if (twTitle && dict['meta.title']) {
+    twTitle.setAttribute('content', dict['meta.title']);
+  }
+
+  const twDesc = document.querySelector('meta[name="twitter:description"]');
+  if (twDesc && dict['meta.description']) {
+    twDesc.setAttribute('content', dict['meta.description']);
+  }
+
+  const ogLocale = document.querySelector('meta[property="og:locale"]');
+  if (ogLocale) {
+    ogLocale.setAttribute('content', lang === 'es' ? 'es_CO' : 'en_US');
+  }
+
   // 3. Update textContent of all [data-i18n] elements
   document.querySelectorAll('[data-i18n]').forEach((element) => {
     const key = element.getAttribute('data-i18n');
