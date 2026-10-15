@@ -151,8 +151,8 @@ const projectLabels = {
     contribution: 'My Contribution:',
     decisions: 'Key Technical Decisions:',
     tagsAria: (title) => `Technologies used in ${title}`,
-    demoAria: (title) => `Open live demo of ${title}`,
-    repoAria: (title) => `View ${title} on GitHub`,
+    demoAria: (title) => `Open live demo of ${title} (opens in new tab)`,
+    repoAria: (title) => `View ${title} on GitHub (opens in new tab)`,
     demoDefault: 'Live Demo',
     repoDefault: 'GitHub'
   },
@@ -161,8 +161,8 @@ const projectLabels = {
     contribution: 'Mi contribución:',
     decisions: 'Decisiones técnicas clave:',
     tagsAria: (title) => `Tecnologías utilizadas en ${title}`,
-    demoAria: (title) => `Abrir demo en vivo de ${title}`,
-    repoAria: (title) => `Ver ${title} en GitHub`,
+    demoAria: (title) => `Abrir demo en vivo de ${title} (abre en una nueva pestaña)`,
+    repoAria: (title) => `Ver ${title} en GitHub (abre en una nueva pestaña)`,
     demoDefault: 'Ver demo',
     repoDefault: 'Repositorio'
   }

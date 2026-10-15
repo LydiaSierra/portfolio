@@ -245,7 +245,13 @@ export function initEmailCopy() {
         }
 
         const originalText = button.innerHTML;
+        const originalLabel = button.getAttribute('aria-label') || '';
+        const copiedAnnouncement = currentContactLang === 'es'
+          ? 'Dirección de correo copiada al portapapeles.'
+          : 'Email address copied to clipboard.';
+
         button.classList.add('copied');
+        button.setAttribute('aria-label', copiedAnnouncement);
         button.innerHTML = `
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
             <polyline points="20 6 9 17 4 12"/>
@@ -253,8 +259,15 @@ export function initEmailCopy() {
           <span>${msgs.copiedText}</span>
         `;
 
+        // Announce to screen reader
+        const announcer = document.getElementById('i18n-announcer');
+        if (announcer) {
+          announcer.textContent = copiedAnnouncement;
+        }
+
         setTimeout(() => {
           button.classList.remove('copied');
+          button.setAttribute('aria-label', originalLabel);
           button.innerHTML = originalText;
           const span = button.querySelector('span');
           if (span) {

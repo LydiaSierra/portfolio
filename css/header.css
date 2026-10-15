@@ -699,11 +699,26 @@
     color var(--transition-fast);
 }
 
-.lang-option:hover,
+.lang-option:hover {
+  background-color: var(--color-surface-subtle);
+  color: var(--color-primary);
+}
+
 .lang-option:focus {
   background-color: var(--color-surface-subtle);
   color: var(--color-primary);
-  outline: none;
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}
+
+[data-theme="dark"] .lang-option:focus {
+  outline-color: #9EC4A7;
+}
+
+@media (forced-colors: active) {
+  .lang-option:focus {
+    outline: 2px solid Highlight;
+  }
 }
 
 .lang-option.selected {

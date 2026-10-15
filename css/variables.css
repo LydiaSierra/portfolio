@@ -22,7 +22,7 @@
   --color-primary-contrast: #FFFFFF;
 
   --color-accent-turquoise: #7BCBC4;
-  --color-turquoise-text: #2D7D76; /* Darkened for WCAG AA (4.6:1 on light canvas) */
+  --color-turquoise-text: #25726B; /* Darkened for WCAG AA compliance (5.2:1 on cream canvas, 5.7:1 on white) */
   --color-accent-pink: #F2D5D5;
 
   --color-border: #E6E1DC;

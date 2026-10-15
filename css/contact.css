@@ -266,20 +266,28 @@
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-  color: #9E968F;
-  opacity: 0.85;
+  color: #766F68;
+  opacity: 0.9;
 }
 
 [data-theme="dark"] .form-input::placeholder,
 [data-theme="dark"] .form-textarea::placeholder {
-  color: #7D756E;
+  color: #A8A199;
+  opacity: 0.9;
 }
 
 .form-input:focus,
 .form-textarea:focus {
-  outline: none;
+  outline: 2px solid transparent;
   border-color: var(--color-primary);
   box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+@media (forced-colors: active) {
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: 2px solid Highlight;
+  }
 }
 
 .form-input[aria-invalid="true"],

@@ -33,6 +33,8 @@ export function openMobileMenu() {
 
   isMenuOpen = true;
   toggleBtn.setAttribute('aria-expanded', 'true');
+  const lang = (typeof document !== 'undefined' && document.documentElement.lang) || 'en';
+  toggleBtn.setAttribute('aria-label', lang === 'es' ? 'Cerrar menú de navegación' : 'Close navigation menu');
   navMenu.classList.add('is-open');
 
   // Focus the first navigation link for keyboard users
@@ -54,6 +56,8 @@ export function closeMobileMenu(returnFocus = true) {
   if (isMenuOpen) {
     isMenuOpen = false;
     toggleBtn.setAttribute('aria-expanded', 'false');
+    const lang = (typeof document !== 'undefined' && document.documentElement.lang) || 'en';
+    toggleBtn.setAttribute('aria-label', lang === 'es' ? 'Abrir menú de navegación' : 'Open navigation menu');
     navMenu.classList.remove('is-open');
 
     if (returnFocus) {
@@ -381,6 +385,33 @@ function initMobileNavigation() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isMenuOpen) {
       closeMobileMenu(true);
+    }
+  });
+
+  // Trap keyboard focus inside mobile navigation drawer when open
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' && isMenuOpen) {
+      const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      const drawerElements = Array.from(navMenu.querySelectorAll(focusableSelector)).filter(
+        (el) => el.offsetParent !== null || window.getComputedStyle(el).display !== 'none'
+      );
+      const allFocusables = [toggleBtn, ...drawerElements];
+      if (allFocusables.length === 0) return;
+
+      const firstEl = allFocusables[0];
+      const lastEl = allFocusables[allFocusables.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl.focus();
+        }
+      } else {
+        if (document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
+        }
+      }
     }
   });
 

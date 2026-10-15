@@ -92,6 +92,16 @@ button {
   border-radius: var(--radius-xs);
 }
 
+[data-theme="dark"] :focus-visible {
+  outline-color: #9EC4A7;
+}
+
+@media (forced-colors: active) {
+  :focus-visible {
+    outline: 2px solid Highlight;
+  }
+}
+
 /* Skip-to-Content Link */
 .skip-link {
   position: absolute;
