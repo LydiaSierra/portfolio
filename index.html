@@ -3,9 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Personal portfolio of Lydia Sierra — Software Developer.">
+  <meta name="description" content="Personal developer portfolio of Lydia Sierra — Junior Software Developer. Explore projects, technical skills, experience, and contact information.">
   <meta name="author" content="Lydia Sierra">
   <title>Lydia Sierra — Personal Developer Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+
+  <!-- Open Graph / Social Media Metadata (Uses verified repository preview image) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lydia Sierra — Developer Portfolio">
+  <meta property="og:title" content="Lydia Sierra — Personal Developer Portfolio">
+  <meta property="og:description" content="Personal developer portfolio of Lydia Sierra — Junior Software Developer. Explore projects, technical skills, experience, and contact information.">
+  <meta property="og:image" content="assets/images/hero-workspace.jpg">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="682">
+  <meta property="og:image:alt" content="Developer workspace setup with laptop displaying code, coffee cup, and open notebook">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_CO">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lydia Sierra — Personal Developer Portfolio">
+  <meta name="twitter:description" content="Personal developer portfolio of Lydia Sierra — Junior Software Developer. Explore projects, technical skills, experience, and contact information.">
+  <meta name="twitter:image" content="assets/images/hero-workspace.jpg">
+  <meta name="twitter:image:alt" content="Developer workspace setup with laptop displaying code, coffee cup, and open notebook">
+
+  <!-- Canonical URL (Uncomment and configure once public production domain is finalized) -->
+  <!-- <link rel="canonical" href="https://your-domain.com/"> -->
+
+  <!-- Early Theme Detection Script (FOUC Prevention) -->
+  <script>
+    (function () {
+      try {
+        const stored = localStorage.getItem('portfolio-theme');
+        const isValid = stored === 'dark' || stored === 'light';
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = isValid ? stored : (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (err) {}
+    })();
+  </script>
 
   <!-- Typography: Google Fonts Preconnect & Stylesheets -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,20 +53,1076 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about-skills.css">
+  <link rel="stylesheet" href="css/projects.css">
+  <link rel="stylesheet" href="css/experience.css">
+  <link rel="stylesheet" href="css/languages.css">
+  <link rel="stylesheet" href="css/contact.css">
+  <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-  <!-- Accessible Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Accessible Skip-to-Content Link -->
+  <a href="#main-content" class="skip-link" data-i18n="a11y.skipLink">Skip to main content</a>
 
-  <!-- Minimal Foundation Landmark -->
-  <main id="main-content" class="container" style="padding-block: var(--space-12); text-align: center;">
-    <h1 style="font-family: var(--font-display); font-size: var(--text-4xl); color: var(--color-text-main); margin-bottom: var(--space-4);">
-      Lydia Sierra
-    </h1>
-    <p style="color: var(--color-text-muted); max-width: 48ch; margin-inline: auto;">
-      Personal developer portfolio project foundation initialized.
-    </p>
+  <!-- Polite Screen Reader Announcement Region for i18n -->
+  <div id="i18n-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- 1. Header and Navigation Landmark -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <a href="#hero" class="brand-link" data-i18n-aria-label="brand.ariaLabel" aria-label="Lydia Sierra — Home">
+        <svg class="brand-icon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+        </svg>
+        <span class="brand-name">Lydia Sierra</span>
+      </a>
+
+      <!-- Mobile Navigation Toggle -->
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" data-i18n-aria-label="nav.toggleAria" aria-label="Toggle navigation menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+      </button>
+
+      <!-- Navigation Links -->
+      <nav id="primary-nav" class="nav-menu" data-i18n-aria-label="nav.ariaLabel" aria-label="Primary navigation">
+        <ul class="nav-list" id="nav-list">
+          <li data-nav-id="hero"><a href="#hero" class="nav-link active" aria-current="page" data-i18n="nav.home">Home</a></li>
+          <li data-nav-id="about"><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+          <li data-nav-id="skills"><a href="#skills" class="nav-link" data-i18n="nav.skills">Skills</a></li>
+          <li data-nav-id="projects"><a href="#projects" class="nav-link" data-i18n="nav.projects">Projects</a></li>
+          <li data-nav-id="experience"><a href="#experience" class="nav-link" data-i18n="nav.experience">Experience</a></li>
+          <li data-nav-id="languages"><a href="#languages" class="nav-link" data-i18n="nav.languages">Languages</a></li>
+          <li data-nav-id="contact"><a href="#contact" class="nav-link" data-i18n="nav.contact">Contact</a></li>
+          <!-- Progressive Overflow Menu Item for Desktop & Tablet -->
+          <li class="nav-overflow-item" id="nav-overflow-item" hidden>
+            <button
+              type="button"
+              id="nav-overflow-btn"
+              class="nav-link nav-overflow-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-overflow-menu"
+              data-i18n-aria-label="nav.moreLinks"
+              aria-label="More navigation links"
+            >
+              <span class="nav-overflow-text" data-i18n="nav.more">More</span>
+              <svg class="nav-overflow-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <ul id="nav-overflow-menu" class="nav-overflow-menu" role="menu" data-i18n-aria-label="nav.moreLinks" aria-label="More navigation links" hidden></ul>
+          </li>
+        </ul>
+
+        <!-- Mobile Drawer Action Controls (Rendered inside mobile navigation drawer only) -->
+        <div class="nav-drawer-actions" id="nav-drawer-actions">
+          <a href="assets/documents/Lydia_Sierra_CV.pdf" class="btn btn-primary btn-sm btn-drawer-cv" aria-disabled="true" data-i18n-title="actions.cvTitle" title="CV document pending upload">
+            <svg class="btn-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span data-i18n="actions.downloadCv">Download CV</span>
+            <span class="badge-pending" aria-hidden="true" data-i18n="actions.cvSoon">(Soon)</span>
+          </a>
+
+          <button
+            type="button"
+            class="btn-theme-drawer theme-toggle-btn"
+            data-action="theme-toggle"
+            aria-label="Switch to dark theme"
+            title="Switch to dark theme"
+          >
+            <span class="theme-icon-slot" aria-hidden="true">
+              <svg class="theme-icon" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </span>
+            <span class="theme-drawer-text">Switch to dark theme</span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+
+
+        <a href="assets/documents/Lydia_Sierra_CV.pdf" class="btn btn-primary btn-sm desktop-only-action" aria-disabled="true" data-i18n-title="actions.cvTitle" title="CV document pending upload">
+          <svg class="btn-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span data-i18n="actions.downloadCv">Download CV</span>
+          <span class="badge-pending" aria-hidden="true" data-i18n="actions.cvSoon">(Soon)</span>
+        </a>
+
+        <button type="button" id="theme-toggle" class="btn-icon-toggle desktop-only-action theme-toggle-btn" data-action="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme">
+          <svg class="theme-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+                <!-- Language Selector Dropdown -->
+        <div class="lang-selector-wrapper" id="lang-selector-wrapper">
+          <button
+            type="button"
+            id="lang-selector-btn"
+            class="lang-selector-btn"
+            aria-expanded="false"
+            aria-haspopup="listbox"
+            aria-controls="lang-menu"
+            data-i18n-aria-label="actions.langBtnAria"
+            aria-label="Change language. Current language: English"
+          >
+            <svg class="lang-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="lang-current-code" id="lang-current-code">EN</span>
+            <svg class="lang-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+
+          <ul id="lang-menu" class="lang-menu" role="listbox" data-i18n-aria-label="actions.langMenuAria" aria-label="Language selection" hidden>
+            <li role="option" id="lang-opt-en" class="lang-option selected" data-lang="en" aria-selected="true" tabindex="-1">
+              <span class="lang-option-code">EN</span>
+              <span class="lang-option-name">English</span>
+              <svg class="lang-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </li>
+            <li role="option" id="lang-opt-es" class="lang-option" data-lang="es" aria-selected="false" tabindex="-1">
+              <span class="lang-option-code">ES</span>
+              <span class="lang-option-name">Español</span>
+              <svg class="lang-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Landmark -->
+  <main id="main-content" class="main-content">
+
+    <!-- 2. Hero Section -->
+    <section id="hero" class="hero-section" aria-labelledby="hero-title">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <p class="badge badge-greeting">
+            <span data-i18n="hero.greeting">Hi, I'm Lydia</span> <span role="img" aria-label="coffee cup">☕</span>
+          </p>
+
+          <h1 id="hero-title" class="hero-title" data-i18n-html="hero.titleHtml">
+            Full Stack Developer who loves building <span class="accent-text"><em>meaningful</em></span> digital experiences.
+          </h1>
+
+          <p class="hero-subtitle" data-i18n="hero.subtitle">
+            I'm a Software Development student at SENA and currently doing my internship at Globant. I enjoy turning ideas into clean, efficient and user-focused applications.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <span data-i18n="hero.ctaProjects">View my projects</span> <span aria-hidden="true">&rarr;</span>
+            </a>
+            <a href="assets/documents/Lydia_Sierra_CV.pdf" class="btn btn-secondary" aria-disabled="true" data-i18n-title="actions.cvTitle" title="CV document pending upload">
+              <svg class="btn-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              <span data-i18n="hero.ctaCv">Download CV</span>
+              <span class="badge-pending" aria-hidden="true" data-i18n="actions.cvSoon">(Soon)</span>
+            </a>
+          </div>
+
+          <ul class="hero-meta-list" aria-label="Key professional attributes">
+            <li>
+              <svg class="meta-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span data-i18n="hero.pillLocation">Pereira, Colombia</span>
+            </li>
+            <li>
+              <svg class="meta-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span data-i18n="hero.pillEnglish">English C2 (EF SET)</span>
+            </li>
+            <li>
+              <span class="status-indicator-dot" aria-hidden="true"></span>
+              <span data-i18n="hero.pillStatus">Open to opportunities</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="hero-visual-wrapper">
+          <figure class="hero-visual">
+            <img src="assets/images/hero-workspace.jpg" data-i18n-alt="hero.imageAlt" alt="Developer workspace desk setup with laptop displaying code, coffee cup, and open notebook" width="600" height="400" loading="eager" fetchpriority="high" decoding="async">
+          </figure>
+          <svg class="hero-botanical" aria-hidden="true" width="120" height="240" viewBox="0 0 120 240" fill="none">
+            <path d="M60 230 C 58 170, 75 110, 85 20" stroke="var(--color-primary)" stroke-width="1.75" stroke-linecap="round"/>
+            <path d="M62 200 C 45 190, 35 170, 40 155 C 55 160, 62 175, 62 190" fill="var(--color-accent-pink)" opacity="0.85"/>
+            <path d="M66 170 C 85 160, 95 140, 90 125 C 75 130, 68 145, 67 160" fill="var(--color-primary)" opacity="0.45"/>
+            <path d="M70 140 C 50 130, 42 110, 48 95 C 62 100, 70 115, 70 130" fill="var(--color-accent-pink)" opacity="0.85"/>
+            <path d="M76 105 C 95 95, 102 75, 96 60 C 82 68, 77 82, 76 96" fill="var(--color-primary)" opacity="0.45"/>
+            <path d="M80 75 C 65 65, 60 48, 66 35 C 78 40, 82 55, 81 68" fill="var(--color-accent-pink)" opacity="0.85"/>
+            <path d="M85 20 C 88 12, 98 8, 102 14 C 102 22, 94 25, 87 23" fill="var(--color-primary)" opacity="0.6"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 & 4. About & Skills Surface Landmark Panel -->
+    <section class="about-skills-section container about-skills-container" aria-label="About and skills">
+      <div class="about-skills-panel surface-card">
+
+        <!-- 3. About Section -->
+        <section id="about" class="about-column" aria-labelledby="about-title">
+          <h2 id="about-title" class="section-title" data-i18n="about.title">About me</h2>
+          <div class="about-body">
+            <p data-i18n="about.p1">
+              I'm passionate about clean code, thoughtful design and continuous learning. I enjoy working across the stack, solving problems and creating products that make people's lives better.
+            </p>
+            <p data-i18n="about.p2">
+              When I'm not coding, you'll find me learning Japanese, drawing or playing the guitar.
+            </p>
+            <p class="signature" data-i18n-aria-label="about.signatureAria" aria-label="Personal signature: Lydia Sierra">
+              Lydia Sierra
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. Skills Section (Tech Stack) -->
+        <section id="skills" class="skills-column" aria-labelledby="skills-title">
+          <div class="skills-header">
+            <h2 id="skills-title" class="section-title" data-i18n="skills.title">Tech stack</h2>
+            <a href="#projects" class="badge-view-all" data-i18n="skills.viewAll" data-i18n-aria-label="skills.viewAllAria" aria-label="View all projects using these skills">View all</a>
+          </div>
+
+          <div class="skills-grid">
+            <!-- Frontend Category -->
+            <article class="skill-category">
+              <div class="skill-icon-wrapper" aria-hidden="true">
+                <svg class="skill-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="14" x="2" y="3" rx="2"/>
+                  <line x1="8" x2="16" y1="21" y2="21"/>
+                  <line x1="12" x2="12" y1="17" y2="21"/>
+                </svg>
+              </div>
+              <h3 class="skill-category-title" data-i18n="skills.catFrontend">Frontend</h3>
+              <ul class="skill-list">
+                <li><span>HTML</span></li>
+                <li><span>CSS</span></li>
+                <li><span>JavaScript</span></li>
+                <li><span>Angular</span></li>
+                <li><span>React</span></li>
+              </ul>
+            </article>
+
+            <!-- Backend Category -->
+            <article class="skill-category">
+              <div class="skill-icon-wrapper" aria-hidden="true">
+                <svg class="skill-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="8" x="2" y="2" rx="2"/>
+                  <rect width="20" height="8" x="2" y="14" rx="2"/>
+                  <line x1="6" x2="6.01" y1="6" y2="6"/>
+                  <line x1="6" x2="6.01" y1="18" y2="18"/>
+                </svg>
+              </div>
+              <h3 class="skill-category-title" data-i18n="skills.catBackend">Backend</h3>
+              <ul class="skill-list">
+                <li><span>PHP (Laravel)</span></li>
+                <li><span>Java</span></li>
+                <li><span>REST APIs</span></li>
+                <li><span>Node.js</span></li>
+              </ul>
+            </article>
+
+            <!-- Databases Category -->
+            <article class="skill-category">
+              <div class="skill-icon-wrapper" aria-hidden="true">
+                <svg class="skill-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                  <path d="M3 5V19A9 3 0 0 0 21 19V5"/>
+                  <path d="M3 12A9 3 0 0 0 21 12"/>
+                </svg>
+              </div>
+              <h3 class="skill-category-title" data-i18n="skills.catDatabases">Databases</h3>
+              <ul class="skill-list">
+                <li><span>MySQL</span></li>
+                <li><span>PostgreSQL</span></li>
+                <li><span>MongoDB</span></li>
+              </ul>
+            </article>
+
+            <!-- Tools Category -->
+            <article class="skill-category">
+              <div class="skill-icon-wrapper" aria-hidden="true">
+                <svg class="skill-icon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <h3 class="skill-category-title" data-i18n="skills.catTools">Tools</h3>
+              <ul class="skill-list">
+                <li><span>Git &amp; GitHub</span></li>
+                <li><span>VS Code</span></li>
+                <li><span>Linux</span></li>
+                <li><span>Docker</span> <span class="skill-context-tag" data-i18n="skills.learningTag">(learning)</span></li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+      </div>
+    </section>
+
+    <!-- 5. Featured Projects Section -->
+    <section id="projects" class="projects-section" aria-labelledby="projects-title">
+      <div class="container projects-container">
+        <div class="projects-panel surface-card">
+          <div class="projects-header-bar">
+            <h2 id="projects-title" class="section-title" data-i18n="projects.title">Featured projects</h2>
+            <span class="badge badge-subtle" data-i18n="projects.badge">Selected Works</span>
+          </div>
+
+          <div class="projects-grid">
+            <!-- Project 1: Flashcards App -->
+            <article class="project-card" id="project-flashcards-app">
+              <div class="project-media-frame">
+                <img
+                  src="assets/images/project-flashcards.svg"
+                  alt="Flashcards App interface preview showing a study card on Angular Signals with progress tracking and navigation buttons"
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                  decoding="async"
+                  class="project-image"
+                >
+              </div>
+
+              <div class="project-content">
+                <div class="project-header">
+                  <h3 class="project-title">Flashcards App</h3>
+                  <p class="project-subtitle">Interactive web application for active recall and spaced-repetition learning</p>
+                </div>
+
+                <div class="project-narrative">
+                  <p class="project-narrative-item">
+                    <strong class="narrative-label">Problem &amp; Objective:</strong>
+                    <span>Self-directed learners need an intuitive, distraction-free study environment to organize card decks, test memory retention, and track learning progress without complicated backend overhead.</span>
+                  </p>
+                  <p class="project-narrative-item">
+                    <strong class="narrative-label">My Contribution:</strong>
+                    <span>Designed the complete frontend architecture from the ground up, utilizing modern Angular Signals for reactive state and offline-first Local Storage persistence.</span>
+                  </p>
+                </div>
+
+                <div class="project-details">
+                  <h4 class="details-heading">Key Technical Decisions:</h4>
+                  <ul class="project-highlights">
+                    <li>Fine-grained reactivity with Angular Signals for smooth card state transitions without Zone.js overhead</li>
+                    <li>Client-side Local Storage persistence preserving decks, cards, and study progress across sessions</li>
+                    <li>Accessible keyboard controls allowing rapid card flipping, self-assessment, and deck traversal</li>
+                    <li>Responsive, clean UI styled with utility-first Tailwind CSS, optimized for mobile and desktop screens</li>
+                  </ul>
+                </div>
+
+                <ul class="project-tags" aria-label="Technologies used in Flashcards App">
+                  <li class="project-tag project-tag--primary">Angular</li>
+                  <li class="project-tag project-tag--neutral">TypeScript</li>
+                  <li class="project-tag project-tag--turquoise">Signals</li>
+                  <li class="project-tag project-tag--pink">Tailwind CSS</li>
+                  <li class="project-tag project-tag--neutral">Local Storage</li>
+                </ul>
+
+                <div class="project-actions">
+                  <div class="project-actions-left">
+                    <span class="badge badge-subtle project-status-badge" title="Live demo coming soon">
+                      <span class="status-indicator-dot" aria-hidden="true" style="background-color: var(--color-primary); box-shadow: none;"></span>
+                      <span>Live demo coming soon</span>
+                    </span>
+                  </div>
+                  <div class="project-actions-right">
+                    <a href="https://github.com/LydiaSierra" class="project-repo-link" target="_blank" rel="noopener noreferrer" aria-label="View Flashcards App on GitHub (opens in new tab)">
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                        <path d="M9 18c-4.51 2-5-2-7-2"/>
+                      </svg>
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: GeDocs -->
+            <article class="project-card" id="project-gedocs">
+              <div class="project-media-frame">
+                <img
+                  src="assets/images/project-gedocs.svg"
+                  alt="GeDocs administrative interface preview displaying document records, categories, search filtering, and approval status"
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                  decoding="async"
+                  class="project-image"
+                >
+              </div>
+
+              <div class="project-content">
+                <div class="project-header">
+                  <h3 class="project-title">GeDocs — Document Management</h3>
+                  <p class="project-subtitle">Centralized administrative tracking and document archive platform</p>
+                </div>
+
+                <div class="project-narrative">
+                  <p class="project-narrative-item">
+                    <strong class="narrative-label">Problem &amp; Objective:</strong>
+                    <span>Academic and administrative teams often experience lost documentation, misrouted approvals, and lack of searchable audit trails when handling files manually across departments.</span>
+                  </p>
+                  <p class="project-narrative-item">
+                    <strong class="narrative-label">My Contribution:</strong>
+                    <span>Led the relational database schema design, RESTful controller architecture, and document lifecycle workflows as part of the SENA Software Analysis and Development capstone curriculum.</span>
+                  </p>
+                </div>
+
+                <div class="project-details">
+                  <h4 class="details-heading">Key Technical Decisions:</h4>
+                  <ul class="project-highlights">
+                    <li>Relational schema design in MySQL with normalized tables, foreign keys, and audit logging</li>
+                    <li>RESTful backend architecture facilitating document registration, review stages, and status queries</li>
+                    <li>Role-based access permissions separating administrative, reviewing, and standard contributor capabilities</li>
+                    <li>Search filtering by category, date range, and status chips, with structured data export</li>
+                  </ul>
+                </div>
+
+                <ul class="project-tags" aria-label="Technologies used in GeDocs — Document Management">
+                  <li class="project-tag project-tag--primary">PHP (Laravel)</li>
+                  <li class="project-tag project-tag--neutral">MySQL</li>
+                  <li class="project-tag project-tag--turquoise">REST APIs</li>
+                  <li class="project-tag project-tag--neutral">MVC Architecture</li>
+                  <li class="project-tag project-tag--pink">Bootstrap / CSS</li>
+                </ul>
+
+                <div class="project-actions">
+                  <div class="project-actions-left">
+                    <span class="badge badge-subtle project-status-badge" title="Institutional capstone project">
+                      <span class="status-indicator-dot" aria-hidden="true" style="background-color: var(--color-primary); box-shadow: none;"></span>
+                      <span>Institutional capstone project</span>
+                    </span>
+                  </div>
+                  <div class="project-actions-right">
+                    <a href="https://github.com/LydiaSierra" class="project-repo-link" target="_blank" rel="noopener noreferrer" aria-label="View GeDocs on GitHub (opens in new tab)">
+                      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                        <path d="M9 18c-4.51 2-5-2-7-2"/>
+                      </svg>
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Experience and Education Section -->
+    <section id="experience" class="experience-section" aria-labelledby="experience-title">
+      <div class="container experience-container">
+        <div class="experience-panel surface-card">
+          <div class="experience-header-bar">
+            <h2 id="experience-title" class="section-title" data-i18n="experience.title">Experience &amp; Education</h2>
+            <span class="badge badge-subtle" data-i18n="experience.badge">Career &amp; Academic Journey</span>
+          </div>
+
+          <div class="journey-grid">
+            <!-- Column 1: Professional Experience -->
+            <div class="journey-column experience-column">
+              <div class="column-header">
+                <div class="column-icon-wrapper" aria-hidden="true">
+                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                  </svg>
+                </div>
+                <h3 class="journey-heading" data-i18n="experience.workHeading">Work Experience</h3>
+                <span class="journey-type-badge journey-type--work" data-i18n="experience.workTypeBadge">Professional</span>
+              </div>
+
+              <ol class="timeline-list" aria-label="Professional work experience timeline">
+                <!-- Globant -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2024" class="timeline-date" data-i18n="exp.globant.date">2024 &mdash; Present</time>
+                    <span class="experience-tag" data-i18n="exp.globant.tag">Internship</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    <span data-i18n="exp.globant.role">Software Development Intern</span> &middot; <span class="timeline-company">Globant</span>
+                  </h4>
+                  <p class="timeline-desc" data-i18n="exp.globant.desc">
+                    Collaborating within agile engineering teams to support enterprise web applications using modern low-code and web technologies. Contributing to component development, QA testing cycles, workflow automation, and cross-functional sprint planning while adhering to code standards and team best practices.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Core technologies used at Globant">
+                    <li data-i18n="exp.globant.tech1">Enterprise Web Apps</li>
+                    <li data-i18n="exp.globant.tech2">Low-Code Platforms</li>
+                    <li data-i18n="exp.globant.tech3">Agile / Scrum</li>
+                    <li data-i18n="exp.globant.tech4">Quality Assurance</li>
+                  </ul>
+                </li>
+
+                <!-- Freelance -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2022" class="timeline-date" data-i18n="exp.freelance.date">2024 &mdash; 2026</time>
+                    <span class="experience-tag" data-i18n="exp.freelance.tag">Freelance</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    <span data-i18n="exp.freelance.role">Web Developer</span> &middot; <span class="timeline-company" data-i18n="exp.freelance.company">Freelance</span>
+                  </h4>
+                  <p class="timeline-desc" data-i18n="exp.freelance.desc">
+                    Developed and maintained accessible, responsive websites and digital presences for small local businesses, handling semantic markup, performance optimization, and cross-device compatibility.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Technologies used in freelance work">
+                    <li>HTML5 / CSS3</li>
+                    <li>JavaScript</li>
+                    <li data-i18n="exp.freelance.tech3">Responsive UI</li>
+                    <li data-i18n="exp.freelance.tech4">SEO &amp; Performance</li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+
+            <!-- Column 2: Formal Education & Academic Foundation -->
+            <div class="journey-column education-column">
+              <div class="column-header">
+                <div class="column-icon-wrapper" aria-hidden="true">
+                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </div>
+                <h3 class="journey-heading" data-i18n="experience.eduHeading">Education &amp; Training</h3>
+                <span class="journey-type-badge journey-type--edu" data-i18n="experience.eduTypeBadge">Academic</span>
+              </div>
+
+              <ol class="timeline-list" aria-label="Education and academic timeline">
+                <!-- SENA -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2023" class="timeline-date" data-i18n="edu.sena.date">2023 &mdash; Present</time>
+                    <span class="experience-tag" data-i18n="edu.sena.tag">Technologist</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    <span data-i18n="edu.sena.role">Software Analysis and Development (ADSO)</span> &middot; <span class="education-institution" data-i18n="edu.sena.institution">SENA</span>
+                  </h4>
+                  <p class="timeline-desc" data-i18n="edu.sena.desc">
+                    Comprehensive national technologist program covering software lifecycle management, relational database architecture (MySQL, PostgreSQL), backend development (PHP/Laravel, Java, RESTful APIs), and clean coding methodologies.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Academic competencies acquired at SENA">
+                    <li data-i18n="edu.sena.tech1">Software Architecture</li>
+                    <li data-i18n="edu.sena.tech2">Relational Databases</li>
+                    <li data-i18n="edu.sena.tech3">Object-Oriented Programming</li>
+                    <li data-i18n="edu.sena.tech4">Requirements Engineering</li>
+                  </ul>
+                </li>
+
+                <!-- Technical Specializations / Continuous Learning -->
+                <li class="timeline-item">
+                  <div class="timeline-item-header">
+                    <time datetime="2023" class="timeline-date" data-i18n="edu.continuous.date">2023 &mdash; Present</time>
+                    <span class="experience-tag" data-i18n="edu.continuous.tag">Self-Directed</span>
+                  </div>
+                  <h4 class="timeline-role">
+                    <span data-i18n="edu.continuous.role">Frontend Architecture &amp; Modern Frameworks</span> &middot; <span class="education-institution" data-i18n="edu.continuous.institution">Continuous Learning</span>
+                  </h4>
+                  <p class="timeline-desc" data-i18n="edu.continuous.desc">
+                    Targeted self-directed study in modern reactive frontend development, mastering Angular Signals, TypeScript type safety, web accessibility standards (WCAG 2.1 AA), and clean interface design.
+                  </p>
+                  <ul class="timeline-tech-stack" aria-label="Areas of continuous technical specialization">
+                    <li data-i18n="edu.continuous.tech1">Angular &amp; TypeScript</li>
+                    <li data-i18n="edu.continuous.tech2">Web Accessibility (a11y)</li>
+                    <li data-i18n="edu.continuous.tech3">Modern CSS &amp; Design Systems</li>
+                  </ul>
+                </li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Bottom Summary Milestones -->
+          <div class="experience-milestones">
+            <h3 class="milestones-heading" data-i18n="milestones.heading">By the numbers</h3>
+            <ul class="metrics-grid" aria-label="Key milestones and metrics">
+              <li class="metric-card">
+                <div class="metric-icon-wrap" aria-hidden="true">
+                  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 18 22 12 16 6"/>
+                    <polyline points="8 6 2 12 8 18"/>
+                  </svg>
+                </div>
+                <span class="metric-value">20+</span>
+                <span class="metric-label" data-i18n="milestones.projects">Projects completed</span>
+              </li>
+
+              <li class="metric-card">
+                <div class="metric-icon-wrap" aria-hidden="true">
+                  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                  </svg>
+                </div>
+                <span class="metric-value">1.2k+</span>
+                <span class="metric-label" data-i18n="milestones.contributions">Contributions on GitHub</span>
+              </li>
+
+              <li class="metric-card">
+                <div class="metric-icon-wrap" aria-hidden="true">
+                  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                    <line x1="6" y1="1" x2="6" y2="4"/>
+                    <line x1="10" y1="1" x2="10" y2="4"/>
+                    <line x1="14" y1="1" x2="14" y2="4"/>
+                  </svg>
+                </div>
+                <span class="metric-value" data-i18n="milestones.coffeeVal">In love</span>
+                <span class="metric-label" data-i18n="milestones.coffeeLabel">with clean code and coffee</span>
+              </li>
+
+              <li class="metric-card">
+                <div class="metric-icon-wrap" aria-hidden="true">
+                  <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                    <path d="M6 2v20"/>
+                  </svg>
+                </div>
+                <span class="metric-value" data-i18n="milestones.learningVal">Always</span>
+                <span class="metric-label" data-i18n="milestones.learningLabel">learning something new</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Languages & Credentials Section -->
+    <section id="languages" class="languages-section" aria-labelledby="languages-title">
+      <div class="container languages-container">
+        <div class="languages-panel surface-card">
+          <div class="languages-header-bar">
+            <div>
+              <h2 id="languages-title" class="section-title" data-i18n="languages.title">Languages &amp; Credentials</h2>
+              <p class="languages-subtitle" data-i18n="languages.subtitle">
+                Verified proficiencies, formal assessments, and active self-study for international engineering teams.
+              </p>
+            </div>
+            <span class="badge badge-subtle" data-i18n="languages.badge">Communication</span>
+          </div>
+
+          <ul class="languages-grid" aria-label="Spoken and written language proficiencies and credentials">
+            <!-- English Card (Highlighted for international recruiters) -->
+            <li class="language-card-wrapper">
+              <article class="language-card language-card-highlight">
+                <header class="language-card-header">
+                  <div class="language-title-group">
+                    <span class="language-locale-tag" aria-hidden="true">EN</span>
+                    <h3 class="language-name" data-i18n="lang.en.name">English</h3>
+                  </div>
+                  <span class="language-status-badge status-certified">
+                    <svg class="status-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                      <path d="m9 12 2 2 4-4"/>
+                    </svg>
+                    <span data-i18n="lang.en.status">Formally Certified</span>
+                  </span>
+                </header>
+
+                <div class="language-level-box">
+                  <span class="language-level-tier" data-i18n="lang.en.tier">C2 Proficient</span>
+                  <span class="language-standard" data-i18n="lang.en.standard">CEFR Level &middot; EF SET Certificate</span>
+                </div>
+
+                <p class="language-detail" data-i18n="lang.en.detail">
+                  Bilingual fluency for global distributed teams. Fully proficient in technical documentation, architectural reviews, and daily cross-timezone collaboration.
+                </p>
+
+                <footer class="language-card-footer">
+                  <div class="credential-meta">
+                    <span class="credential-label" data-i18n="lang.en.assessmentLabel">Assessment:</span>
+                    <span class="credential-value" data-i18n="lang.en.assessmentVal">EF Standard English Test (EF SET)</span>
+                  </div>
+                  <div class="credential-meta">
+                    <span class="credential-label" data-i18n="lang.en.scoreLabel">Verified Score:</span>
+                    <span class="credential-value" data-i18n="lang.en.scoreVal">C2 Proficient (Score 71+/100)</span>
+                  </div>
+                </footer>
+              </article>
+            </li>
+
+            <!-- Spanish Card -->
+            <li class="language-card-wrapper">
+              <article class="language-card">
+                <header class="language-card-header">
+                  <div class="language-title-group">
+                    <span class="language-locale-tag" aria-hidden="true">ES</span>
+                    <h3 class="language-name" data-i18n="lang.es.name">Spanish</h3>
+                  </div>
+                  <span class="language-status-badge status-native">
+                    <span data-i18n="lang.es.status">Native Language</span>
+                  </span>
+                </header>
+
+                <div class="language-level-box">
+                  <span class="language-level-tier" data-i18n="lang.es.tier">Native Fluency</span>
+                  <span class="language-standard" data-i18n="lang.es.standard">Mother Tongue</span>
+                </div>
+
+                <p class="language-detail" data-i18n="lang.es.detail">
+                  Native competence across professional, technical, and colloquial contexts. Clear, structured communicator in both written and spoken Spanish.
+                </p>
+
+                <footer class="language-card-footer">
+                  <div class="credential-meta">
+                    <span class="credential-label" data-i18n="lang.es.originLabel">Origin:</span>
+                    <span class="credential-value" data-i18n="lang.es.originVal">Pereira, Colombia</span>
+                  </div>
+                  <div class="credential-meta">
+                    <span class="credential-label" data-i18n="lang.es.contextLabel">Context:</span>
+                    <span class="credential-value" data-i18n="lang.es.contextVal">Native Academic &amp; Technical</span>
+                  </div>
+                </footer>
+              </article>
+            </li>
+
+            <!-- Japanese Card (Explicit distinction: study in progress, NOT JLPT certified) -->
+            <li class="language-card-wrapper">
+              <article class="language-card">
+                <header class="language-card-header">
+                  <div class="language-title-group">
+                    <span class="language-locale-tag" aria-hidden="true">JA</span>
+                    <h3 class="language-name" data-i18n="lang.ja.name">Japanese</h3>
+                  </div>
+                  <span class="language-status-badge status-study">
+                    <svg class="status-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"/>
+                      <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span data-i18n="lang.ja.status">Self-Assessed &middot; In Study</span>
+                  </span>
+                </header>
+
+                <div class="language-level-box">
+                  <span class="language-level-tier" data-i18n="lang.ja.tier">N4 Target Level</span>
+                  <span class="language-standard" data-i18n="lang.ja.standard">Elementary &middot; Self-Directed Study</span>
+                </div>
+
+                <p class="language-detail" data-i18n="lang.ja.detail">
+                  Dedicated self-study focused on JLPT N4 grammar, vocabulary, and approximately 300 Kanji. Capable of basic daily conversations and reading simple passages.
+                </p>
+
+                <footer class="language-card-footer">
+                  <div class="credential-meta">
+                    <span class="credential-label" data-i18n="lang.ja.statusLabel">Certification Status:</span>
+                    <span class="credential-value disclaimer-text" data-i18n="lang.ja.statusVal">In active study (No JLPT certificate held)</span>
+                  </div>
+                  <div class="credential-meta">
+                    <span class="credential-label" data-i18n="lang.ja.focusLabel">Focus:</span>
+                    <span class="credential-value" data-i18n="lang.ja.focusVal">JLPT N4 grammar &amp; Kanji</span>
+                  </div>
+                </footer>
+              </article>
+            </li>
+          </ul>
+
+          <!-- Credentials Note / Transparency Footer -->
+          <div class="languages-transparency-note">
+            <svg class="transparency-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="16" x2="12" y2="12"/>
+              <line x1="12" y1="8" x2="12.01" y2="8"/>
+            </svg>
+            <p data-i18n-html="languages.transparencyHtml">
+              <strong>Verification policy:</strong> Language certifications conform to international standards (CEFR &amp; EF SET). In-progress language studies are explicitly identified to ensure transparent, authentic qualifications.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Contact Section -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-title">
+      <div class="container contact-container">
+        <div class="contact-panel surface-card">
+          <!-- Left Column: Editorial & Verified Channels -->
+          <div class="contact-editorial">
+            <div class="contact-header-group">
+              <h2 id="contact-title" class="contact-heading" data-i18n-html="contact.headingHtml">
+                Let's build something <span class="accent-text"><em>amazing</em></span> together.
+              </h2>
+              <p class="contact-subtitle" data-i18n="contact.subtitle">
+                I'm currently open to new opportunities. Whether you have a question, want to discuss a project, or just want to say hi, feel free to reach out!
+              </p>
+            </div>
+
+            <ul class="contact-channels" aria-label="Direct contact channels">
+              <li class="contact-channel-item">
+                <span class="channel-icon-wrap" aria-hidden="true">
+                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </span>
+                <a href="mailto:lydia.sierra.ibata@gmail.com" class="contact-channel-link">lydia.sierra.ibata@gmail.com</a>
+                <button type="button" class="btn-copy-email" data-email="lydia.sierra.ibata@gmail.com" data-i18n-aria-label="contact.copyAria" data-i18n-title="contact.copyAria" aria-label="Copy email address to clipboard" title="Copy email address">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+                    <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+                  </svg>
+                  <span data-i18n="contact.copyBtn">Copy</span>
+                </button>
+              </li>
+
+              <li class="contact-channel-item">
+                <span class="channel-icon-wrap" aria-hidden="true">
+                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </span>
+                <span data-i18n="contact.location">Pereira, Colombia &middot; Remote</span>
+              </li>
+
+              <li class="contact-channel-item">
+                <span class="channel-icon-wrap" aria-hidden="true">
+                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect width="4" height="12" x="2" y="9"/>
+                    <circle cx="4" cy="4" r="2"/>
+                  </svg>
+                </span>
+                <a href="https://linkedin.com/in/lydiasierra" target="_blank" rel="noopener noreferrer" class="contact-channel-link" data-i18n-aria-label="contact.linkedinAria" aria-label="Lydia Sierra on LinkedIn (opens in new tab)">
+                  <span>linkedin.com/in/lydiasierra</span>
+                  <svg class="external-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </a>
+              </li>
+
+              <li class="contact-channel-item">
+                <span class="channel-icon-wrap" aria-hidden="true">
+                  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                    <path d="M9 18c-4.51 2-5-2-7-2"/>
+                  </svg>
+                </span>
+                <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" class="contact-channel-link" data-i18n-aria-label="contact.githubAria" aria-label="Lydia Sierra on GitHub (opens in new tab)">
+                  <span>github.com/lydiasierra</span>
+                  <svg class="external-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                    <polyline points="15 3 21 3 21 9"/>
+                    <line x1="10" y1="14" x2="21" y2="3"/>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+
+            <div class="contact-availability-badge">
+              <span class="status-indicator-dot" aria-hidden="true"></span>
+              <span data-i18n="contact.availability">Available for junior developer roles &amp; remote teams</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Accessible mailto Contact Form -->
+          <div class="contact-form-wrapper">
+            <div class="form-header">
+              <h3 class="form-title" data-i18n="contact.formTitle">Send a direct message</h3>
+              <p class="form-description" data-i18n="contact.formDesc">
+                Fill out the fields below to launch your default email client with your message pre-filled.
+              </p>
+            </div>
+
+            <form id="contact-form" class="contact-form" action="mailto:lydia.sierra.ibata@gmail.com" method="post" enctype="text/plain" novalidate>
+              <div class="form-row">
+                <div class="form-group" id="group-name">
+                  <label for="contact-name" class="form-label">
+                    <span data-i18n="contact.nameLabel">Name</span>
+                    <span class="required-indicator" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
+                    class="form-input"
+                    required
+                    autocomplete="name"
+                    placeholder="Your name"
+                    data-i18n-placeholder="contact.namePlaceholder"
+                    aria-required="true"
+                    aria-describedby="name-error"
+                  >
+                  <span id="name-error" class="form-error-msg" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group" id="group-email">
+                  <label for="contact-email" class="form-label">
+                    <span data-i18n="contact.emailLabel">Email</span>
+                    <span class="required-indicator" aria-hidden="true">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    class="form-input"
+                    required
+                    autocomplete="email"
+                    placeholder="your.email@example.com"
+                    data-i18n-placeholder="contact.emailPlaceholder"
+                    aria-required="true"
+                    aria-describedby="email-error"
+                  >
+                  <span id="email-error" class="form-error-msg" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <div class="form-group" id="group-message">
+                <label for="contact-message" class="form-label">
+                  <span data-i18n="contact.msgLabel">Message</span>
+                  <span class="required-indicator" aria-hidden="true">*</span>
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  class="form-textarea"
+                  rows="4"
+                  required
+                  placeholder="How can I help you? Project inquiries, opportunities, or just saying hello..."
+                  data-i18n-placeholder="contact.msgPlaceholder"
+                  aria-required="true"
+                  aria-describedby="message-hint message-error"
+                ></textarea>
+                <span id="message-hint" class="form-hint" data-i18n="contact.msgHint">Minimum 10 characters</span>
+                <span id="message-error" class="form-error-msg" aria-live="polite"></span>
+              </div>
+
+              <div class="form-notice" role="note">
+                <svg class="notice-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="16" x2="12" y2="12"/>
+                  <line x1="12" y1="8" x2="12.01" y2="8"/>
+                </svg>
+                <span data-i18n-html="contact.noticeHtml">
+                  Clicking <strong>Open in Email App</strong> will launch your email client with your message formatted. No data is sent to a third-party server.
+                </span>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-submit">
+                  <span data-i18n="contact.submitBtn">Open in Email App</span>
+                  <svg class="btn-icon" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="22" y1="2" x2="11" y2="13"/>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Live Status Banner (Polite status notification, NO fake success) -->
+              <div id="form-status-banner" class="form-status-banner" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <!-- 9. Footer Landmark -->
+  <footer id="footer" class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="brand-link" data-i18n-aria-label="footer.brandAria" aria-label="Lydia Sierra — Back to top">
+            <svg class="brand-icon" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+            </svg>
+            <span class="brand-name">Lydia Sierra</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Junior Software Developer &middot; Full Stack &amp; Clean Code</p>
+        </div>
+
+        <!-- Navigation & Quick Links -->
+        <nav class="footer-nav" data-i18n-aria-label="footer.navAria" aria-label="Footer navigation">
+          <ul class="footer-nav-list">
+            <li><a href="#hero" class="footer-nav-link" data-i18n="nav.home">Home</a></li>
+            <li><a href="#about" class="footer-nav-link" data-i18n="nav.about">About</a></li>
+            <li><a href="#skills" class="footer-nav-link" data-i18n="nav.skills">Skills</a></li>
+            <li><a href="#projects" class="footer-nav-link" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="#experience" class="footer-nav-link" data-i18n="nav.experience">Experience</a></li>
+            <li><a href="#languages" class="footer-nav-link" data-i18n="nav.languages">Languages</a></li>
+            <li><a href="#contact" class="footer-nav-link" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Social & Professional Links -->
+        <ul class="footer-socials" data-i18n-aria-label="footer.socialsAria" aria-label="Professional and social links">
+          <li>
+            <a href="https://github.com/lydiasierra" target="_blank" rel="noopener noreferrer" class="footer-social-link" data-i18n-aria-label="footer.githubAria" aria-label="Lydia Sierra on GitHub (opens in new tab)">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+              <span class="social-label">GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://linkedin.com/in/lydiasierra" target="_blank" rel="noopener noreferrer" class="footer-social-link" data-i18n-aria-label="footer.linkedinAria" aria-label="Lydia Sierra on LinkedIn (opens in new tab)">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              <span class="social-label">LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:lydia.sierra.ibata@gmail.com" class="footer-social-link" data-i18n-aria-label="footer.emailAria" aria-label="Send email to lydia.sierra.ibata@gmail.com">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              <span class="social-label">Email</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer.copy">
+          &copy; 2024 Lydia Sierra. Crafted with semantic HTML, vanilla CSS &amp; modern JavaScript.
+        </p>
+        <a href="#hero" class="back-to-top-link" data-i18n-aria-label="footer.backToTopAria" aria-label="Back to top of page">
+          <span data-i18n="footer.backToTop">Back to top</span>
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
   <!-- Scripts -->
   <script type="module" src="js/main.js"></script>

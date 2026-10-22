@@ -1,0 +1,8 @@
+# Robots.txt for Lydia Sierra's Developer Portfolio
+# https://github.com/LydiaSierra/portfolio
+
+User-agent: *
+Allow: /
+
+# Sitemap: Once a public production domain is assigned, uncomment and update the URL below:
+# Sitemap: https://your-domain.com/sitemap.xml

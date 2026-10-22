@@ -1,0 +1,245 @@
+/**
+ * Lydia Sierra — Personal Developer Portfolio
+ * About & Skills (Tech Stack) Component Styles
+ * Conforming to DESIGN_SPEC.md & Visual Mockup
+ */
+
+/* ==========================================================================
+   Shared Surface Panel (About & Skills Grid)
+   ========================================================================== */
+.about-skills-section,
+.about-skills-container {
+  position: relative;
+  padding-block: 0;
+  margin-block-end: var(--section-gap);
+}
+
+.about-skills-panel {
+  display: grid;
+  grid-template-columns: 3.5fr 6.5fr;
+  gap: clamp(1.5rem, 1rem + 1.8vw, 3rem);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  padding: var(--panel-padding);
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+/* ==========================================================================
+   About Column
+   ========================================================================== */
+.about-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-block-end: 0;
+}
+
+.about-column .section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--color-text-main);
+  line-height: 1.2;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.about-body p {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.about-body p strong {
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+.about-column .signature {
+  margin-top: var(--space-2);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--text-3xl);
+  color: #D48B8B;
+  user-select: none;
+}
+
+[data-theme="dark"] .about-column .signature {
+  color: var(--color-accent-pink);
+}
+
+/* ==========================================================================
+   Skills Column (Tech Stack)
+   ========================================================================== */
+.skills-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-block-end: 0;
+}
+
+.skills-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.skills-header .section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--color-text-main);
+  line-height: 1.2;
+}
+
+/* "View all" Pill Badge from Mockup */
+.badge-view-all {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent-pink);
+  color: #2E2A27; /* Guaranteed high contrast against blush fill */
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(46, 42, 39, 0.04);
+  transition: opacity var(--transition-fast);
+}
+
+.badge-view-all:hover {
+  opacity: 0.85;
+}
+
+/* 4-Card Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(0.75rem, 0.5rem + 0.4vw, 1.25rem);
+}
+
+/* Individual Category Card */
+.skill-category {
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-md);
+  padding: clamp(1rem, 0.85rem + 0.3vw, 1.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.skill-category:hover {
+  border-color: var(--color-border);
+  transform: translateY(-1px);
+}
+
+/* Restrained Turquoise Icon Container */
+.skill-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background-color: rgba(123, 203, 196, 0.16);
+  color: var(--color-turquoise-text);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .skill-icon-wrapper {
+  background-color: rgba(123, 203, 196, 0.22);
+  color: var(--color-accent-turquoise);
+}
+
+.skill-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Category Title */
+.skill-category-title {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-main);
+  line-height: 1.3;
+}
+
+/* Vertical Technology List */
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.skill-list li {
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-text-main);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+/* Context Tag (e.g. learning, academic, core) */
+.skill-context-tag {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Responsive Adaptations (Tablet & Mobile Stacking)
+   ========================================================================== */
+@media (max-width: 960px) {
+  .about-skills-panel {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .about-skills-panel {
+    padding: 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .skills-header {
+    flex-wrap: wrap;
+  }
+}
