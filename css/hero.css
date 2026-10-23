@@ -1,52 +1,64 @@
 /**
  * Lydia Sierra — Personal Developer Portfolio
- * Hero Section Styles
- * Conforming to DESIGN_SPEC.md & Visual Mockup
+ * Hero Section Styles: Concept 02 (Botanical Canopy & Arch) & Responsive Layout
+ * Conforming to DESIGN_SPEC.md & Hero Art Direction
  */
 
 /* ==========================================================================
-   Hero Section Container & Layout Grid
+   1. Hero Section Layout & Grid
    ========================================================================== */
 .hero-section {
   position: relative;
-  padding-block-start: clamp(1.5rem, 1rem + 1.5vw, 2.75rem);
-  padding-block-end: clamp(1.5rem, 1.25rem + 1.5vw, 2.75rem);
+  padding-block-start: clamp(1.75rem, 1.25rem + 1.8vw, 3rem);
+  padding-block-end: clamp(1.75rem, 1.25rem + 1.8vw, 3rem);
   overflow: visible;
 }
 
 .hero-container {
   display: grid;
-  grid-template-columns: 1.15fr 0.95fr;
+  grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
   gap: clamp(1.75rem, 1.25rem + 2vw, 3.25rem);
 }
 
 /* ==========================================================================
-   Hero Narrative Column
+   2. Hero Narrative Column & Title Row
    ========================================================================== */
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   z-index: 2;
+  min-width: 0;
 }
 
 /* Greeting Pill */
 .hero-content .badge-greeting {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   box-shadow: 0 1px 3px rgba(46, 42, 39, 0.04);
+}
+
+/* Title Row: Hosts h1 and, on compact viewports, the side-by-side circular portrait */
+.hero-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: 100%;
+  margin-bottom: var(--space-6);
 }
 
 /* Editorial Hero Title */
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 1.75rem + 2.5vw, 3.4rem);
+  font-size: clamp(2.25rem, 1.65rem + 2.2vw, 3.4rem);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.015em;
   color: var(--color-text-main);
-  margin-bottom: var(--space-4);
-  max-inline-size: 18ch;
+  margin-bottom: 0;
+  max-inline-size: 20ch;
+  text-wrap: balance;
 }
 
 .hero-title .accent-text {
@@ -55,23 +67,45 @@
   font-family: var(--font-display);
 }
 
-/* Hero Bio Introduction */
-.hero-subtitle {
-  font-family: var(--font-body);
-  font-size: var(--text-base);
-  color: var(--color-text-muted);
-  line-height: 1.6;
-  max-inline-size: 46ch;
-  margin-bottom: var(--space-5);
+/* ==========================================================================
+   3. Compact Circular Portrait (Visible exclusively when viewport <= 820px)
+   ========================================================================== */
+.hero-portrait-compact {
+  display: none;
+  flex-shrink: 0;
+  width: clamp(72px, 17vw, 96px);
+  height: clamp(72px, 17vw, 96px);
+  border-radius: var(--radius-full);
+  border: 2.5px solid var(--color-surface);
+  outline: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  margin-top: 0.25rem;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
 }
 
-/* Action Controls Row */
+.portrait-compact-img {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  object-position: 24% 28%;
+  display: block;
+}
+
+/* ==========================================================================
+   4. Action Controls & Meta Pills
+   ========================================================================== */
 .hero-actions {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-6);
 }
 
 /* Quick Facts / Attributes Pills List */
@@ -115,7 +149,7 @@
 }
 
 /* ==========================================================================
-   Hero Visual Column & Botanical Accent
+   5. Wide Botanical Canopy & Arch (Visual Column on Viewports > 820px)
    ========================================================================== */
 .hero-visual-wrapper {
   position: relative;
@@ -125,87 +159,206 @@
   justify-content: center;
 }
 
-.hero-visual {
+.hero-arch-wrapper {
   position: relative;
   width: 100%;
-  margin: 0;
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border-subtle);
-  background-color: var(--color-surface);
-  z-index: 2;
+  max-width: 440px;
+  display: flex;
+  justify-content: center;
 }
 
-.hero-visual img {
+/* Dashed Architectural Outer Aura */
+.hero-arch-aura {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  right: -14px;
+  bottom: -14px;
+  border-radius: 195px 195px calc(var(--radius-xl) + 14px) calc(var(--radius-xl) + 14px);
+  border: 1px dashed var(--color-border);
+  z-index: 1;
+  opacity: 0.75;
+  pointer-events: none;
+  transition: border-color var(--transition-base), opacity var(--transition-base);
+}
+
+/* Architectural Arch Frame */
+.hero-arch-frame {
+  position: relative;
   width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1 / 1.08;
+  border-radius: 180px 180px var(--radius-xl) var(--radius-xl);
+  overflow: hidden;
+  border: 2px solid var(--color-surface);
+  outline: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--color-surface);
+  z-index: 2;
+  margin: 0;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.portrait-arch-img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  object-position: 22% 35%;
   display: block;
 }
 
-/* Botanical Watercolor Accent Illustration Flanking the Image */
-.hero-botanical {
+/* Layered Botanical Foliage SVGs */
+.hero-foliage {
   position: absolute;
-  right: -36px;
-  top: 50%;
-  transform: translateY(-50%);
+  right: -28px;
+  bottom: -15px;
+  width: 110px;
+  height: 220px;
   pointer-events: none;
-  z-index: 1;
-  opacity: 0.85;
   transition: opacity var(--transition-base);
 }
 
-[data-theme="dark"] .hero-botanical {
-  opacity: 0.45;
+.hero-foliage-back {
+  z-index: 1;
+  opacity: 0.9;
+}
+
+.hero-foliage-front {
+  z-index: 3;
+  opacity: 0.95;
 }
 
 /* ==========================================================================
-   Responsive Adaptations (Tablet & Mobile Stacking)
+   6. Dark-Mode Theme Synchronization for Portrait & Botanical Foliage
    ========================================================================== */
-@media (max-width: 960px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: var(--space-8);
-  }
+.portrait-light {
+  display: block;
+}
 
-  .hero-content {
-    align-items: flex-start;
-  }
+.portrait-dark {
+  display: none;
+}
 
-  .hero-visual-wrapper {
-    max-width: 580px;
-    margin-inline: auto;
-  }
+[data-theme="dark"] .portrait-light {
+  display: none;
+}
 
-  .hero-botanical {
-    right: -16px;
-    opacity: 0.6;
-    height: 180px;
-    width: 90px;
+[data-theme="dark"] .portrait-dark {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .portrait-light {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .portrait-dark {
+    display: block;
   }
 }
 
-@media (max-width: 600px) {
-  .hero-actions {
-    width: 100%;
+[data-theme="dark"] .hero-arch-aura {
+  opacity: 0.35;
+  border-color: var(--color-border);
+}
+
+[data-theme="dark"] .hero-foliage-back {
+  opacity: 0.65;
+}
+
+[data-theme="dark"] .hero-foliage-front {
+  opacity: 0.85;
+}
+
+/* ==========================================================================
+   7. Responsive Adaptations (Continuous Side-by-Side Arrangement)
+   ========================================================================== */
+
+/* Medium Desktops and Tablets (960px down to 821px): Keep arch beside text */
+@media (max-width: 960px) and (min-width: 821px) {
+  .hero-container {
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-6);
+  }
+
+  .hero-arch-wrapper {
+    max-width: 360px;
+  }
+
+  .hero-arch-frame {
+    border-radius: 150px 150px var(--radius-lg) var(--radius-lg);
+  }
+
+  .hero-arch-aura {
+    border-radius: 162px 162px calc(var(--radius-lg) + 12px) calc(var(--radius-lg) + 12px);
+  }
+}
+
+/* Compact Breakpoint (<= 820px): Switch to Compact Circular Portrait beside Title */
+@media (max-width: 820px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Hide the large botanical arch completely so it NEVER stacks below text */
+  .hero-visual-wrapper {
+    display: none !important;
+  }
+
+  /* Reveal the compact circular portrait beside the title */
+  .hero-portrait-compact {
+    display: block;
+  }
+
+  .hero-title-row {
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: var(--space-5);
   }
 
   .hero-title {
     max-inline-size: 100%;
-  }
-
-  .hero-subtitle {
-    max-inline-size: 100%;
-  }
-
-  .hero-botanical {
-    display: none; /* Avoid horizontal viewport overflow on narrow screens */
+    font-size: clamp(2rem, 1.6rem + 1.8vw, 2.75rem);
   }
 }
 
+/* Mobile Screens (<= 600px) */
+@media (max-width: 600px) {
+  .hero-title-row {
+    gap: 0.85rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 1.45rem + 1.5vw, 2.25rem);
+  }
+
+  .hero-portrait-compact {
+    width: clamp(68px, 18vw, 84px);
+    height: clamp(68px, 18vw, 84px);
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+}
+
+/* Ultra-Compact Screens (<= 440px) */
 @media (max-width: 440px) {
+  .hero-title-row {
+    gap: 0.75rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.55rem, 1.35rem + 1.2vw, 1.85rem);
+  }
+
+  .hero-portrait-compact {
+    width: 68px;
+    height: 68px;
+  }
+
   .hero-actions {
     flex-direction: column;
     align-items: stretch;

@@ -220,13 +220,36 @@
             <span data-i18n="hero.greeting">Hi, I'm Lydia</span> <span role="img" aria-label="coffee cup">☕</span>
           </p>
 
-          <h1 id="hero-title" class="hero-title" data-i18n-html="hero.titleHtml">
-            Full Stack Developer who loves building <span class="accent-text"><em>meaningful</em></span> digital experiences.
-          </h1>
-
-          <p class="hero-subtitle" data-i18n="hero.subtitle">
-            I'm a Software Development student at SENA and currently doing my internship at Globant. I enjoy turning ideas into clean, efficient and user-focused applications.
-          </p>
+          <div class="hero-title-row">
+            <h1 id="hero-title" class="hero-title" data-i18n-html="hero.titleHtml">
+              Full Stack Developer who loves building <span class="accent-text"><em>meaningful</em></span> digital experiences.
+            </h1>
+            <!-- Compact Circular Portrait (Visible exclusively on narrow viewports beside title) -->
+            <div class="hero-portrait-compact">
+              <img
+                src="assets/images/hero-portrait-light.png"
+                class="portrait-compact-img portrait-light"
+                data-i18n-alt="hero.imageAlt"
+                alt="Portrait of Lydia Sierra wearing a white shirt and black tie against an emerald green fluid art background"
+                width="92"
+                height="92"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+              <img
+                src="assets/images/hero-portrait-dark.png"
+                class="portrait-compact-img portrait-dark"
+                data-i18n-alt="hero.imageAlt"
+                alt="Portrait of Lydia Sierra wearing a white shirt and black tie against an emerald green fluid art background"
+                width="92"
+                height="92"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+            </div>
+          </div>
 
           <div class="hero-actions">
             <a href="#projects" class="btn btn-primary">
@@ -266,19 +289,55 @@
           </ul>
         </div>
 
-        <div class="hero-visual-wrapper">
-          <figure class="hero-visual">
-            <img src="assets/images/hero-workspace.jpg" data-i18n-alt="hero.imageAlt" alt="Developer workspace desk setup with laptop displaying code, coffee cup, and open notebook" width="600" height="400" loading="eager" fetchpriority="high" decoding="async">
-          </figure>
-          <svg class="hero-botanical" aria-hidden="true" width="120" height="240" viewBox="0 0 120 240" fill="none">
-            <path d="M60 230 C 58 170, 75 110, 85 20" stroke="var(--color-primary)" stroke-width="1.75" stroke-linecap="round"/>
-            <path d="M62 200 C 45 190, 35 170, 40 155 C 55 160, 62 175, 62 190" fill="var(--color-accent-pink)" opacity="0.85"/>
-            <path d="M66 170 C 85 160, 95 140, 90 125 C 75 130, 68 145, 67 160" fill="var(--color-primary)" opacity="0.45"/>
-            <path d="M70 140 C 50 130, 42 110, 48 95 C 62 100, 70 115, 70 130" fill="var(--color-accent-pink)" opacity="0.85"/>
-            <path d="M76 105 C 95 95, 102 75, 96 60 C 82 68, 77 82, 76 96" fill="var(--color-primary)" opacity="0.45"/>
-            <path d="M80 75 C 65 65, 60 48, 66 35 C 78 40, 82 55, 81 68" fill="var(--color-accent-pink)" opacity="0.85"/>
-            <path d="M85 20 C 88 12, 98 8, 102 14 C 102 22, 94 25, 87 23" fill="var(--color-primary)" opacity="0.6"/>
-          </svg>
+                <!-- Wide Botanical Canopy & Arch (Visible on wide viewports beside hero text) -->
+        <div class="hero-visual-wrapper" id="hero-visual-wrapper">
+          <div class="hero-arch-wrapper">
+            <!-- Dashed outer architectural aura -->
+            <div class="hero-arch-aura" aria-hidden="true"></div>
+
+            <!-- Background foliage layer (stem emerging from behind the arch) -->
+            <svg class="hero-foliage hero-foliage-back" aria-hidden="true" width="120" height="240" viewBox="0 0 120 240" fill="none">
+              <path d="M60 230 C 58 170, 75 110, 85 20" stroke="var(--color-primary)" stroke-width="2.25" stroke-linecap="round"/>
+              <path d="M66 170 C 85 160, 95 140, 90 125 C 75 130, 68 145, 67 160" fill="var(--color-primary)" opacity="0.65"/>
+              <path d="M76 105 C 95 95, 102 75, 96 60 C 82 68, 77 82, 76 96" fill="var(--color-primary)" opacity="0.65"/>
+              <path d="M80 75 C 65 65, 60 48, 66 35 C 78 40, 82 55, 81 68" fill="var(--color-accent-pink)" opacity="0.9"/>
+              <path d="M85 20 C 88 12, 98 8, 102 14 C 102 22, 94 25, 87 23" fill="var(--color-primary)" opacity="0.75"/>
+            </svg>
+
+            <!-- Architectural Arch Frame -->
+            <figure class="hero-arch-frame">
+              <img
+                src="assets/images/hero-portrait-light.png"
+                class="portrait-arch-img portrait-light"
+                data-i18n-alt="hero.imageAlt"
+                alt="Portrait of Lydia Sierra wearing a white shirt and black tie against an emerald green fluid art background"
+                width="1024"
+                height="784"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+              <img
+                src="assets/images/hero-portrait-dark.png"
+                class="portrait-arch-img portrait-dark"
+                data-i18n-alt="hero.imageAlt"
+                alt="Portrait of Lydia Sierra wearing a white shirt and black tie against an emerald green fluid art background"
+                width="1024"
+                height="784"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              >
+            </figure>
+
+            <!-- Foreground foliage layer (olive leaf & blush leaf draping over front arch perimeter) -->
+            <svg class="hero-foliage hero-foliage-front" aria-hidden="true" width="120" height="240" viewBox="0 0 120 240" fill="none">
+              <!-- Blush pink leaf resting near lower edge -->
+              <path d="M62 200 C 45 190, 35 170, 40 155 C 55 160, 62 175, 62 190" fill="var(--color-accent-pink)" opacity="0.95"/>
+              <!-- Overlapping olive leaf crossing the front perimeter of the arch -->
+              <path d="M70 140 C 46 130, 38 108, 44 94 C 58 98, 68 114, 70 130" fill="var(--color-primary)" opacity="0.9"/>
+            </svg>
+          </div>
         </div>
       </div>
     </section>

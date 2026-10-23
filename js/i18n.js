@@ -62,7 +62,7 @@ export const translations = {
     'hero.pillLocation': 'Pereira, Colombia',
     'hero.pillEnglish': 'English C2 (EF SET)',
     'hero.pillStatus': 'Open to opportunities',
-    'hero.imageAlt': "Developer workspace desk setup with laptop displaying code, coffee cup, and open notebook",
+    'hero.imageAlt': "Portrait of Lydia Sierra wearing a tailored white shirt and black tie against an emerald green and turquoise fluid art background",
 
     // About Section
     'about.title': 'About me',
@@ -269,7 +269,7 @@ export const translations = {
     'hero.pillLocation': 'Pereira, Colombia',
     'hero.pillEnglish': 'Inglés C2 (EF SET)',
     'hero.pillStatus': 'Disponible para oportunidades',
-    'hero.imageAlt': 'Espacio de trabajo de Lydia Sierra con portátil mostrando código, taza de café y libreta abierta',
+    'hero.imageAlt': 'Retrato de Lydia Sierra con camisa blanca y corbata negra sobre fondo de arte fluido en tonos esmeralda y turquesa',
 
     // About Section
     'about.title': 'Sobre mí',
