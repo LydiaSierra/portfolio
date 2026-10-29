@@ -68,6 +68,7 @@
 }
 
 .header-container {
+  max-width: var(--container-wide-max-width, 1560px);
   display: flex;
   align-items: center;
   justify-content: space-between;

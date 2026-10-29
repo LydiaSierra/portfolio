@@ -99,8 +99,9 @@
   /* ==========================================================================
      Layout Boundaries (Mobile: ~1rem - 1.25rem, Desktop: ~1.5rem - 1.75rem)
      ========================================================================== */
-  --container-max-width: 1140px;
-  --container-padding: clamp(1rem, 0.75rem + 1vw, 1.75rem);
+  --container-max-width: 1320px;
+  --container-wide-max-width: 1560px;
+  --container-padding: clamp(1rem, 0.5rem + 1.25vw, 2rem);
 
   /* ==========================================================================
      Transitions
