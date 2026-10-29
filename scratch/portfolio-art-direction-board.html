@@ -1,0 +1,2182 @@
+<!DOCTYPE html>
+<html lang="en" data-direction="direction-a" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lydia Sierra — Art Direction Refresh Lab (Modern Editorial Depth)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       0. Reset & Base CSS
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: #0E1013;
+      color: #E2E6EC;
+      min-height: 100vh;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Persistent Lab Navigation Bar */
+    .lab-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(14, 16, 19, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .lab-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .lab-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.4rem;
+      color: #FFFFFF;
+      letter-spacing: -0.01em;
+    }
+
+    .lab-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      background: rgba(123, 203, 196, 0.15);
+      border: 1px solid rgba(123, 203, 196, 0.35);
+      color: #7BCBC4;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .lab-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .lab-control-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: #8C96A5;
+      letter-spacing: 0.05em;
+    }
+
+    .lab-btn-cluster {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .lab-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      background: transparent;
+      border: none;
+      color: #A4B0C0;
+      cursor: pointer;
+      transition: all 180ms ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .lab-btn:hover {
+      color: #FFFFFF;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .lab-btn.active {
+      background: #FFFFFF;
+      color: #0E1013;
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .lab-btn-special {
+      background: rgba(74, 93, 78, 0.4);
+      border: 1px solid rgba(110, 142, 116, 0.5);
+      color: #BBECE7;
+    }
+    .lab-btn-special:hover {
+      background: rgba(74, 93, 78, 0.7);
+      color: #FFFFFF;
+    }
+
+    /* Lab Viewport Container & Frame */
+    .lab-viewport-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1.5rem 5rem;
+      transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .lab-frame {
+      width: 100%;
+      max-width: 1540px;
+      background-color: var(--dir-bg);
+      background-image: var(--dir-bg-ambient);
+      background-attachment: fixed;
+      background-size: cover;
+      color: var(--dir-text-main);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: max-width 350ms cubic-bezier(0.16, 1, 0.3, 1), background-color 300ms ease;
+      position: relative;
+    }
+
+    .lab-frame[data-viewport="tablet"] {
+      max-width: 768px;
+    }
+
+    .lab-frame[data-viewport="mobile"] {
+      max-width: 390px;
+    }
+
+    /* Direction Concept Descriptor Banner */
+    .direction-banner {
+      background: var(--dir-surface);
+      border-bottom: var(--dir-border-style);
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      transition: all 250ms ease;
+    }
+
+    .direction-meta-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .direction-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dir-primary);
+      font-weight: 600;
+    }
+
+    .direction-heading {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.8rem;
+      color: var(--dir-text-main);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .direction-summary {
+      font-size: 0.88rem;
+      color: var(--dir-text-muted);
+      max-width: 65ch;
+      line-height: 1.5;
+    }
+
+    .direction-traits {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .trait-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--dir-radius-tag);
+      background: var(--dir-surface-subtle);
+      border: var(--dir-border-style);
+      color: var(--dir-text-main);
+    }
+
+    /* ==========================================================================
+       1. DIRECTION DESIGN TOKENS
+       ========================================================================== */
+
+    /* Universal Font Tokens */
+    :root {
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: 350ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* -------------------------------------------------------------------------
+       DIRECTION A: MODERN EDITORIAL
+       - Clean, neutral cool-gray (#F3F5F7)
+       - Razor-sharp 1px hairline borders
+       - Restrained 6px-8px architectural radii
+       - Charcoal text (#1B2026), deep forest-ink olive (#35493A)
+       - High-end print editorial rhythm
+       ------------------------------------------------------------------------- */
+    [data-direction="direction-a"][data-theme="light"] {
+      --dir-bg: #F4F6F8;
+      --dir-bg-ambient: linear-gradient(180deg, #EDF0F3 0%, #F4F6F8 16%, #F8FAFB 100%);
+      --dir-surface: #FFFFFF;
+      --dir-surface-subtle: #F9FAFC;
+      --dir-surface-elevated: #FFFFFF;
+      --dir-backdrop: none;
+      --dir-text-main: #1A2028;
+      --dir-text-muted: #566170;
+      --dir-primary: #344838;
+      --dir-primary-hover: #26362A;
+      --dir-primary-contrast: #FFFFFF;
+      --dir-accent-teal: #177C72;
+      --dir-teal-text: #177C72;
+      --dir-accent-pink: #D19494;
+      --dir-border-color: rgba(26, 32, 40, 0.1);
+      --dir-border-subtle: rgba(26, 32, 40, 0.05);
+      --dir-border-style: 1px solid var(--dir-border-color);
+      --dir-radius-panel: 8px;
+      --dir-radius-card: 6px;
+      --dir-radius-btn: 6px;
+      --dir-radius-tag: 4px;
+      --dir-shadow-panel: 0 1px 3px rgba(20, 26, 32, 0.04), 0 8px 24px -4px rgba(20, 26, 32, 0.05);
+      --dir-shadow-card: 0 1px 2px rgba(20, 26, 32, 0.04);
+      --dir-shadow-elevated: 0 20px 48px -8px rgba(20, 26, 32, 0.12), 0 4px 12px rgba(20, 26, 32, 0.04);
+      --dir-tag-bg: #F1F4F7;
+      --dir-tag-border: 1px solid rgba(26, 32, 40, 0.12);
+      --dir-arch-border: 1px solid var(--dir-border-color);
+      --dir-arch-radius: 180px 180px 10px 10px;
+      --dir-scrim-top: linear-gradient(180deg, rgba(18, 22, 28, 0.42) 0%, transparent 40%);
+      --dir-scrim-bottom: linear-gradient(0deg, rgba(18, 22, 28, 0.65) 0%, rgba(18, 22, 28, 0.35) 30%, transparent 75%);
+      --dir-scrim-left: linear-gradient(90deg, rgba(18, 22, 28, 0.45) 0%, transparent 65%);
+    }
+
+    [data-direction="direction-a"][data-theme="dark"] {
+      --dir-bg: #0F1216;
+      --dir-bg-ambient: linear-gradient(180deg, #14181E 0%, #0F1216 20%, #0B0D10 100%);
+      --dir-surface: #161B22;
+      --dir-surface-subtle: #1C222B;
+      --dir-surface-elevated: #222935;
+      --dir-backdrop: none;
+      --dir-text-main: #F0F3F6;
+      --dir-text-muted: #9AA4B2;
+      --dir-primary: #558062;
+      --dir-primary-hover: #679974;
+      --dir-primary-contrast: #0F1216;
+      --dir-accent-teal: #42BCB2;
+      --dir-teal-text: #42BCB2;
+      --dir-accent-pink: #E2AFA8;
+      --dir-border-color: rgba(255, 255, 255, 0.1);
+      --dir-border-subtle: rgba(255, 255, 255, 0.05);
+      --dir-border-style: 1px solid var(--dir-border-color);
+      --dir-radius-panel: 8px;
+      --dir-radius-card: 6px;
+      --dir-radius-btn: 6px;
+      --dir-radius-tag: 4px;
+      --dir-shadow-panel: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+      --dir-shadow-card: 0 2px 6px rgba(0, 0, 0, 0.4);
+      --dir-shadow-elevated: 0 24px 60px -10px rgba(0, 0, 0, 0.75);
+      --dir-tag-bg: rgba(255, 255, 255, 0.06);
+      --dir-tag-border: 1px solid rgba(255, 255, 255, 0.12);
+      --dir-arch-border: 1px solid rgba(255, 255, 255, 0.14);
+      --dir-arch-radius: 180px 180px 10px 10px;
+      --dir-scrim-top: linear-gradient(180deg, rgba(8, 10, 14, 0.5) 0%, transparent 40%);
+      --dir-scrim-bottom: linear-gradient(0deg, rgba(8, 10, 14, 0.75) 0%, rgba(8, 10, 14, 0.4) 30%, transparent 80%);
+      --dir-scrim-left: linear-gradient(90deg, rgba(8, 10, 14, 0.55) 0%, transparent 65%);
+    }
+
+    /* -------------------------------------------------------------------------
+       DIRECTION B: ATMOSPHERIC DIGITAL STUDIO
+       - Zinc/slate gradient canvas with multi-layer radial glows
+       - Translucent frosted glass surfaces (backdrop-filter: blur(20px))
+       - Luminous white borders in light mode, deep ambient glass in dark mode
+       - Smooth 12px-14px studio radii, floating depth
+       ------------------------------------------------------------------------- */
+    [data-direction="direction-b"][data-theme="light"] {
+      --dir-bg: #ECEFF4;
+      --dir-bg-ambient: radial-gradient(circle 900px at 50% -120px, rgba(58, 98, 70, 0.14), transparent), radial-gradient(circle 700px at 85% 25%, rgba(46, 150, 140, 0.11), transparent), radial-gradient(circle 600px at 15% 65%, rgba(214, 160, 160, 0.12), transparent);
+      --dir-surface: rgba(255, 255, 255, 0.82);
+      --dir-surface-subtle: rgba(245, 248, 252, 0.7);
+      --dir-surface-elevated: rgba(255, 255, 255, 0.95);
+      --dir-backdrop: blur(18px);
+      --dir-text-main: #141A22;
+      --dir-text-muted: #4F5A6A;
+      --dir-primary: #285532;
+      --dir-primary-hover: #1E4025;
+      --dir-primary-contrast: #FFFFFF;
+      --dir-accent-teal: #0D8E81;
+      --dir-teal-text: #0D8E81;
+      --dir-accent-pink: #C77D7D;
+      --dir-border-color: rgba(255, 255, 255, 0.9);
+      --dir-border-subtle: rgba(20, 30, 45, 0.08);
+      --dir-border-style: 1px solid var(--dir-border-color);
+      --dir-radius-panel: 14px;
+      --dir-radius-card: 12px;
+      --dir-radius-btn: 10px;
+      --dir-radius-tag: 9999px;
+      --dir-shadow-panel: 0 16px 40px -6px rgba(22, 34, 48, 0.08), 0 2px 8px -1px rgba(22, 34, 48, 0.04);
+      --dir-shadow-card: 0 8px 24px -4px rgba(22, 34, 48, 0.06), 0 1px 4px rgba(22, 34, 48, 0.03);
+      --dir-shadow-elevated: 0 28px 70px -12px rgba(22, 34, 48, 0.18), 0 8px 20px -2px rgba(22, 34, 48, 0.06);
+      --dir-tag-bg: rgba(255, 255, 255, 0.7);
+      --dir-tag-border: 1px solid rgba(255, 255, 255, 0.85);
+      --dir-arch-border: 2px solid rgba(255, 255, 255, 0.9);
+      --dir-arch-radius: 190px 190px 16px 16px;
+      --dir-scrim-top: linear-gradient(180deg, rgba(14, 20, 26, 0.38) 0%, transparent 40%);
+      --dir-scrim-bottom: linear-gradient(0deg, rgba(14, 20, 26, 0.6) 0%, rgba(14, 20, 26, 0.3) 30%, transparent 75%);
+      --dir-scrim-left: linear-gradient(90deg, rgba(14, 20, 26, 0.4) 0%, transparent 65%);
+    }
+
+    [data-direction="direction-b"][data-theme="dark"] {
+      --dir-bg: #0A0D12;
+      --dir-bg-ambient: radial-gradient(circle 900px at 50% -100px, rgba(65, 120, 85, 0.22), transparent), radial-gradient(circle 700px at 85% 30%, rgba(40, 150, 140, 0.16), transparent), radial-gradient(circle 600px at 15% 70%, rgba(150, 80, 80, 0.12), transparent);
+      --dir-surface: rgba(18, 24, 34, 0.78);
+      --dir-surface-subtle: rgba(24, 32, 45, 0.65);
+      --dir-surface-elevated: rgba(28, 38, 54, 0.9);
+      --dir-backdrop: blur(24px);
+      --dir-text-main: #F4F7FB;
+      --dir-text-muted: #9EACC0;
+      --dir-primary: #4B915F;
+      --dir-primary-hover: #5DAF75;
+      --dir-primary-contrast: #0A0D12;
+      --dir-accent-teal: #36D4C4;
+      --dir-teal-text: #36D4C4;
+      --dir-accent-pink: #F2BDBD;
+      --dir-border-color: rgba(255, 255, 255, 0.12);
+      --dir-border-subtle: rgba(255, 255, 255, 0.06);
+      --dir-border-style: 1px solid var(--dir-border-color);
+      --dir-radius-panel: 14px;
+      --dir-radius-card: 12px;
+      --dir-radius-btn: 10px;
+      --dir-radius-tag: 9999px;
+      --dir-shadow-panel: 0 16px 48px -8px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      --dir-shadow-card: 0 8px 28px -4px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      --dir-shadow-elevated: 0 32px 80px -14px rgba(0, 0, 0, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+      --dir-tag-bg: rgba(255, 255, 255, 0.08);
+      --dir-tag-border: 1px solid rgba(255, 255, 255, 0.15);
+      --dir-arch-border: 1px solid rgba(255, 255, 255, 0.18);
+      --dir-arch-radius: 190px 190px 16px 16px;
+      --dir-scrim-top: linear-gradient(180deg, rgba(6, 8, 12, 0.48) 0%, transparent 40%);
+      --dir-scrim-bottom: linear-gradient(0deg, rgba(6, 8, 12, 0.72) 0%, rgba(6, 8, 12, 0.38) 30%, transparent 80%);
+      --dir-scrim-left: linear-gradient(90deg, rgba(6, 8, 12, 0.5) 0%, transparent 65%);
+    }
+
+    /* -------------------------------------------------------------------------
+       DIRECTION C: CONTEMPORARY TECHNICAL ATELIER
+       - Blueprint/drafting paper with subtle technical alignment dot grid
+       - Structural rules & dividers rather than rounded floating boxes
+       - Razor-sharp 2px corners, technical brackets [ 01 ], monospace metadata
+       - Swiss modernism meets software engineering precision
+       ------------------------------------------------------------------------- */
+    [data-direction="direction-c"][data-theme="light"] {
+      --dir-bg: #F1F3F6;
+      --dir-bg-ambient: radial-gradient(#CBD2DC 1px, transparent 1px);
+      background-size: 24px 24px;
+      --dir-surface: #FFFFFF;
+      --dir-surface-subtle: #F6F8FA;
+      --dir-surface-elevated: #FFFFFF;
+      --dir-backdrop: none;
+      --dir-text-main: #11151A;
+      --dir-text-muted: #505967;
+      --dir-primary: #29422F;
+      --dir-primary-hover: #1B2B1F;
+      --dir-primary-contrast: #FFFFFF;
+      --dir-accent-teal: #0B7E72;
+      --dir-teal-text: #0B7E72;
+      --dir-accent-pink: #C27676;
+      --dir-border-color: #D1D6DE;
+      --dir-border-subtle: #E2E6EC;
+      --dir-border-style: 1px solid var(--dir-border-color);
+      --dir-radius-panel: 2px;
+      --dir-radius-card: 2px;
+      --dir-radius-btn: 2px;
+      --dir-radius-tag: 2px;
+      --dir-shadow-panel: 2px 2px 0 #D1D6DE;
+      --dir-shadow-card: 1px 1px 0 #D1D6DE;
+      --dir-shadow-elevated: 4px 4px 0 #CBD2DC, 0 16px 36px rgba(0, 0, 0, 0.08);
+      --dir-tag-bg: #FFFFFF;
+      --dir-tag-border: 1px solid #D1D6DE;
+      --dir-arch-border: 1px solid #A8B2C0;
+      --dir-arch-radius: 175px 175px 2px 2px;
+      --dir-scrim-top: linear-gradient(180deg, rgba(17, 21, 26, 0.44) 0%, transparent 40%);
+      --dir-scrim-bottom: linear-gradient(0deg, rgba(17, 21, 26, 0.68) 0%, rgba(17, 21, 26, 0.36) 30%, transparent 75%);
+      --dir-scrim-left: linear-gradient(90deg, rgba(17, 21, 26, 0.48) 0%, transparent 65%);
+    }
+
+    [data-direction="direction-c"][data-theme="dark"] {
+      --dir-bg: #0B0E12;
+      --dir-bg-ambient: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+      --dir-surface: #12161D;
+      --dir-surface-subtle: #171C25;
+      --dir-surface-elevated: #1D232E;
+      --dir-backdrop: none;
+      --dir-text-main: #F2F5F8;
+      --dir-text-muted: #8E99A8;
+      --dir-primary: #4B7855;
+      --dir-primary-hover: #5B9267;
+      --dir-primary-contrast: #0B0E12;
+      --dir-accent-teal: #2FE0CE;
+      --dir-teal-text: #2FE0CE;
+      --dir-accent-pink: #E6A7A7;
+      --dir-border-color: rgba(255, 255, 255, 0.12);
+      --dir-border-subtle: rgba(255, 255, 255, 0.06);
+      --dir-border-style: 1px solid var(--dir-border-color);
+      --dir-radius-panel: 2px;
+      --dir-radius-card: 2px;
+      --dir-radius-btn: 2px;
+      --dir-radius-tag: 2px;
+      --dir-shadow-panel: 2px 2px 0 rgba(255, 255, 255, 0.1);
+      --dir-shadow-card: 1px 1px 0 rgba(255, 255, 255, 0.08);
+      --dir-shadow-elevated: 4px 4px 0 rgba(0, 0, 0, 0.8), 0 20px 48px rgba(0, 0, 0, 0.7);
+      --dir-tag-bg: rgba(255, 255, 255, 0.05);
+      --dir-tag-border: 1px solid rgba(255, 255, 255, 0.14);
+      --dir-arch-border: 1px solid rgba(255, 255, 255, 0.16);
+      --dir-arch-radius: 175px 175px 2px 2px;
+      --dir-scrim-top: linear-gradient(180deg, rgba(6, 8, 12, 0.52) 0%, transparent 40%);
+      --dir-scrim-bottom: linear-gradient(0deg, rgba(6, 8, 12, 0.78) 0%, rgba(6, 8, 12, 0.42) 30%, transparent 80%);
+      --dir-scrim-left: linear-gradient(90deg, rgba(6, 8, 12, 0.58) 0%, transparent 65%);
+    }
+
+    /* ==========================================================================
+       2. PORTFOLIO COMPONENT STYLING (THEMED VIA DIR VARIABLES)
+       ========================================================================== */
+    .portfolio-wrapper {
+      padding: clamp(1.5rem, 2.5vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 3.5vw, 4rem);
+    }
+
+    /* Navigation Header */
+    .site-header {
+      background: var(--dir-surface);
+      backdrop-filter: var(--dir-backdrop);
+      -webkit-backdrop-filter: var(--dir-backdrop);
+      border: var(--dir-border-style);
+      border-radius: var(--dir-radius-panel);
+      box-shadow: var(--dir-shadow-panel);
+      padding: 0.85rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transition: all var(--transition-base);
+    }
+
+    .site-brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      text-decoration: none;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 1.85rem;
+      color: var(--dir-text-main);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--dir-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .site-nav a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--dir-text-muted);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+      position: relative;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      color: var(--dir-text-main);
+    }
+
+    .site-nav a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--dir-primary);
+      border-radius: 1px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .lang-chip {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--dir-radius-tag);
+      background: var(--dir-surface-subtle);
+      border: var(--dir-border-style);
+      color: var(--dir-text-main);
+      font-weight: 600;
+    }
+
+    /* -------------------------------------------------------------------------
+       Hero Section
+       ------------------------------------------------------------------------- */
+    .hero-container {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: clamp(2rem, 3.5vw, 4rem);
+      padding: clamp(1rem, 2vw, 2.5rem) 0;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+
+    .hero-badge {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--dir-radius-tag);
+      background: var(--dir-surface);
+      border: var(--dir-border-style);
+      color: var(--dir-primary);
+      box-shadow: var(--dir-shadow-card);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 2rem + 2vw, 3.8rem);
+      line-height: 1.12;
+      color: var(--dir-text-main);
+      letter-spacing: -0.015em;
+    }
+
+    .hero-title .accent-italic {
+      font-style: italic;
+      color: var(--dir-teal-text);
+      font-family: var(--font-display);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.7rem 1.45rem;
+      border-radius: var(--dir-radius-btn);
+      background: var(--dir-primary);
+      color: var(--dir-primary-contrast);
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      box-shadow: var(--dir-shadow-card);
+      transition: all var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      background: var(--dir-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.7rem 1.35rem;
+      border-radius: var(--dir-radius-btn);
+      background: var(--dir-surface);
+      color: var(--dir-text-main);
+      border: var(--dir-border-style);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      box-shadow: var(--dir-shadow-card);
+      transition: all var(--transition-fast);
+    }
+
+    .btn-secondary:hover {
+      background: var(--dir-surface-subtle);
+      border-color: var(--dir-primary);
+    }
+
+    .hero-meta-list {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+      list-style: none;
+    }
+
+    .hero-meta-list li {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--dir-radius-tag);
+      background: var(--dir-surface);
+      border: var(--dir-border-style);
+      color: var(--dir-text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-meta-list li .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--dir-primary);
+    }
+
+    /* Hero Visual Column (Arch + Botanical Foliage) */
+    .hero-visual-col {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .arch-composition {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1 / 1.12;
+      border-radius: var(--dir-arch-radius);
+      overflow: hidden;
+      border: var(--dir-arch-border);
+      box-shadow: var(--dir-shadow-elevated);
+      background: var(--dir-surface);
+      transition: all var(--transition-base);
+    }
+
+    /* Direction C Technical Crosshairs */
+    [data-direction="direction-c"] .arch-composition::before {
+      content: "+ [GEO_REF_4.7]";
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #FFFFFF;
+      background: rgba(11, 14, 18, 0.75);
+      padding: 2px 6px;
+      border-radius: 2px;
+      z-index: 10;
+      letter-spacing: 0.05em;
+    }
+
+    .portrait-arch-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 22% 35%;
+      display: block;
+    }
+
+    /* Direction B Ambient Glow behind arch */
+    [data-direction="direction-b"] .hero-visual-col::before {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle, rgba(74, 140, 110, 0.28), transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      filter: blur(25px);
+      pointer-events: none;
+    }
+
+    /* -------------------------------------------------------------------------
+       About & Skills Section (Strictly Preserving Side-by-Side Arrangement!)
+       ------------------------------------------------------------------------- */
+    .about-skills-panel {
+      background: var(--dir-surface);
+      backdrop-filter: var(--dir-backdrop);
+      -webkit-backdrop-filter: var(--dir-backdrop);
+      border: var(--dir-border-style);
+      border-radius: var(--dir-radius-panel);
+      box-shadow: var(--dir-shadow-panel);
+      padding: clamp(1.5rem, 2.5vw, 2.75rem);
+      display: grid;
+      grid-template-columns: 3.8fr 6.2fr;
+      gap: clamp(2rem, 3.5vw, 3.5rem);
+      transition: all var(--transition-base);
+      position: relative;
+    }
+
+    @media (max-width: 980px) {
+      .about-skills-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Left Column: About Narrative */
+    .about-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+      border-right: var(--dir-border-style);
+      padding-right: clamp(1.5rem, 2.5vw, 2.5rem);
+    }
+
+    @media (max-width: 980px) {
+      .about-col {
+        border-right: none;
+        border-bottom: var(--dir-border-style);
+        padding-right: 0;
+        padding-bottom: 2rem;
+      }
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--dir-primary);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 1.5rem + 1vw, 2.4rem);
+      color: var(--dir-text-main);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .about-text {
+      font-size: 0.92rem;
+      color: var(--dir-text-muted);
+      line-height: 1.68;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .about-text strong {
+      color: var(--dir-text-main);
+      font-weight: 600;
+    }
+
+    .about-signature {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 2.2rem;
+      color: var(--dir-accent-pink);
+      user-select: none;
+    }
+
+    /* Right Column: Skills 4-Card Grid */
+    .skills-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .skills-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skill-card {
+      background: var(--dir-surface-subtle);
+      border: var(--dir-border-style);
+      border-radius: var(--dir-radius-card);
+      box-shadow: var(--dir-shadow-card);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      transition: all var(--transition-fast);
+    }
+
+    .skill-card:hover {
+      border-color: var(--dir-primary);
+      transform: translateY(-2px);
+    }
+
+    .skill-card-top {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .skill-icon-frame {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--dir-radius-tag);
+      background: rgba(123, 203, 196, 0.15);
+      border: 1px solid rgba(123, 203, 196, 0.35);
+      color: var(--dir-teal-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
+
+    .skill-card-title {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--dir-text-main);
+    }
+
+    .skill-tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-mini-tag {
+      font-size: 0.74rem;
+      font-weight: 500;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--dir-radius-tag);
+      background: var(--dir-tag-bg);
+      border: var(--dir-tag-border);
+      color: var(--dir-text-main);
+    }
+
+    /* -------------------------------------------------------------------------
+       Featured Projects Section (Full-Width Immersive Showcase)
+       ------------------------------------------------------------------------- */
+    .projects-panel {
+      background: var(--dir-surface);
+      backdrop-filter: var(--dir-backdrop);
+      -webkit-backdrop-filter: var(--dir-backdrop);
+      border: var(--dir-border-style);
+      border-radius: var(--dir-radius-panel);
+      box-shadow: var(--dir-shadow-panel);
+      padding: clamp(1.25rem, 2vw, 2.25rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transition: all var(--transition-base);
+    }
+
+    .projects-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .showcase-stage {
+      position: relative;
+      width: 100%;
+      height: clamp(520px, 68vh, 700px);
+      border-radius: var(--dir-radius-card);
+      overflow: hidden;
+      border: var(--dir-border-style);
+      box-shadow: var(--dir-shadow-elevated);
+      background: #111418;
+    }
+
+    .showcase-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: opacity 300ms ease;
+    }
+
+    /* Direction-specific 50% Reduced Scrim Overlay */
+    .showcase-scrim {
+      position: absolute;
+      inset: 0;
+      background:
+        var(--dir-scrim-top),
+        var(--dir-scrim-bottom),
+        var(--dir-scrim-left);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .showcase-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(1.5rem, 3.2vw, 3rem);
+      pointer-events: none;
+    }
+
+    .showcase-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      pointer-events: auto;
+    }
+
+    .showcase-eyebrow-pill {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--dir-radius-tag);
+      background: rgba(14, 18, 24, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #FFFFFF;
+    }
+
+    .showcase-steppers {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .stepper-btn {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--dir-radius-tag);
+      background: rgba(14, 18, 24, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #A0B0C0;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .stepper-btn:hover,
+    .stepper-btn.active {
+      background: #FFFFFF;
+      color: #0E1218;
+      border-color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    .showcase-bottom-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      max-width: 680px;
+      pointer-events: auto;
+    }
+
+    .showcase-proj-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 2rem + 1.8vw, 3.8rem);
+      line-height: 1.1;
+      color: #FFFFFF;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+    }
+
+    .showcase-proj-desc {
+      font-size: clamp(0.92rem, 0.85rem + 0.3vw, 1.05rem);
+      color: #E2E8F0;
+      line-height: 1.55;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .showcase-tags-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .showcase-tag-pill {
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-weight: 500;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--dir-radius-tag);
+      background: rgba(16, 20, 26, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #FFFFFF;
+    }
+
+    .showcase-actions-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 0.35rem;
+    }
+
+    .btn-showcase-primary {
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.7rem 1.45rem;
+      border-radius: var(--dir-radius-btn);
+      background: var(--dir-primary);
+      color: var(--dir-primary-contrast);
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      transition: all var(--transition-fast);
+    }
+
+    .btn-showcase-primary:hover {
+      background: var(--dir-primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-showcase-secondary {
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.7rem 1.25rem;
+      border-radius: var(--dir-radius-btn);
+      background: rgba(16, 20, 26, 0.75);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-showcase-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: #FFFFFF;
+    }
+
+    /* Edge Navigation Arrows */
+    .edge-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: var(--dir-radius-tag);
+      background: rgba(14, 18, 24, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      cursor: pointer;
+      z-index: 5;
+      transition: all var(--transition-fast);
+    }
+
+    .edge-arrow:hover {
+      background: var(--dir-primary);
+      border-color: var(--dir-primary);
+      transform: translateY(-50%) scale(1.06);
+    }
+
+    .edge-arrow.prev { left: 1.25rem; }
+    .edge-arrow.next { right: 1.25rem; }
+
+    /* -------------------------------------------------------------------------
+       3. CASE STUDY DETAIL MODAL (SUBSTANTIALLY WIDER 2-COLUMN WITH GALLERY)
+       ------------------------------------------------------------------------- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 12, 16, 0.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 2vw, 2.5rem);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: var(--dir-surface);
+      border: var(--dir-border-style);
+      border-radius: var(--dir-radius-panel);
+      box-shadow: var(--dir-shadow-elevated);
+      width: min(94vw, 1560px);
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: clamp(1.5rem, 2.5vw, 2.75rem);
+      position: relative;
+      color: var(--dir-text-main);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--dir-radius-tag);
+      border: var(--dir-border-style);
+      background: var(--dir-surface-subtle);
+      color: var(--dir-text-main);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all var(--transition-fast);
+      z-index: 10;
+    }
+
+    .modal-close-btn:hover {
+      background: var(--dir-primary);
+      color: var(--dir-primary-contrast);
+      border-color: var(--dir-primary);
+    }
+
+    .modal-case-study-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(1.75rem, 2.5vw, 3.25rem);
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .modal-case-study-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Modal Gallery */
+    .modal-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .modal-gallery-stage {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      border-radius: var(--dir-radius-card);
+      overflow: hidden;
+      border: var(--dir-border-style);
+      background: var(--dir-surface-subtle);
+    }
+
+    .modal-gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-gallery-counter {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: rgba(14, 18, 24, 0.75);
+      backdrop-filter: blur(8px);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--dir-radius-tag);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: var(--dir-radius-tag);
+      background: rgba(14, 18, 24, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all var(--transition-fast);
+    }
+
+    .gallery-arrow:hover {
+      background: var(--dir-primary);
+      border-color: var(--dir-primary);
+    }
+
+    .gallery-arrow.prev { left: 0.75rem; }
+    .gallery-arrow.next { right: 0.75rem; }
+
+    .modal-gallery-thumbs {
+      display: flex;
+      gap: 0.65rem;
+    }
+
+    .thumb-btn {
+      width: 78px;
+      height: 50px;
+      border-radius: var(--dir-radius-tag);
+      border: 2px solid var(--dir-border-color);
+      overflow: hidden;
+      padding: 0;
+      background: var(--dir-surface-subtle);
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all var(--transition-fast);
+    }
+
+    .thumb-btn.active,
+    .thumb-btn:hover {
+      opacity: 1;
+      border-color: var(--dir-primary);
+    }
+
+    .thumb-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Modal Narrative Column */
+    .modal-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .modal-badge {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--dir-teal-text);
+      font-weight: 600;
+    }
+
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 1.8rem + 1vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--dir-text-main);
+    }
+
+    .modal-subtitle {
+      font-size: 0.95rem;
+      color: var(--dir-text-muted);
+      line-height: 1.55;
+    }
+
+    .modal-block {
+      background: var(--dir-surface-subtle);
+      border: var(--dir-border-style);
+      border-radius: var(--dir-radius-card);
+      padding: 1.15rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .modal-block-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--dir-primary);
+      font-weight: 600;
+    }
+
+    .modal-block-text {
+      font-size: 0.9rem;
+      color: var(--dir-text-main);
+      line-height: 1.6;
+    }
+
+    .modal-highlights-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    .modal-highlights-list li {
+      font-size: 0.88rem;
+      color: var(--dir-text-main);
+      line-height: 1.5;
+      padding-left: 1.35rem;
+      position: relative;
+    }
+
+    .modal-highlights-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--dir-accent-teal);
+      font-size: 0.75rem;
+    }
+
+    /* ==========================================================================
+       4. COMPARISON MATRIX (SIDE-BY-SIDE EVALUATION INSPECTOR)
+       ========================================================================== */
+    .comparison-section {
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      max-width: 1540px;
+    }
+
+    .comparison-header {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .comparison-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.4rem;
+      color: #FFFFFF;
+      margin-bottom: 0.5rem;
+    }
+
+    .comparison-sub {
+      font-size: 0.92rem;
+      color: #9AA6B8;
+    }
+
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+      .matrix-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .matrix-col {
+      background: #141820;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .matrix-col-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.85rem;
+    }
+
+    .matrix-col-dir {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #7BCBC4;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .matrix-col-name {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.6rem;
+      color: #FFFFFF;
+    }
+
+    .matrix-swatches {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .swatch {
+      width: 38px;
+      height: 38px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .swatch-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: #8C98AA;
+      margin-top: 0.25rem;
+      text-align: center;
+    }
+
+    .matrix-spec-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .matrix-spec-label {
+      color: #8C98AA;
+    }
+
+    .matrix-spec-val {
+      font-weight: 500;
+      color: #FFFFFF;
+      text-align: right;
+    }
+  </style>
+</head>
+<body data-direction="direction-a" data-theme="light">
+
+  <!-- ==========================================================================
+       Persistent Interactive Lab Control Bar
+       ========================================================================== -->
+  <header class="lab-toolbar">
+    <div class="lab-brand">
+      <span class="lab-title">Lydia Sierra</span>
+      <span class="lab-badge">Art Direction Lab</span>
+    </div>
+
+    <div class="lab-controls-group">
+      <!-- Direction Switcher -->
+      <span class="lab-control-label">Direction:</span>
+      <div class="lab-btn-cluster" id="direction-switcher">
+        <button class="lab-btn active" data-set-dir="direction-a">A · Modern Editorial</button>
+        <button class="lab-btn" data-set-dir="direction-b">B · Atmospheric Studio</button>
+        <button class="lab-btn" data-set-dir="direction-c">C · Technical Atelier</button>
+      </div>
+
+      <!-- Theme Switcher -->
+      <span class="lab-control-label" style="margin-left: 0.5rem;">Theme:</span>
+      <div class="lab-btn-cluster" id="theme-switcher">
+        <button class="lab-btn active" data-set-theme="light">☀️ Light</button>
+        <button class="lab-btn" data-set-theme="dark">🌙 Dark</button>
+      </div>
+
+      <!-- Viewport Switcher -->
+      <span class="lab-control-label" style="margin-left: 0.5rem;">Viewport:</span>
+      <div class="lab-btn-cluster" id="viewport-switcher">
+        <button class="lab-btn active" data-set-viewport="desktop">🖥️ 1540px</button>
+        <button class="lab-btn" data-set-viewport="tablet">📱 768px</button>
+        <button class="lab-btn" data-set-viewport="mobile">📱 390px</button>
+      </div>
+
+      <!-- Quick Action: Launch Modal -->
+      <button class="lab-btn lab-btn-special" id="btn-trigger-modal" style="margin-left: 0.5rem;">
+        <span>🔍 Inspect Case Study Modal</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Main Viewport Canvas
+       ========================================================================== -->
+  <main class="lab-viewport-container">
+
+    <!-- Active Direction Frame -->
+    <div class="lab-frame" id="lab-frame" data-viewport="desktop">
+
+      <!-- Direction Overview Header Banner -->
+      <div class="direction-banner" id="direction-banner">
+        <div class="direction-meta-left">
+          <span class="direction-tag" id="dir-banner-tag">DIRECTION A · AESTHETIC BLUEPRINT</span>
+          <h1 class="direction-heading" id="dir-banner-title">Modern Editorial</h1>
+          <p class="direction-summary" id="dir-banner-desc">
+            Clean, cool-neutral gray canvas (#F4F6F8) paired with crisp white surfaces, razor-sharp 1px hairline rules, restrained 6px–8px architectural corners, and charcoal typography. Eliminates repetitive Material cards in favor of a timeless design publication feel.
+          </p>
+        </div>
+        <div class="direction-traits" id="dir-banner-traits">
+          <span class="trait-pill">#F4F6F8 Cool Mist</span>
+          <span class="trait-pill">Hairline Borders</span>
+          <span class="trait-pill">8px Corner Radii</span>
+          <span class="trait-pill">Deep Forest Olive</span>
+        </div>
+      </div>
+
+      <!-- Representative Portfolio Wrapper -->
+      <div class="portfolio-wrapper">
+
+        <!-- 1. Navigation Header -->
+        <header class="site-header">
+          <a href="#" class="site-brand">
+            <span class="brand-name">Lydia Sierra</span>
+            <span class="brand-sub">Software Developer</span>
+          </a>
+          <ul class="site-nav">
+            <li><a href="#about" class="active">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <div class="header-actions">
+            <span class="lang-chip">EN / ES</span>
+          </div>
+        </header>
+
+        <!-- 2. Hero Section (with Lydia's Portrait Arch & Botanical Details) -->
+        <section class="hero-container">
+          <div class="hero-content">
+            <span class="hero-badge">✦ Lydia Sierra · Junior Software Developer</span>
+            <h1 class="hero-title">
+              Building thoughtful, robust digital solutions with <span class="accent-italic">clean architecture</span>.
+            </h1>
+            <div class="hero-actions">
+              <a href="#projects" class="btn-primary">View Projects &rarr;</a>
+              <a href="#contact" class="btn-secondary">Download CV &nearr;</a>
+            </div>
+            <ul class="hero-meta-list">
+              <li><span class="dot"></span> Based in Colombia</li>
+              <li><span class="dot"></span> Bilingual (EN / ES)</li>
+              <li><span class="dot"></span> SENA Capstone Distinction</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual-col">
+            <div class="arch-composition">
+              <img
+                src="../assets/images/hero-portrait-light.png"
+                alt="Lydia Sierra Portrait"
+                class="portrait-arch-img"
+                id="hero-portrait-img"
+              >
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. About & Skills Section (Preserving Side-by-Side Arrangement) -->
+        <section class="about-skills-panel">
+          <!-- Left: About Narrative -->
+          <div class="about-col">
+            <div>
+              <span class="section-eyebrow">01 / Biography</span>
+              <h2 class="section-title">About Lydia</h2>
+            </div>
+            <div class="about-text">
+              <p>
+                Junior software developer focused on building <strong>maintainable web applications</strong> with clear architectural boundaries.
+              </p>
+              <p>
+                My background bridges hands-on frontend implementation with <strong>Angular Signals &amp; TypeScript</strong> and relational backend architectures with <strong>PHP Laravel &amp; MySQL</strong>.
+              </p>
+            </div>
+            <div class="about-signature">Lydia Sierra</div>
+          </div>
+
+          <!-- Right: Skills 4-Card Grid -->
+          <div class="skills-col">
+            <div class="skills-header-row">
+              <div>
+                <span class="section-eyebrow">02 / Capabilities</span>
+                <h2 class="section-title">Technical Stack</h2>
+              </div>
+            </div>
+
+            <div class="skills-grid">
+              <!-- Frontend -->
+              <div class="skill-card">
+                <div class="skill-card-top">
+                  <div class="skill-icon-frame">&lt;/&gt;</div>
+                  <h3 class="skill-card-title">Frontend Engineering</h3>
+                </div>
+                <div class="skill-tag-cloud">
+                  <span class="skill-mini-tag">Angular 17+</span>
+                  <span class="skill-mini-tag">TypeScript</span>
+                  <span class="skill-mini-tag">Signals</span>
+                  <span class="skill-mini-tag">Vanilla JS</span>
+                </div>
+              </div>
+
+              <!-- Backend -->
+              <div class="skill-card">
+                <div class="skill-card-top">
+                  <div class="skill-icon-frame">&#9881;</div>
+                  <h3 class="skill-card-title">Backend &amp; Database</h3>
+                </div>
+                <div class="skill-tag-cloud">
+                  <span class="skill-mini-tag">PHP (Laravel)</span>
+                  <span class="skill-mini-tag">MySQL</span>
+                  <span class="skill-mini-tag">Eloquent ORM</span>
+                  <span class="skill-mini-tag">REST APIs</span>
+                </div>
+              </div>
+
+              <!-- Architecture -->
+              <div class="skill-card">
+                <div class="skill-card-top">
+                  <div class="skill-icon-frame">&#9671;</div>
+                  <h3 class="skill-card-title">Architecture &amp; Quality</h3>
+                </div>
+                <div class="skill-tag-cloud">
+                  <span class="skill-mini-tag">MVC Pattern</span>
+                  <span class="skill-mini-tag">WCAG 2.1 AA</span>
+                  <span class="skill-mini-tag">Semantic HTML5</span>
+                  <span class="skill-mini-tag">Modern CSS3</span>
+                </div>
+              </div>
+
+              <!-- Tools -->
+              <div class="skill-card">
+                <div class="skill-card-top">
+                  <div class="skill-icon-frame">&#10003;</div>
+                  <h3 class="skill-card-title">Workflow &amp; Tooling</h3>
+                </div>
+                <div class="skill-tag-cloud">
+                  <span class="skill-mini-tag">Git / GitHub</span>
+                  <span class="skill-mini-tag">Postman</span>
+                  <span class="skill-mini-tag">VS Code</span>
+                  <span class="skill-mini-tag">Linux / Terminal</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. Featured Projects Section (Full-Width Immersive Showcase) -->
+        <section class="projects-panel">
+          <div class="projects-header-row">
+            <div>
+              <span class="section-eyebrow">03 / Curated Portfolio</span>
+              <h2 class="section-title">Selected Works</h2>
+            </div>
+          </div>
+
+          <div class="showcase-stage">
+            <img
+              src="../assets/images/project-flashcards.svg"
+              alt="Flashcards App interface preview"
+              class="showcase-bg-img"
+              id="showcase-img"
+            >
+            <div class="showcase-scrim"></div>
+
+            <div class="showcase-overlay">
+              <div class="showcase-top-bar">
+                <span class="showcase-eyebrow-pill" id="showcase-badge">Angular 17+ Signals · Active Recall</span>
+                <div class="showcase-steppers" id="showcase-stepper-container">
+                  <button class="stepper-btn active" onclick="setProject(0)">01 Flashcards</button>
+                  <button class="stepper-btn" onclick="setProject(1)">02 GeDocs</button>
+                  <button class="stepper-btn" onclick="setProject(2)">03 Portfolio</button>
+                  <button class="stepper-btn" onclick="setProject(3)">04 Freelance</button>
+                </div>
+              </div>
+
+              <div class="showcase-bottom-area">
+                <h3 class="showcase-proj-title" id="showcase-title">Flashcards App</h3>
+                <p class="showcase-proj-desc" id="showcase-desc">
+                  Interactive web application for active recall and spaced-repetition learning with fine-grained reactive state and offline persistence.
+                </p>
+                <div class="showcase-tags-strip" id="showcase-tags">
+                  <span class="showcase-tag-pill">Angular</span>
+                  <span class="showcase-tag-pill">TypeScript</span>
+                  <span class="showcase-tag-pill">Signals</span>
+                  <span class="showcase-tag-pill">Tailwind CSS</span>
+                  <span class="showcase-tag-pill">Local Storage</span>
+                </div>
+                <div class="showcase-actions-row">
+                  <button class="btn-showcase-primary" onclick="openModal()">
+                    <span>Explore Case Study</span>
+                    <span aria-hidden="true">&rarr;</span>
+                  </button>
+                  <a href="https://github.com/LydiaSierra" target="_blank" rel="noopener noreferrer" class="btn-showcase-secondary">
+                    <span>GitHub Repository &nearr;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Edge Arrow Buttons -->
+            <button class="edge-arrow prev" onclick="prevProject()" aria-label="Previous Project">&larr;</button>
+            <button class="edge-arrow next" onclick="nextProject()" aria-label="Next Project">&rarr;</button>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         Side-by-Side Comparison Matrix Inspector
+         ========================================================================== -->
+    <div class="comparison-section">
+      <div class="comparison-header">
+        <h2 class="comparison-title">Art Direction Comparative Matrix</h2>
+        <p class="comparison-sub">Side-by-side evaluation of color tokens, geometry, materiality, and visual hierarchy across all three directions.</p>
+      </div>
+
+      <div class="matrix-grid">
+        <!-- Direction A -->
+        <div class="matrix-col">
+          <div class="matrix-col-header">
+            <span class="matrix-col-dir">Direction A</span>
+            <h3 class="matrix-col-name">Modern Editorial</h3>
+          </div>
+          <div class="matrix-swatches">
+            <div class="swatch" style="background:#F4F6F8;" title="Canvas #F4F6F8"></div>
+            <div class="swatch" style="background:#FFFFFF;" title="Surface #FFFFFF"></div>
+            <div class="swatch" style="background:#1A2028;" title="Charcoal #1A2028"></div>
+            <div class="swatch" style="background:#344838;" title="Olive #344838"></div>
+            <div class="swatch" style="background:#177C72;" title="Teal #177C72"></div>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Canvas Background</span>
+            <span class="matrix-spec-val">Cool Mist (#F4F6F8)</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Corner Radii</span>
+            <span class="matrix-spec-val">6px – 8px (Restrained)</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Borders</span>
+            <span class="matrix-spec-val">1px Hairline (Subtle Slate)</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Depth / Materiality</span>
+            <span class="matrix-spec-val">Soft Directional Shadows</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Character</span>
+            <span class="matrix-spec-val">Architectural &amp; Understated</span>
+          </div>
+        </div>
+
+        <!-- Direction B -->
+        <div class="matrix-col">
+          <div class="matrix-col-header">
+            <span class="matrix-col-dir">Direction B</span>
+            <h3 class="matrix-col-name">Atmospheric Studio</h3>
+          </div>
+          <div class="matrix-swatches">
+            <div class="swatch" style="background:#ECEFF4;" title="Canvas #ECEFF4"></div>
+            <div class="swatch" style="background:rgba(255,255,255,0.85);" title="Glass Surface"></div>
+            <div class="swatch" style="background:#141A22;" title="Ink #141A22"></div>
+            <div class="swatch" style="background:#285532;" title="Emerald Olive #285532"></div>
+            <div class="swatch" style="background:#0D8E81;" title="Cyan Teal #0D8E81"></div>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Canvas Background</span>
+            <span class="matrix-spec-val">Ambient Radial Glows</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Corner Radii</span>
+            <span class="matrix-spec-val">12px – 14px (Smooth Squircle)</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Borders</span>
+            <span class="matrix-spec-val">Luminous White Glass Rims</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Depth / Materiality</span>
+            <span class="matrix-spec-val">Backdrop Blur &amp; Multi-Tier Glows</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Character</span>
+            <span class="matrix-spec-val">Immersive &amp; Contemporary</span>
+          </div>
+        </div>
+
+        <!-- Direction C -->
+        <div class="matrix-col">
+          <div class="matrix-col-header">
+            <span class="matrix-col-dir">Direction C</span>
+            <h3 class="matrix-col-name">Technical Atelier</h3>
+          </div>
+          <div class="matrix-swatches">
+            <div class="swatch" style="background:#F1F3F6;" title="Drafting Gray #F1F3F6"></div>
+            <div class="swatch" style="background:#FFFFFF;" title="Surface #FFFFFF"></div>
+            <div class="swatch" style="background:#11151A;" title="Black #11151A"></div>
+            <div class="swatch" style="background:#29422F;" title="Swiss Pine #29422F"></div>
+            <div class="swatch" style="background:#0B7E72;" title="Drafting Teal #0B7E72"></div>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Canvas Background</span>
+            <span class="matrix-spec-val">24px Drafting Dot Grid</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Corner Radii</span>
+            <span class="matrix-spec-val">2px (Razor-Sharp)</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Borders</span>
+            <span class="matrix-spec-val">Drafting Hairlines &amp; Rules</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Depth / Materiality</span>
+            <span class="matrix-spec-val">Isometric Offset Hard Shadows</span>
+          </div>
+          <div class="matrix-spec-row">
+            <span class="matrix-spec-label">Character</span>
+            <span class="matrix-spec-val">Precise, Structural, Engineering</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       Case Study Detail Modal (Testing Directional Styling in Wide 2-Column Mode)
+       ========================================================================== -->
+  <div class="modal-overlay" id="case-study-modal" onclick="onBackdropClick(event)">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" onclick="closeModal()">✕</button>
+
+      <div class="modal-case-study-grid">
+        <!-- Gallery Column (Left) -->
+        <div class="modal-gallery">
+          <div class="modal-gallery-stage">
+            <img
+              src="../assets/images/gedocs-screenshot.png"
+              alt="GeDocs System Interface Preview"
+              class="modal-gallery-img"
+              id="modal-gallery-img"
+            >
+            <span class="modal-gallery-counter" id="modal-gallery-counter">01 / 02</span>
+            <button class="gallery-arrow prev" onclick="prevModalSlide()">←</button>
+            <button class="gallery-arrow next" onclick="nextModalSlide()">→</button>
+          </div>
+          <div class="modal-gallery-thumbs">
+            <button class="thumb-btn active" onclick="setModalSlide(0)">
+              <img src="../assets/images/gedocs-screenshot.png" alt="GeDocs Interface">
+            </button>
+            <button class="thumb-btn" onclick="setModalSlide(1)">
+              <img src="../assets/images/project-gedocs.svg" alt="GeDocs Architecture Diagram">
+            </button>
+          </div>
+        </div>
+
+        <!-- Case Study Details Column (Right) -->
+        <div class="modal-details">
+          <div>
+            <span class="modal-badge">SENA Capstone · PHP Laravel &amp; MySQL</span>
+            <h2 class="modal-title">GeDocs — Document Management</h2>
+            <p class="modal-subtitle">Centralized document tracking, classification, and searchable archive platform with relational integrity and role-based permissions.</p>
+          </div>
+
+          <div class="modal-block">
+            <span class="modal-block-label">01. Problem &amp; Objective</span>
+            <p class="modal-block-text">
+              Institutional workflows suffered from fragmented document routing and manual version auditing across departments, causing lost documentation and verification delays.
+            </p>
+          </div>
+
+          <div class="modal-block">
+            <span class="modal-block-label">02. Architectural Contribution</span>
+            <p class="modal-block-text">
+              Engineered the relational MySQL schema and Laravel MVC architecture, implementing Eloquent ORM relationships, RESTful controllers, and role-based access control (RBAC).
+            </p>
+          </div>
+
+          <div class="modal-block">
+            <span class="modal-block-label">03. Key Technical Decisions</span>
+            <ul class="modal-highlights-list">
+              <li>Normalized 3NF relational database schema guaranteeing referential integrity</li>
+              <li>Granular role-based middleware securing confidential document endpoints</li>
+              <li>Multi-criteria query builder filtering documents by date range and category</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Interactive Lab JavaScript
+       ========================================================================== -->
+  <script>
+    // Project Dataset
+    const projects = [
+      {
+        title: "Flashcards App",
+        badge: "Angular 17+ Signals · Active Recall",
+        desc: "Interactive web application for active recall and spaced-repetition learning with fine-grained reactive state and offline persistence.",
+        img: "../assets/images/project-flashcards.svg",
+        tags: ["Angular", "TypeScript", "Signals", "Tailwind CSS", "Local Storage"]
+      },
+      {
+        title: "GeDocs",
+        badge: "PHP Laravel & MySQL · SENA Capstone",
+        desc: "Centralized document tracking, classification, and searchable archive platform with relational integrity and role-based permissions.",
+        img: "../assets/images/gedocs-screenshot.png",
+        tags: ["PHP (Laravel)", "MySQL", "REST APIs", "MVC Pattern", "Tailwind CSS"]
+      },
+      {
+        title: "Personal Developer Portfolio",
+        badge: "Vanilla JS · Zero Build Tools",
+        desc: "High-performance personal developer portfolio engineered with semantic HTML5, modern CSS3 custom properties, and native ES modules.",
+        img: "../assets/images/project-portfolio.svg",
+        tags: ["HTML5", "Modern CSS3", "Vanilla JS", "ES Modules", "i18n Engine"]
+      },
+      {
+        title: "Commercial Web Sites",
+        badge: "Responsive UI & SEO · Freelance",
+        desc: "Lightweight commercial websites engineered for independent businesses and local clients, optimized for search engines and high conversion.",
+        img: "../assets/images/project-freelance.svg",
+        tags: ["CSS Grid", "Flexbox", "SEO Optimization", "Performance", "WCAG 2.1"]
+      }
+    ];
+
+    let currentProjectIdx = 0;
+
+    function updateShowcase() {
+      const p = projects[currentProjectIdx];
+      document.getElementById('showcase-img').src = p.img;
+      document.getElementById('showcase-badge').textContent = p.badge;
+      document.getElementById('showcase-title').textContent = p.title;
+      document.getElementById('showcase-desc').textContent = p.desc;
+
+      const tagsContainer = document.getElementById('showcase-tags');
+      tagsContainer.innerHTML = p.tags.map(t => `<span class="showcase-tag-pill">${t}</span>`).join('');
+
+      const buttons = document.querySelectorAll('.stepper-btn');
+      buttons.forEach((btn, idx) => {
+        btn.classList.toggle('active', idx === currentProjectIdx);
+      });
+    }
+
+    function setProject(idx) {
+      currentProjectIdx = idx;
+      updateShowcase();
+    }
+
+    function nextProject() {
+      currentProjectIdx = (currentProjectIdx + 1) % projects.length;
+      updateShowcase();
+    }
+
+    function prevProject() {
+      currentProjectIdx = (currentProjectIdx - 1 + projects.length) % projects.length;
+      updateShowcase();
+    }
+
+    // Modal Gallery State
+    const modalSlides = [
+      "../assets/images/gedocs-screenshot.png",
+      "../assets/images/project-gedocs.svg"
+    ];
+    let modalSlideIdx = 0;
+
+    function setModalSlide(idx) {
+      modalSlideIdx = idx;
+      document.getElementById('modal-gallery-img').src = modalSlides[modalSlideIdx];
+      document.getElementById('modal-gallery-counter').textContent = `0${modalSlideIdx + 1} / 02`;
+      document.querySelectorAll('.thumb-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === modalSlideIdx);
+      });
+    }
+
+    function nextModalSlide() {
+      modalSlideIdx = (modalSlideIdx + 1) % modalSlides.length;
+      setModalSlide(modalSlideIdx);
+    }
+
+    function prevModalSlide() {
+      modalSlideIdx = (modalSlideIdx - 1 + modalSlides.length) % modalSlides.length;
+      setModalSlide(modalSlideIdx);
+    }
+
+    function openModal() {
+      document.getElementById('case-study-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('case-study-modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function onBackdropClick(e) {
+      if (e.target.id === 'case-study-modal') closeModal();
+    }
+
+    // Direction Descriptors & Switcher
+    const directionData = {
+      'direction-a': {
+        tag: 'DIRECTION A · AESTHETIC BLUEPRINT',
+        title: 'Modern Editorial',
+        desc: 'Clean, cool-neutral gray canvas (#F4F6F8) paired with crisp white surfaces, razor-sharp 1px hairline rules, restrained 6px–8px architectural corners, and charcoal typography. Eliminates repetitive Material cards in favor of a timeless design publication feel.',
+        traits: ['#F4F6F8 Cool Mist', 'Hairline Borders', '8px Corner Radii', 'Deep Forest Olive']
+      },
+      'direction-b': {
+        tag: 'DIRECTION B · AESTHETIC BLUEPRINT',
+        title: 'Atmospheric Digital Studio',
+        desc: 'Zinc/slate neutral background with subtle layered radial ambient lighting, translucent frosted-glass surfaces (backdrop-filter: blur(20px)), delicate luminous edge borders, smooth 12px–14px squircle curves, and multi-tier ambient shadows. Contemporary digital product studio feel.',
+        traits: ['Ambient Radial Glows', 'Frosted Glass Surfaces', '14px Studio Squircles', 'Luminous Edge Rims']
+      },
+      'direction-c': {
+        tag: 'DIRECTION C · AESTHETIC BLUEPRINT',
+        title: 'Contemporary Technical Atelier',
+        desc: 'Drafting gray blueprint canvas with a subtle 24px dot alignment grid, structural hairline dividing rules instead of card boxes, 2px razor-sharp corners, monospace technical metadata, and hard isometric offset shadows. Swiss modernism meets software engineering precision.',
+        traits: ['24px Drafting Dot Grid', 'Structural Rules', '2px Razor Corners', 'Monospace Coordinates']
+      }
+    };
+
+    function applyDirection(dirKey) {
+      document.documentElement.setAttribute('data-direction', dirKey);
+      document.body.setAttribute('data-direction', dirKey);
+
+      const d = directionData[dirKey];
+      document.getElementById('dir-banner-tag').textContent = d.tag;
+      document.getElementById('dir-banner-title').textContent = d.title;
+      document.getElementById('dir-banner-desc').textContent = d.desc;
+
+      const traitsContainer = document.getElementById('dir-banner-traits');
+      traitsContainer.innerHTML = d.traits.map(t => `<span class="trait-pill">${t}</span>`).join('');
+
+      document.querySelectorAll('#direction-switcher .lab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-set-dir') === dirKey);
+      });
+    }
+
+    function applyTheme(themeKey) {
+      document.documentElement.setAttribute('data-theme', themeKey);
+      document.body.setAttribute('data-theme', themeKey);
+
+      const portrait = document.getElementById('hero-portrait-img');
+      if (portrait) {
+        portrait.src = themeKey === 'dark'
+          ? '../assets/images/hero-portrait-dark.png'
+          : '../assets/images/hero-portrait-light.png';
+      }
+
+      document.querySelectorAll('#theme-switcher .lab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-set-theme') === themeKey);
+      });
+    }
+
+    function applyViewport(vpKey) {
+      const frame = document.getElementById('lab-frame');
+      frame.setAttribute('data-viewport', vpKey);
+
+      document.querySelectorAll('#viewport-switcher .lab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-set-viewport') === vpKey);
+      });
+    }
+
+    // Attach Event Handlers
+    document.getElementById('direction-switcher').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-set-dir]');
+      if (btn) applyDirection(btn.getAttribute('data-set-dir'));
+    });
+
+    document.getElementById('theme-switcher').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-set-theme]');
+      if (btn) applyTheme(btn.getAttribute('data-set-theme'));
+    });
+
+    document.getElementById('viewport-switcher').addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-set-viewport]');
+      if (btn) applyViewport(btn.getAttribute('data-set-viewport'));
+    });
+
+    document.getElementById('btn-trigger-modal').addEventListener('click', openModal);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight' && !document.getElementById('case-study-modal').classList.contains('active')) nextProject();
+      if (e.key === 'ArrowLeft' && !document.getElementById('case-study-modal').classList.contains('active')) prevProject();
+    });
+
+    // Initial setup
+    updateShowcase();
+    setModalSlide(0);
+  </script>
+</body>
+</html>

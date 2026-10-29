@@ -381,6 +381,16 @@ function initMobileNavigation() {
     toggleMobileMenu();
   });
 
+  // Close drawer when mobile CV download link is clicked
+  const drawerCv = navMenu.querySelector('.btn-drawer-cv');
+  if (drawerCv) {
+    drawerCv.addEventListener('click', () => {
+      if (isMenuOpen) {
+        closeMobileMenu(false);
+      }
+    });
+  }
+
   // Close when pressing Escape anywhere
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isMenuOpen) {

@@ -242,6 +242,13 @@ a:hover {
   padding-inline: var(--container-padding);
 }
 
+.container-wide {
+  width: 100%;
+  max-width: var(--container-wide-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
 section {
   margin-block-end: var(--section-gap);
 }

@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="freeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FAF7F5"/>
+      <stop offset="100%" stop-color="#EFEAE4"/>
+    </linearGradient>
+    <filter id="freeShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#2E2A27" flood-opacity="0.1"/>
+    </filter>
+    <filter id="phoneShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="4" dy="12" stdDeviation="18" flood-color="#2E2A27" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="500" rx="16" fill="url(#freeGrad)"/>
+
+  <!-- Desktop Browser Mockup (Background / Centered-Left) -->
+  <g transform="translate(44, 38)">
+    <rect width="520" height="424" rx="14" fill="#FFFFFF" filter="url(#freeShadow)"/>
+    <!-- Browser Header Bar -->
+    <rect width="520" height="40" rx="14" fill="#F8F5F2"/>
+    <circle cx="24" cy="20" r="5" fill="#E8C88A"/>
+    <circle cx="40" cy="20" r="5" fill="#7BCBC4"/>
+    <circle cx="56" cy="20" r="5" fill="#4A5D4E"/>
+    
+    <!-- URL Bar -->
+    <rect x="80" y="10" width="260" height="20" rx="10" fill="#FFFFFF" stroke="#E6E1DC" stroke-width="1"/>
+    <circle cx="94" cy="20" r="3" fill="#25726B"/>
+    <text x="106" y="24" font-family="'Inter', sans-serif" font-size="9.5" fill="#6E6862">botanica-estudio.co</text>
+
+    <!-- Navigation / Header inside web page -->
+    <g transform="translate(28, 56)">
+      <text x="0" y="20" font-family="'Instrument Serif', serif" font-size="20" font-weight="bold" fill="#2E2A27">BOTÁNICA</text>
+      <text x="210" y="16" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#6E6862">Colecciones</text>
+      <text x="280" y="16" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#6E6862">Servicios</text>
+      <text x="340" y="16" font-family="'Inter', sans-serif" font-size="9" font-weight="500" fill="#6E6862">Contacto</text>
+      <rect x="400" y="4" width="64" height="20" rx="10" fill="#4A5D4E"/>
+      <text x="414" y="17" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#FFFFFF">Reservar</text>
+
+      <!-- Hero Visual Banner inside web page -->
+      <g transform="translate(0, 36)">
+        <rect width="464" height="150" rx="10" fill="#EAE5DF"/>
+        <!-- Hero Text -->
+        <text x="24" y="42" font-family="'Instrument Serif', serif" font-size="24" fill="#2E2A27">Diseño floral &amp;</text>
+        <text x="24" y="70" font-family="'Instrument Serif', serif" font-size="24" font-style="italic" fill="#4A5D4E">ambientación viva.</text>
+        <text x="24" y="96" font-family="'Inter', sans-serif" font-size="9" fill="#6E6862" max-width="200">Talleres botánicos y arreglos sostenibles para eventos locales.</text>
+        
+        <!-- CTA button inside banner -->
+        <rect x="24" y="112" width="90" height="24" rx="12" fill="#2E2A27"/>
+        <text x="38" y="127" font-family="'Inter', sans-serif" font-size="9" font-weight="600" fill="#FFFFFF">Ver Catálogo</text>
+
+        <!-- Decorative Floral/Botanical Motif in banner -->
+        <circle cx="380" cy="75" r="48" fill="#DCEAE1"/>
+        <path d="M 380 40 C 360 65, 360 95, 380 110 C 400 95, 400 65, 380 40 Z" fill="#4A5D4E" opacity="0.85"/>
+        <path d="M 350 75 C 375 60, 395 70, 408 85 C 385 92, 360 88, 350 75 Z" fill="#7BCBC4" opacity="0.75"/>
+      </g>
+
+      <!-- 3 Service Cards in Desktop view -->
+      <g transform="translate(0, 204)">
+        <rect x="0" y="0" width="144" height="100" rx="8" fill="#F8F5F2" stroke="#E6E1DC" stroke-width="1"/>
+        <circle cx="24" cy="24" r="12" fill="#E8F7F5"/>
+        <text x="18" y="28" font-family="'Inter', sans-serif" font-size="12" fill="#25726B">✦</text>
+        <text x="18" y="54" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#2E2A27">Diseño Floral</text>
+        <text x="18" y="70" font-family="'Inter', sans-serif" font-size="8" fill="#6E6862">Centros y ramos personalizados</text>
+        <text x="18" y="86" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#4A5D4E">Desde $35 →</text>
+
+        <rect x="160" y="0" width="144" height="100" rx="8" fill="#F8F5F2" stroke="#E6E1DC" stroke-width="1"/>
+        <circle cx="184" cy="24" r="12" fill="#F7EBEB"/>
+        <text x="178" y="28" font-family="'Inter', sans-serif" font-size="12" fill="#D48B8B">✽</text>
+        <text x="178" y="54" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#2E2A27">Ambientación</text>
+        <text x="178" y="70" font-family="'Inter', sans-serif" font-size="8" fill="#6E6862">Espacios comerciales y bodas</text>
+        <text x="178" y="86" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#4A5D4E">Cotizar →</text>
+
+        <rect x="320" y="0" width="144" height="100" rx="8" fill="#F8F5F2" stroke="#E6E1DC" stroke-width="1"/>
+        <circle cx="344" cy="24" r="12" fill="#EFF5F1"/>
+        <text x="338" y="28" font-family="'Inter', sans-serif" font-size="12" fill="#4A5D4E">❖</text>
+        <text x="338" y="54" font-family="'Inter', sans-serif" font-size="11" font-weight="600" fill="#2E2A27">Talleres Vivos</text>
+        <text x="338" y="70" font-family="'Inter', sans-serif" font-size="8" fill="#6E6862">Aprende botánica práctica</text>
+        <text x="338" y="86" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#4A5D4E">Inscribirme →</text>
+      </g>
+
+      <!-- Bottom Status / Performance metric pill bar -->
+      <g transform="translate(0, 320)">
+        <rect width="464" height="34" rx="6" fill="#F0ECE7"/>
+        <text x="16" y="21" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600" fill="#4A5D4E">LIGHTHOUSE SCORE:</text>
+        <circle cx="160" cy="17" r="7" fill="#25726B"/>
+        <text x="156" y="20" font-family="'Inter', sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">100</text>
+        <text x="172" y="21" font-family="'Inter', sans-serif" font-size="8.5" fill="#2E2A27">Perf</text>
+
+        <circle cx="220" cy="17" r="7" fill="#25726B"/>
+        <text x="216" y="20" font-family="'Inter', sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">100</text>
+        <text x="232" y="21" font-family="'Inter', sans-serif" font-size="8.5" fill="#2E2A27">A11y</text>
+
+        <circle cx="280" cy="17" r="7" fill="#25726B"/>
+        <text x="276" y="20" font-family="'Inter', sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">100</text>
+        <text x="292" y="21" font-family="'Inter', sans-serif" font-size="8.5" fill="#2E2A27">SEO</text>
+
+        <circle cx="340" cy="17" r="7" fill="#25726B"/>
+        <text x="336" y="20" font-family="'Inter', sans-serif" font-size="8" font-weight="bold" fill="#FFFFFF">100</text>
+        <text x="352" y="21" font-family="'Inter', sans-serif" font-size="8.5" fill="#2E2A27">Best Pr.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Mobile Smartphone Device Mockup (Foreground / Overlapping Right) -->
+  <g transform="translate(540, 70)" filter="url(#phoneShadow)">
+    <!-- Phone Chassis -->
+    <rect width="216" height="392" rx="28" fill="#1C1816" stroke="#4A5D4E" stroke-width="2"/>
+    <!-- Phone Screen -->
+    <rect x="8" y="8" width="200" height="376" rx="22" fill="#FFFFFF"/>
+    <!-- Speaker Notch -->
+    <rect x="74" y="14" width="68" height="12" rx="6" fill="#1C1816"/>
+    
+    <!-- Mobile App/Web Header -->
+    <g transform="translate(18, 36)">
+      <text x="0" y="18" font-family="'Instrument Serif', serif" font-size="14" font-weight="bold" fill="#2E2A27">BOTÁNICA</text>
+      <!-- Hamburger Icon -->
+      <line x1="160" y1="10" x2="178" y2="10" stroke="#2E2A27" stroke-width="2" stroke-linecap="round"/>
+      <line x1="160" y1="16" x2="178" y2="16" stroke="#2E2A27" stroke-width="2" stroke-linecap="round"/>
+      <line x1="164" y1="22" x2="178" y2="22" stroke="#2E2A27" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Mobile Hero Card -->
+      <rect x="0" y="30" width="180" height="140" rx="10" fill="#EAE5DF"/>
+      <text x="12" y="56" font-family="'Instrument Serif', serif" font-size="16" fill="#2E2A27">Diseño floral</text>
+      <text x="12" y="74" font-family="'Instrument Serif', serif" font-size="16" font-style="italic" fill="#4A5D4E">sostenible.</text>
+      <text x="12" y="96" font-family="'Inter', sans-serif" font-size="8" fill="#6E6862">Eventos y suscripciones locales.</text>
+      
+      <rect x="12" y="108" width="76" height="20" rx="10" fill="#4A5D4E"/>
+      <text x="24" y="121" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#FFFFFF">Contactar</text>
+
+      <circle cx="140" cy="75" r="26" fill="#DCEAE1"/>
+      <path d="M 140 55 C 130 70, 130 85, 140 95 C 150 85, 150 70, 140 55 Z" fill="#4A5D4E"/>
+
+      <!-- Mobile Feature Card -->
+      <rect x="0" y="182" width="180" height="64" rx="8" fill="#F8F5F2" stroke="#E6E1DC" stroke-width="1"/>
+      <circle cx="20" cy="204" r="10" fill="#E8F7F5"/>
+      <text x="16" y="208" font-family="'Inter', sans-serif" font-size="10" fill="#25726B">★</text>
+      <text x="38" y="202" font-family="'Inter', sans-serif" font-size="9.5" font-weight="600" fill="#2E2A27">Atención por WhatsApp</text>
+      <text x="38" y="214" font-family="'Inter', sans-serif" font-size="7.5" fill="#6E6862">Respuesta en menos de 1h</text>
+      <text x="38" y="228" font-family="'Inter', sans-serif" font-size="7.5" font-weight="600" fill="#25726B">Escribir ahora →</text>
+
+      <!-- Mobile Reviews Card -->
+      <rect x="0" y="254" width="180" height="54" rx="8" fill="#F8F5F2" stroke="#E6E1DC" stroke-width="1"/>
+      <text x="12" y="272" font-family="'Inter', sans-serif" font-size="8.5" font-weight="600" fill="#2E2A27">Calificación 5.0 / 5.0</text>
+      <text x="12" y="286" font-family="'Inter', sans-serif" font-size="7" fill="#6E6862">"Excelente sitio web y atención ágil"</text>
+    </g>
+
+    <!-- Home indicator bar -->
+    <rect x="68" y="374" width="80" height="4" rx="2" fill="#2E2A27" opacity="0.3"/>
+  </g>
+
+  <!-- Floating Badge: Responsive Commercial Web -->
+  <g transform="translate(68, 432)" filter="url(#freeShadow)">
+    <rect width="260" height="36" rx="18" fill="#2E2A27"/>
+    <circle cx="20" cy="18" r="6" fill="#7BCBC4"/>
+    <text x="34" y="22" font-family="'Inter', sans-serif" font-size="10.5" font-weight="600" fill="#FFFFFF">100% Mobile &amp; Desktop Optimized</text>
+  </g>
+</svg>

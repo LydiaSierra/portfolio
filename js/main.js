@@ -3,7 +3,7 @@
  * Main JavaScript entry point (ES Module)
  */
 
-import { renderProjects } from './projects.js';
+import { initProjects, renderProjects } from './projects.js';
 import { initContactForm, initEmailCopy } from './contact.js';
 import { detectLanguage, setLanguage, initLanguageSelector } from './i18n.js';
 import { initTheme } from './theme.js';
@@ -22,6 +22,9 @@ function bootstrap() {
 
   // Initialize responsive navigation, drawer, smooth scroll, progressive overflow & scroll-aware navbar
   initNavigation();
+
+  // Initialize immersive projects showcase and case study modal
+  initProjects();
 
   // Initialize accessible contact form and email copying
   initContactForm();

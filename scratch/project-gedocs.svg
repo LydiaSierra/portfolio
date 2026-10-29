@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="geDocsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F6F3EE"/>
+      <stop offset="100%" stop-color="#EDE7DF"/>
+    </linearGradient>
+    <filter id="docShadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#2E2A27" flood-opacity="0.07"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="500" rx="16" fill="url(#geDocsGrad)"/>
+
+  <!-- Left Sidebar Navigation -->
+  <g transform="translate(40, 40)">
+    <rect x="0" y="0" width="180" height="420" rx="12" fill="#FFFFFF" filter="url(#docShadow)"/>
+    <!-- Logo -->
+    <rect x="20" y="24" width="28" height="28" rx="6" fill="#4A5D4E"/>
+    <text x="30" y="43" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">G</text>
+    <text x="56" y="43" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#2E2A27">GeDocs</text>
+
+    <!-- Nav Items -->
+    <rect x="16" y="80" width="148" height="34" rx="6" fill="#F0ECE7"/>
+    <text x="44" y="102" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#2E2A27">All Documents</text>
+
+    <text x="44" y="142" font-family="system-ui, sans-serif" font-size="12" font-weight="500" fill="#6E6862">Categories</text>
+    <text x="44" y="178" font-family="system-ui, sans-serif" font-size="12" font-weight="500" fill="#6E6862">Audit Logs</text>
+    <text x="44" y="214" font-family="system-ui, sans-serif" font-size="12" font-weight="500" fill="#6E6862">User Roles</text>
+  </g>
+
+  <!-- Main Content Area -->
+  <g transform="translate(240, 40)">
+    <!-- Header with Search & Upload -->
+    <rect x="0" y="0" width="520" height="54" rx="10" fill="#FFFFFF" filter="url(#docShadow)"/>
+    <rect x="16" y="14" width="260" height="26" rx="6" fill="#F8F5F2" stroke="#E6E1DC"/>
+    <text x="32" y="31" font-family="system-ui, sans-serif" font-size="11" fill="#8C857E">Search archive, author, tags...</text>
+
+    <rect x="390" y="12" width="114" height="30" rx="6" fill="#4A5D4E"/>
+    <text x="415" y="31" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">+ Upload Doc</text>
+
+    <!-- Document Table Card -->
+    <rect x="0" y="74" width="520" height="346" rx="12" fill="#FFFFFF" filter="url(#docShadow)"/>
+
+    <!-- Table Header -->
+    <text x="24" y="105" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#8C857E">DOCUMENT NAME</text>
+    <text x="260" y="105" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#8C857E">CATEGORY</text>
+    <text x="390" y="105" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#8C857E">STATUS</text>
+    <line x1="20" y1="120" x2="500" y2="120" stroke="#F0ECE7" stroke-width="1"/>
+
+    <!-- Row 1 -->
+    <text x="24" y="152" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#2E2A27">Academic_Report_2024.pdf</text>
+    <text x="260" y="152" font-family="system-ui, sans-serif" font-size="12" fill="#6E6862">SENA Records</text>
+    <rect x="390" y="137" width="70" height="22" rx="11" fill="#E8F7F5"/>
+    <text x="404" y="152" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#2D7D76">Approved</text>
+    <line x1="20" y1="172" x2="500" y2="172" stroke="#F0ECE7" stroke-width="1"/>
+
+    <!-- Row 2 -->
+    <text x="24" y="204" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#2E2A27">Quality_Audit_Q3.docx</text>
+    <text x="260" y="204" font-family="system-ui, sans-serif" font-size="12" fill="#6E6862">Compliance</text>
+    <rect x="390" y="189" width="70" height="22" rx="11" fill="#FBF9F7" stroke="#E6E1DC"/>
+    <text x="406" y="204" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#6E6862">Archived</text>
+    <line x1="20" y1="224" x2="500" y2="224" stroke="#F0ECE7" stroke-width="1"/>
+
+    <!-- Row 3 -->
+    <text x="24" y="256" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#2E2A27">Internship_Contract_Globant.pdf</text>
+    <text x="260" y="256" font-family="system-ui, sans-serif" font-size="12" fill="#6E6862">Contracts</text>
+    <rect x="390" y="241" width="70" height="22" rx="11" fill="#FDF3E7"/>
+    <text x="406" y="256" font-family="system-ui, sans-serif" font-size="10" font-weight="600" fill="#B26B1E">Pending</text>
+  </g>
+</svg>

@@ -40,8 +40,9 @@ export const translations = {
     'nav.more': 'More',
     'nav.moreLinks': 'More navigation links',
     'actions.downloadCv': 'Download CV',
-    'actions.cvSoon': '(Soon)',
-    'actions.cvTitle': 'CV document pending upload',
+    'actions.cvSoon': '',
+    'actions.cvTitle': 'Download CV (PDF)',
+    'actions.cvAriaLabel': "Download Lydia Sierra's CV in English (PDF)",
     'actions.themeToggleAria': 'Switch visual theme',
     'actions.themeToggleTitle': 'Toggle visual theme',
     'theme.toDark': 'Switch to dark theme',
@@ -83,6 +84,20 @@ export const translations = {
     // Projects Header
     'projects.title': 'Featured projects',
     'projects.badge': 'Selected Works',
+    'projects.exploreCaseStudy': 'Explore Case Study',
+    'projects.githubRepo': 'GitHub Repository',
+    'projects.liveDemo': 'Live Demo',
+    'projects.prevProject': 'Previous project',
+    'projects.nextProject': 'Next project',
+    'projects.closeModal': 'Close project details',
+    'projects.purposeHeading': '01. Project Purpose & Overview',
+    'projects.problemHeading': '02. The Problem Addressed',
+    'projects.contribHeading': '03. My Architectural Contribution',
+    'projects.highlightsHeading': '04. Key Technical Decisions & Highlights',
+    'projects.techStackHeading': 'Technology Stack',
+    'projects.galleryPrev': 'Previous screenshot',
+    'projects.galleryNext': 'Next screenshot',
+    'projects.viewGalleryImg': 'View screenshot',
 
     // Experience & Education Section
     'experience.title': 'Experience & Education',
@@ -247,8 +262,9 @@ export const translations = {
     'nav.more': 'Más',
     'nav.moreLinks': 'Más enlaces de navegación',
     'actions.downloadCv': 'Descargar CV',
-    'actions.cvSoon': '(Pronto)',
-    'actions.cvTitle': 'Documento de CV pendiente de subida',
+    'actions.cvSoon': '',
+    'actions.cvTitle': 'Descargar CV (PDF)',
+    'actions.cvAriaLabel': 'Descargar el CV de Lydia Sierra en español (PDF)',
     'actions.themeToggleAria': 'Cambiar tema visual',
     'actions.themeToggleTitle': 'Cambiar tema visual',
     'theme.toDark': 'Cambiar a tema oscuro',
@@ -290,6 +306,20 @@ export const translations = {
     // Projects Header
     'projects.title': 'Proyectos destacados',
     'projects.badge': 'Trabajos seleccionados',
+    'projects.exploreCaseStudy': 'Explorar caso de estudio',
+    'projects.githubRepo': 'Repositorio en GitHub',
+    'projects.liveDemo': 'Ver demo en vivo',
+    'projects.prevProject': 'Proyecto anterior',
+    'projects.nextProject': 'Proyecto siguiente',
+    'projects.closeModal': 'Cerrar detalles del proyecto',
+    'projects.purposeHeading': '01. Propósito y visión general',
+    'projects.problemHeading': '02. El problema abordado',
+    'projects.contribHeading': '03. Mi contribución arquitectónica',
+    'projects.highlightsHeading': '04. Decisiones técnicas clave y aspectos destacados',
+    'projects.techStackHeading': 'Stack tecnológico',
+    'projects.galleryPrev': 'Captura anterior',
+    'projects.galleryNext': 'Siguiente captura',
+    'projects.viewGalleryImg': 'Ver captura',
 
     // Experience & Education Section
     'experience.title': 'Experiencia y educación',
@@ -601,6 +631,9 @@ export function setLanguage(lang, persist = true) {
   // 6. Update contact validation & banner messages
   setContactLanguage(lang);
 
+  // 6b. Update CV download links for active language
+  updateCvDownloadLinks(lang);
+
   // 7. Update navbar language selector UI
   updateLanguageSelectorUI(lang);
 
@@ -625,6 +658,36 @@ export function setLanguage(lang, persist = true) {
  * Updates the visual state of the navbar language selector.
  * @param {string} lang - 'en' or 'es'
  */
+
+/**
+ * Updates CV download links across the page (navbar, mobile drawer, hero)
+ * to target the localized CV file and download filename matching active language.
+ * @param {string} lang - 'en' or 'es'
+ */
+export function updateCvDownloadLinks(lang = 'en') {
+  const isEs = lang === 'es';
+  const cvHref = isEs
+    ? 'assets/documents/Lydia_Sierra_CV_ES.pdf'
+    : 'assets/documents/Lydia_Sierra_CV_EN.pdf';
+  const downloadFilename = isEs
+    ? 'Lydia_Sierra_CV_ES.pdf'
+    : 'Lydia_Sierra_Resume_EN.pdf';
+  const cvTitle = isEs
+    ? 'Descargar CV (PDF)'
+    : 'Download CV (PDF)';
+  const cvAria = isEs
+    ? 'Descargar el CV de Lydia Sierra en español (PDF)'
+    : "Download Lydia Sierra's CV in English (PDF)";
+
+  document.querySelectorAll('.cv-download-link').forEach((link) => {
+    link.setAttribute('href', cvHref);
+    link.setAttribute('download', downloadFilename);
+    link.setAttribute('title', cvTitle);
+    link.setAttribute('aria-label', cvAria);
+    link.removeAttribute('aria-disabled');
+  });
+}
+
 function updateLanguageSelectorUI(lang) {
   const codeDisplay = document.getElementById('lang-current-code');
   if (codeDisplay) {
