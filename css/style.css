@@ -93,7 +93,7 @@ button {
 }
 
 [data-theme="dark"] :focus-visible {
-  outline-color: #9EC4A7;
+  outline-color: var(--color-primary);
 }
 
 @media (forced-colors: active) {
@@ -159,16 +159,17 @@ h6 {
 h1 {
   font-family: var(--font-display);
   font-size: var(--text-4xl);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.025em;
 }
 
 h2 {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
 h3 {
@@ -211,13 +212,13 @@ pre {
   font-family: var(--font-display);
   font-style: italic;
   font-size: var(--text-3xl);
-  color: #D48B8B;
+  color: var(--color-primary);
   line-height: 1;
   user-select: none;
 }
 
 [data-theme="dark"] .signature {
-  color: var(--color-accent-pink);
+  color: var(--color-primary);
 }
 
 /* Interactive Base Links */
@@ -395,7 +396,7 @@ section {
 /* Greeting Badge (Hero) */
 .badge-greeting {
   background-color: var(--color-accent-pink);
-  color: #2E2A27; /* Guaranteed AAA contrast against blush fill */
+  color: var(--color-text-main); /* High contrast against badge fill */
   box-shadow: var(--shadow-sm);
 }
 
@@ -422,8 +423,8 @@ section {
   width: 8px;
   height: 8px;
   border-radius: var(--radius-full);
-  background-color: #34A853;
-  box-shadow: 0 0 0 3px rgba(52, 168, 83, 0.25);
+  background-color: var(--color-status-success);
+  box-shadow: 0 0 0 3px var(--color-status-success-border);
   flex-shrink: 0;
 }
 

@@ -63,14 +63,14 @@
 }
 
 [data-theme="dark"] .footer-brand .brand-icon {
-  color: #9EC4A7;
+  color: var(--color-primary);
 }
 
 .footer-brand .brand-name {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--color-text-main);
 }
 
@@ -147,7 +147,7 @@
 }
 
 [data-theme="dark"] .footer-social-link svg {
-  color: #9EC4A7;
+  color: var(--color-primary);
 }
 
 .footer-social-link:hover {

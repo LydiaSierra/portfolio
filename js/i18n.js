@@ -107,7 +107,7 @@ export const translations = {
     'projects.flashcards.desc': 'Interactive web application for active recall and spaced-repetition learning with fine-grained reactive state and offline persistence.',
     'projects.flashcards.alt': 'Flashcards App interface preview showing a study card on Angular Signals with progress tracking',
 
-    'projects.gedocs.title': 'GeDocs — Document Management',
+    'projects.gedocs.title': 'GeDocs',
     'projects.gedocs.desc': 'Centralized administrative tracking and searchable document archive platform with relational database integrity and role-based access.',
     'projects.gedocs.alt': 'GeDocs administrative interface preview displaying document records, categories, search filtering, and approval status',
 
@@ -343,7 +343,7 @@ export const translations = {
     'projects.flashcards.desc': 'Aplicación web interactiva para estudio mediante recuerdo activo y repetición espaciada con reactividad precisa y persistencia offline.',
     'projects.flashcards.alt': 'Vista previa de la interfaz de Flashcards App mostrando una tarjeta de estudio sobre Angular Signals con seguimiento de progreso',
 
-    'projects.gedocs.title': 'GeDocs — Gestión Documental',
+    'projects.gedocs.title': 'GeDocs',
     'projects.gedocs.desc': 'Plataforma centralizada de gestión administrativa y archivo digital de documentos con integridad relacional y control de acceso.',
     'projects.gedocs.alt': 'Vista previa de la interfaz administrativa de GeDocs mostrando registros de documentos, categorías y filtros de búsqueda',
 

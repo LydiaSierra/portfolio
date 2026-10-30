@@ -35,7 +35,8 @@
 .experience-header-bar .section-title {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 400;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--color-text-main);
   line-height: 1.2;
 }
@@ -70,7 +71,7 @@
   width: 34px;
   height: 34px;
   border-radius: var(--radius-sm);
-  background-color: rgba(74, 93, 78, 0.12);
+  background-color: rgba(var(--color-primary-rgb), 0.12);
   color: var(--color-primary);
   display: inline-flex;
   align-items: center;
@@ -79,7 +80,7 @@
 }
 
 [data-theme="dark"] .column-icon-wrapper {
-  background-color: rgba(110, 142, 116, 0.2);
+  background-color: rgba(var(--color-primary-rgb), 0.2);
   color: var(--color-primary);
 }
 
@@ -104,22 +105,22 @@
 }
 
 .journey-type--work {
-  background-color: rgba(74, 93, 78, 0.12);
+  background-color: rgba(var(--color-primary-rgb), 0.12);
   color: var(--color-primary);
 }
 
 .journey-type--edu {
-  background-color: rgba(123, 203, 196, 0.18);
+  background-color: rgba(var(--color-accent-turquoise-rgb), 0.18);
   color: var(--color-turquoise-text);
 }
 
 [data-theme="dark"] .journey-type--work {
-  background-color: rgba(110, 142, 116, 0.22);
+  background-color: rgba(var(--color-primary-rgb), 0.22);
   color: var(--color-primary);
 }
 
 [data-theme="dark"] .journey-type--edu {
-  background-color: rgba(123, 203, 196, 0.22);
+  background-color: rgba(var(--color-accent-turquoise-rgb), 0.22);
   color: var(--color-accent-turquoise);
 }
 

@@ -35,7 +35,7 @@
 /* Greeting Pill */
 .hero-content .badge-greeting {
   margin-bottom: var(--space-4);
-  box-shadow: 0 1px 3px rgba(46, 42, 39, 0.04);
+  box-shadow: 0 1px 3px rgba(var(--color-shadow-rgb), 0.04);
 }
 
 /* Title Row: Hosts h1 and, on compact viewports, the side-by-side circular portrait */
@@ -52,9 +52,9 @@
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 1.65rem + 2.2vw, 3.4rem);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.025em;
   color: var(--color-text-main);
   margin-bottom: 0;
   max-inline-size: 20ch;
