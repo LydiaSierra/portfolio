@@ -67,8 +67,9 @@ export const translations = {
 
     // About Section
     'about.title': 'About me',
-    'about.p1': "I'm passionate about clean code, thoughtful design and continuous learning. I enjoy working across the stack, solving problems and creating products that make people's lives better.",
-    'about.p2': "When I'm not coding, you'll find me learning Japanese, drawing or playing the guitar.",
+    'about.p1': 'I have officially graduated from the Software Analysis and Development (ADSO) program at SENA, having fully completed both the academic and practical stages of my training.',
+    'about.p2': "I'm passionate about clean code, thoughtful design, and continuous learning. I enjoy working across the stack, solving real-world problems, and building products that make people's lives better.",
+    'about.p3': "When I'm not coding, you'll find me learning Japanese, drawing, or playing the guitar.",
     'about.signatureAria': 'Personal signature: Lydia Sierra',
 
     // Skills Section (Tech Stack)
@@ -303,8 +304,9 @@ export const translations = {
 
     // About Section
     'about.title': 'Sobre mí',
-    'about.p1': 'Me apasiona el código limpio, el diseño reflexivo y el aprendizaje continuo. Disfruto trabajar en todo el stack, resolver problemas y crear productos que mejoren la vida de las personas.',
-    'about.p2': 'Cuando no estoy programando, me encontrarás aprendiendo japonés, dibujando o tocando la guitarra.',
+    'about.p1': 'Me he graduado oficialmente del programa de Análisis y Desarrollo de Software (ADSO) en el SENA, habiendo completado en su totalidad tanto la etapa académica como la etapa práctica de mi formación.',
+    'about.p2': 'Me apasiona el código limpio, el diseño reflexivo y el aprendizaje continuo. Disfruto trabajar en todo el stack, resolver problemas reales y crear productos que mejoren la vida de las personas.',
+    'about.p3': 'Cuando no estoy programando, me encontrarás aprendiendo japonés, dibujando o tocando la guitarra.',
     'about.signatureAria': 'Firma personal: Lydia Sierra',
 
     // Skills Section (Tech Stack)
