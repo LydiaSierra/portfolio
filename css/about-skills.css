@@ -43,7 +43,8 @@
 .about-column .section-title {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 400;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--color-text-main);
   line-height: 1.2;
 }
@@ -71,7 +72,7 @@
   font-family: var(--font-display);
   font-style: italic;
   font-size: var(--text-3xl);
-  color: #D48B8B;
+  color: var(--color-primary);
   user-select: none;
 }
 
@@ -99,7 +100,8 @@
 .skills-header .section-title {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
-  font-weight: 400;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--color-text-main);
   line-height: 1.2;
 }
@@ -111,13 +113,13 @@
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
   background-color: var(--color-accent-pink);
-  color: #2E2A27; /* Guaranteed high contrast against blush fill */
+  color: var(--color-text-main);
   font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: 500;
   line-height: 1;
   text-decoration: none;
-  box-shadow: 0 1px 2px rgba(46, 42, 39, 0.04);
+  box-shadow: 0 1px 2px rgba(var(--color-shadow-rgb), 0.04);
   transition: opacity var(--transition-fast);
 }
 
@@ -160,13 +162,13 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-sm);
-  background-color: rgba(123, 203, 196, 0.16);
+  background-color: rgba(var(--color-accent-turquoise-rgb), 0.16);
   color: var(--color-turquoise-text);
   flex-shrink: 0;
 }
 
 [data-theme="dark"] .skill-icon-wrapper {
-  background-color: rgba(123, 203, 196, 0.22);
+  background-color: rgba(var(--color-accent-turquoise-rgb), 0.22);
   color: var(--color-accent-turquoise);
 }
 

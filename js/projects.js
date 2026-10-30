@@ -1,10 +1,90 @@
 /**
  * Lydia Sierra — Personal Developer Portfolio
- * Featured Projects Module: Full-Width Immersive Carousel & Visual Case Study Modal
- * Conforming to Approved Immersive Showcase Design Specification
+ * Featured Projects Module: Scannable Card Grid & Case Study Modal
+ * Strict WCAG 2.1 AA keyboard accessibility and bilingual ES/EN support.
  */
 
 export const projectsData = [
+  {
+    id: 'flashcards-app',
+    title: {
+      en: 'Flashcards App',
+      es: 'Flashcards App'
+    },
+    badge: {
+      en: 'Angular 17+ Signals · Active Recall',
+      es: 'Angular 17+ Signals · Recuerdo Activo'
+    },
+    image: 'assets/images/project-flashcards.svg',
+    imageAlt: {
+      en: 'Flashcards App interface preview showing a study card on Angular Signals with progress tracking',
+      es: 'Vista previa de la interfaz de Flashcards App mostrando una tarjeta de estudio sobre Angular Signals con seguimiento de progreso'
+    },
+    gallery: [
+      {
+        src: 'assets/images/project-flashcards.svg',
+        alt: {
+          en: 'Flashcards App study interface preview showing active recall card on Angular Signals with progress metrics',
+          es: 'Vista previa de la interfaz de estudio de Flashcards App mostrando tarjeta de repaso activo sobre Angular Signals'
+        }
+      }
+    ],
+    subtitle: {
+      en: 'Interactive web application for active recall and spaced-repetition learning with client-side persistence',
+      es: 'Aplicación web interactiva para estudio mediante recuerdo activo y repetición espaciada con persistencia en cliente'
+    },
+    shortBio: {
+      en: 'Interactive web application for active recall and spaced-repetition learning with fine-grained reactive state and offline persistence.',
+      es: 'Aplicación web interactiva para estudio mediante recuerdo activo y repetición espaciada con reactividad precisa y persistencia offline.'
+    },
+    overview: {
+      en: 'A distraction-free, self-directed learning tool built to optimize memory retention through spaced-repetition algorithms. Features rapid keyboard navigation, custom deck creation, self-assessment scoring, and offline-first Local Storage synchronization.',
+      es: 'Herramienta de aprendizaje autodidacta sin distracciones diseñada para optimizar la retención de memoria mediante algoritmos de repetición espaciada. Cuenta con atajos de teclado rápidos, creación de mazos personalizados y persistencia offline en Local Storage.'
+    },
+    problem: {
+      en: 'Self-directed learners need an intuitive, distraction-free study environment to organize card decks, test memory retention, and track learning progress without complicated backend overhead or subscription paywalls.',
+      es: 'Los estudiantes autodidactas necesitan un entorno de estudio intuitivo y sin distracciones para organizar mazos de tarjetas, poner a prueba la retención de memoria y seguir su progreso sin complejidad de servidor ni suscripciones de pago.'
+    },
+    contribution: {
+      en: 'Designed the complete frontend architecture from the ground up, utilizing modern Angular Signals for fine-grained reactive state and offline-first Local Storage persistence.',
+      es: 'Diseñé la arquitectura frontend completa desde cero, utilizando Angular Signals para la reactividad de estado y persistencia offline con Local Storage.'
+    },
+    highlights: {
+      en: [
+        'Fine-grained reactivity with Angular Signals for smooth card state transitions without Zone.js overhead',
+        'Client-side Local Storage persistence preserving decks, cards, and study progress across sessions',
+        'Accessible keyboard controls allowing rapid card flipping, self-assessment, and deck traversal',
+        'Responsive, clean UI styled with utility-first Tailwind CSS, optimized for mobile and desktop screens'
+      ],
+      es: [
+        'Reactividad precisa con Angular Signals para transiciones fluidas de tarjetas sin sobrecarga de Zone.js',
+        'Persistencia del lado del cliente en Local Storage que conserva mazos, tarjetas y progreso entre sesiones',
+        'Control accesible por teclado que permite voltear tarjetas, autoevaluarse y navegar rápidamente',
+        'Interfaz limpia y responsiva estilizada con Tailwind CSS, optimizada para pantallas móviles y de escritorio'
+      ]
+    },
+    tags: [
+      { name: 'Angular', type: 'accent-primary' },
+      { name: 'TypeScript', type: 'neutral' },
+      { name: 'Signals', type: 'accent-turquoise' },
+      { name: 'Tailwind CSS', type: 'accent-pink' },
+      { name: 'Local Storage', type: 'neutral' }
+    ],
+    links: {
+      repo: {
+        url: 'https://github.com/LydiaSierra',
+        label: { en: 'GitHub Repository', es: 'Repositorio en GitHub' }
+      },
+      demo: {
+        url: null,
+        label: { en: 'Live Demo', es: 'Ver demo' },
+        statusMessage: {
+          en: 'Live demo coming soon',
+          es: 'Demo disponible próximamente'
+        }
+      }
+    }
+  },
   {
     id: 'gedocs',
     title: {
@@ -74,17 +154,17 @@ export const projectsData = [
       { name: 'PHP (Laravel)', type: 'accent-primary' },
       { name: 'MySQL', type: 'neutral' },
       { name: 'REST APIs', type: 'accent-turquoise' },
+      { name: 'MVC', type: 'neutral' },
+      { name: 'Bootstrap', type: 'accent-pink' }
     ],
     links: {
       repo: {
-        url: 'https://github.com/LydiaSierra',
-        label: { en: 'GitHub Repository', es: 'Repositorio en GitHub' },
-        status: 'available'
+        url: 'https://github.com/LydiaSierra/GeDocs',
+        label: { en: 'GitHub Repository', es: 'Repositorio en GitHub' }
       },
       demo: {
         url: null,
         label: { en: 'Live Demo', es: 'Ver demo' },
-        status: 'forthcoming',
         statusMessage: {
           en: 'Institutional capstone project',
           es: 'Proyecto de grado institucional'
@@ -93,10 +173,90 @@ export const projectsData = [
     }
   },
   {
+    id: 'portfolio',
+    title: {
+      en: 'Personal Developer Portfolio',
+      es: 'Portafolio de Desarrollador'
+    },
+    badge: {
+      en: 'Vanilla JS & Zero Build Tools',
+      es: 'Vanilla JS y Cero Herramientas de Compilación'
+    },
+    image: 'assets/images/project-portfolio.svg',
+    imageAlt: {
+      en: 'Personal developer portfolio architecture diagram and design token system preview',
+      es: 'Diagrama de arquitectura del portafolio personal y sistema de tokens de diseño'
+    },
+    gallery: [
+      {
+        src: 'assets/images/project-portfolio.svg',
+        alt: {
+          en: 'Personal developer portfolio architecture diagram and design token system preview',
+          es: 'Diagrama de arquitectura del portafolio personal y sistema de tokens de diseño'
+        }
+      }
+    ],
+    subtitle: {
+      en: 'High-performance static developer portfolio built with semantic HTML5, modern vanilla CSS3, and native ES modules',
+      es: 'Portafolio estático de alto rendimiento desarrollado con HTML5 semántico, CSS3 moderno y módulos nativos de JavaScript'
+    },
+    shortBio: {
+      en: 'High-performance static developer portfolio built with semantic HTML5, modern vanilla CSS3, and native ES modules.',
+      es: 'Portafolio estático de alto rendimiento desarrollado con HTML5 semántico, CSS3 moderno y módulos nativos de JavaScript.'
+    },
+    overview: {
+      en: 'A resilient, zero-build personal developer portfolio crafted to showcase genuine projects, enterprise experience, and contact channels without bloated framework runtimes or fragile pipeline dependencies.',
+      es: 'Portafolio de desarrollo personal sin herramientas de compilación diseñado para presentar proyectos genuinos, experiencia profesional y canales de contacto sin la sobrecarga de frameworks ni dependencias frágiles.'
+    },
+    problem: {
+      en: 'Developers often overload personal portfolios with heavy frameworks, fragile build pipelines, and unnecessary dependencies that increase load latency, degrade accessibility, and complicate deployment.',
+      es: 'Con frecuencia los portafolios se sobrecargan con frameworks pesados y pipelines complejos que aumentan la latencia de carga, degradan la accesibilidad y dificultan el despliegue estático.'
+    },
+    contribution: {
+      en: 'Engineered a resilient static portfolio using semantic HTML5 landmarks, modern vanilla CSS custom property tokens, and native ES modules without any framework dependencies.',
+      es: 'Diseñé e implementé una arquitectura estática robusta utilizando landmarks HTML5, tokens en variables CSS y módulos ES nativos sin dependencias externas.'
+    },
+    highlights: {
+      en: [
+        'Zero build pipeline dependency: runs statically and instantly on GitHub Pages',
+        'Complete English / Spanish internationalization with dynamic metadata updates',
+        'System preference-aware light and dark theme engine with FOUC prevention',
+        'Strict WCAG 2.1 AA keyboard navigation, contrast ratios, and accessible landmarks'
+      ],
+      es: [
+        'Cero herramientas de compilación: despliegue estático e instantáneo en GitHub Pages',
+        'Internacionalización completa inglés/español con sincronización dinámica de metadatos',
+        'Motor de temas claro/oscuro sincronizado con preferencias del sistema y prevención de parpadeo',
+        'Estricto cumplimiento de accesibilidad WCAG 2.1 AA por teclado y contraste de color'
+      ]
+    },
+    tags: [
+      { name: 'HTML5', type: 'accent-primary' },
+      { name: 'Vanilla CSS3', type: 'neutral' },
+      { name: 'ES Modules', type: 'accent-turquoise' },
+      { name: 'i18n Engine', type: 'accent-pink' },
+      { name: 'WCAG 2.1 AA', type: 'neutral' }
+    ],
+    links: {
+      repo: {
+        url: 'https://github.com/LydiaSierra',
+        label: { en: 'GitHub Repository', es: 'Repositorio en GitHub' }
+      },
+      demo: {
+        url: 'https://lydiasierra.dev',
+        label: { en: 'Live Demo', es: 'Ver demo' },
+        statusMessage: {
+          en: 'Currently Live',
+          es: 'Actualmente en vivo'
+        }
+      }
+    }
+  },
+  {
     id: 'freelance-sites',
     title: {
-      en: 'Local Business Digital Presences',
-      es: 'Sitios Web para Negocios Locales'
+      en: 'Commercial Web Solutions',
+      es: 'Sitios Web Comerciales'
     },
     badge: {
       en: 'Responsive Web UI & SEO · Lighthouse 100',
@@ -104,15 +264,15 @@ export const projectsData = [
     },
     image: 'assets/images/project-freelance.svg',
     imageAlt: {
-      en: 'Local Business Websites responsive layout mockup on desktop and mobile smartphone with Lighthouse 100/100 performance scores',
-      es: 'Maqueta de sitios web para negocios locales en escritorio y móvil con puntuación de 100/100 en Lighthouse'
+      en: 'Commercial responsive websites mockup on desktop and mobile smartphone with Lighthouse 100 performance scores',
+      es: 'Maqueta de sitios web comerciales en escritorio y móvil con puntuación de 100 en Lighthouse'
     },
     gallery: [
       {
         src: 'assets/images/project-freelance.svg',
         alt: {
-          en: 'Local Business Websites responsive layout mockup on desktop and mobile smartphone with Lighthouse 100/100 performance scores',
-          es: 'Maqueta de sitios web para negocios locales en escritorio y móvil con puntuación de 100/100 en Lighthouse'
+          en: 'Commercial responsive websites mockup on desktop and mobile smartphone with Lighthouse 100 performance scores',
+          es: 'Maqueta de sitios web comerciales en escritorio y móvil con puntuación de 100 en Lighthouse'
         }
       }
     ],
@@ -151,7 +311,7 @@ export const projectsData = [
       ]
     },
     tags: [
-      { name: 'WordPress', type: 'accent-primary' },
+      { name: 'HTML5 / CSS3', type: 'accent-primary' },
       { name: 'Responsive UI', type: 'neutral' },
       { name: 'SEO Optimization', type: 'accent-turquoise' },
       { name: 'Performance', type: 'accent-pink' },
@@ -160,13 +320,11 @@ export const projectsData = [
     links: {
       repo: {
         url: 'https://github.com/LydiaSierra',
-        label: { en: 'GitHub Repository', es: 'Repositorio en GitHub' },
-        status: 'available'
+        label: { en: 'GitHub Repository', es: 'Repositorio en GitHub' }
       },
       demo: {
         url: null,
         label: { en: 'Live Demo', es: 'Ver demo' },
-        status: 'forthcoming',
         statusMessage: {
           en: 'Client portfolio case studies',
           es: 'Casos de estudio de clientes'
@@ -176,7 +334,7 @@ export const projectsData = [
   }
 ];
 
-// State Management
+// State Management for Case Study Modal
 let currentProjectIdx = 0;
 let currentGalleryIdx = 0;
 let currentLang = 'en';
@@ -191,119 +349,13 @@ function getLocalized(field, lang = 'en') {
   return field[lang] || field.en || '';
 }
 
-/**
- * Navigates the main carousel to a specific project.
- * @param {number} idx - Index of project.
- */
-export function goToProject(idx) {
-  if (idx < 0) idx = projectsData.length - 1;
-  if (idx >= projectsData.length) idx = 0;
-  currentProjectIdx = idx;
-  currentGalleryIdx = 0;
-  updateShowcaseDOM();
-}
-
-export function nextProject() {
-  goToProject(currentProjectIdx + 1);
-}
-
-export function prevProject() {
-  goToProject(currentProjectIdx - 1);
-}
-
-/**
- * Updates the showcase DOM elements with smooth cross-fade.
- */
-function updateShowcaseDOM() {
-  const p = projectsData[currentProjectIdx];
-  const bgImg = document.getElementById('showcase-bg');
-  const infoCluster = document.getElementById('showcase-info');
-
-  if (!p || !bgImg) return;
-
-  // Gentle transition
-  bgImg.style.opacity = '0.65';
-  if (infoCluster) {
-    infoCluster.style.opacity = '0.7';
-    infoCluster.style.transform = 'translateY(4px)';
-  }
-
-  setTimeout(() => {
-    bgImg.src = p.image;
-    bgImg.alt = getLocalized(p.imageAlt, currentLang);
-
-    const badgeEl = document.getElementById('showcase-badge');
-    if (badgeEl) badgeEl.textContent = getLocalized(p.badge, currentLang);
-
-    const counterEl = document.getElementById('showcase-counter');
-    if (counterEl) counterEl.textContent = `0${currentProjectIdx + 1} / 0${projectsData.length}`;
-
-    const titleEl = document.getElementById('showcase-title');
-    if (titleEl) titleEl.textContent = getLocalized(p.title, currentLang);
-
-    const descEl = document.getElementById('showcase-desc');
-    if (descEl) descEl.textContent = getLocalized(p.shortBio, currentLang);
-
-    // Tags
-    const tagsContainer = document.getElementById('showcase-tags');
-    if (tagsContainer) {
-      tagsContainer.innerHTML = p.tags
-        .map(t => `<li class="showcase-tag-pill ${t.type}">${t.name}</li>`)
-        .join('');
-    }
-
-    // Repository Link
-    const repoBtn = document.getElementById('showcase-repo-link');
-    if (repoBtn) {
-      if (p.links?.repo?.url) {
-        repoBtn.href = p.links.repo.url;
-        repoBtn.style.display = 'inline-flex';
-      } else {
-        repoBtn.style.display = 'none';
-      }
-    }
-
-    // Live Demo Link
-    const demoBtn = document.getElementById('showcase-demo-link');
-    if (demoBtn) {
-      if (p.links?.demo?.url) {
-        demoBtn.href = p.links.demo.url;
-        demoBtn.style.display = 'inline-flex';
-      } else {
-        demoBtn.style.display = 'none';
-      }
-    }
-
-    // Update Stepper buttons
-    renderStepperButtons();
-
-    bgImg.style.opacity = '1';
-    if (infoCluster) {
-      infoCluster.style.opacity = '1';
-      infoCluster.style.transform = 'translateY(0)';
-    }
-  }, 120);
-}
-
-/**
- * Renders the top position stepper buttons.
- */
-function renderStepperButtons() {
-  const stepperContainer = document.querySelector('.showcase-stepper');
-  if (!stepperContainer) return;
-
-  const counterHTML = `<span class="showcase-counter" id="showcase-counter">0${currentProjectIdx + 1} / 0${projectsData.length}</span>`;
-
-  stepperContainer.innerHTML = counterHTML + buttonsHTML;
-}
-
 // -----------------------------------------------------------------------------
 // Case Study Detail Modal with Screenshot Gallery
 // -----------------------------------------------------------------------------
 
 /**
- * Opens the Case Study Detail Modal for the current project.
- * @param {string} [projectId] - Optional ID of project.
+ * Opens the Case Study Detail Modal for a specific project.
+ * @param {string} [projectId] - ID of project ('flashcards-app', 'gedocs', 'portfolio', 'freelance-sites').
  */
 export function openCaseStudyModal(projectId) {
   if (projectId) {
@@ -402,7 +454,7 @@ function renderModalContent() {
 
   const hasMultipleImages = gallery.length > 1;
 
-  // Gallery HTML
+  // Gallery HTML (Left Column on desktop)
   const galleryHTML = `
     <div class="modal-gallery" aria-label="${currentLang === 'es' ? 'Galería de capturas del proyecto' : 'Project screenshot gallery'}">
       <div class="modal-gallery-stage" id="modal-gallery-stage" tabindex="0" role="region" aria-roledescription="carousel" aria-label="${getLocalized(p.title, currentLang)} screenshots">
@@ -448,7 +500,7 @@ function renderModalContent() {
     </div>
   `;
 
-  // Details Column HTML
+  // Details Column HTML (Right Column on desktop)
   const detailsHTML = `
     <div class="modal-details-col">
       <div class="modal-header-block">
@@ -536,66 +588,41 @@ function setupModalGallerySwipe() {
   }, { passive: true });
 }
 
-// -----------------------------------------------------------------------------
-// Carousel Touch Swipe & Keyboard Event Handlers
-// -----------------------------------------------------------------------------
-function setupCarouselSwipe() {
-  const stage = document.getElementById('showcase-stage');
-  if (!stage) return;
-
-  let startX = 0;
-  let endX = 0;
-
-  stage.addEventListener('touchstart', (e) => {
-    startX = e.changedTouches[0].screenX;
-  }, { passive: true });
-
-  stage.addEventListener('touchend', (e) => {
-    endX = e.changedTouches[0].screenX;
-    const diff = endX - startX;
-    if (Math.abs(diff) > 45) {
-      if (diff < 0) nextProject();
-      else prevProject();
-    }
-  }, { passive: true });
-}
-
+/**
+ * Keyboard trap and controls for open modal.
+ */
 function setupKeyboardEvents() {
   window.addEventListener('keydown', (e) => {
     const modal = document.getElementById('project-detail-modal');
     const isModalOpen = modal && modal.classList.contains('active');
 
+    if (!isModalOpen) return;
+
     if (e.key === 'Escape') {
-      if (isModalOpen) closeCaseStudyModal();
-    } else if (isModalOpen) {
-      if (e.key === 'Tab') {
-        const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
-        const focusables = Array.from(modal.querySelectorAll(focusableSelector)).filter(
-          (el) => el.offsetParent !== null || window.getComputedStyle(el).display !== 'none'
-        );
-        if (focusables.length > 0) {
-          const firstEl = focusables[0];
-          const lastEl = focusables[focusables.length - 1];
-          if (e.shiftKey && document.activeElement === firstEl) {
-            e.preventDefault();
-            lastEl.focus();
-          } else if (!e.shiftKey && document.activeElement === lastEl) {
-            e.preventDefault();
-            firstEl.focus();
-          }
-        }
-      } else {
-        // While modal is open, arrow keys navigate screenshot gallery (if multiple)
-        const p = projectsData[currentProjectIdx];
-        if (p.gallery && p.gallery.length > 1) {
-          if (e.key === 'ArrowRight') nextGallerySlide();
-          if (e.key === 'ArrowLeft') prevGallerySlide();
+      closeCaseStudyModal();
+    } else if (e.key === 'Tab') {
+      const focusableSelector = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      const focusables = Array.from(modal.querySelectorAll(focusableSelector)).filter(
+        (el) => el.offsetParent !== null || window.getComputedStyle(el).display !== 'none'
+      );
+      if (focusables.length > 0) {
+        const firstEl = focusables[0];
+        const lastEl = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === firstEl) {
+          e.preventDefault();
+          lastEl.focus();
+        } else if (!e.shiftKey && document.activeElement === lastEl) {
+          e.preventDefault();
+          firstEl.focus();
         }
       }
     } else {
-      // While carousel is active, arrow keys navigate projects
-      if (e.key === 'ArrowRight') nextProject();
-      if (e.key === 'ArrowLeft') prevProject();
+      // While modal is open, arrow keys navigate screenshot gallery (if multiple)
+      const p = projectsData[currentProjectIdx];
+      if (p && p.gallery && p.gallery.length > 1) {
+        if (e.key === 'ArrowRight') nextGallerySlide();
+        if (e.key === 'ArrowLeft') prevGallerySlide();
+      }
     }
   });
 }
@@ -605,14 +632,97 @@ function setupKeyboardEvents() {
 // -----------------------------------------------------------------------------
 
 /**
- * Initializes the Immersive Projects Showcase and Case Study Modal.
+ * Initializes the Horizontal Scrolling Project Track:
+ * - Desktop arrow buttons programmatically scroll by the width of one card (or client width) with smooth behavior.
+ * - Scroll event listener calculates scroll percentage (scrollLeft / (scrollWidth - clientWidth))
+ *   and updates width/transform of .projects-scroll-indicator for touch/mobile feedback.
+ * - Arrow buttons get disabled/enabled dynamically based on scroll boundary positions.
+ */
+function initProjectsTrack() {
+  const track = document.getElementById('projects-track') || document.querySelector('.projects-track');
+  const prevBtn = document.getElementById('track-nav-prev') || document.querySelector('.track-nav-prev');
+  const nextBtn = document.getElementById('track-nav-next') || document.querySelector('.track-nav-next');
+  const indicator = document.getElementById('projects-scroll-indicator') || document.querySelector('.projects-scroll-indicator');
+  const progress = document.getElementById('projects-scroll-progress') || document.querySelector('.projects-scroll-progress');
+
+  if (!track) return;
+
+  function updateScrollState() {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const scrollLeft = track.scrollLeft;
+    const scrollPercentage = maxScroll > 0 ? (scrollLeft / maxScroll) : 0;
+
+    // Mobile / touch visual scroll indicator update
+    if (progress) {
+      const minThumbPercent = 25;
+      const progressWidth = minThumbPercent + (scrollPercentage * (100 - minThumbPercent));
+      progress.style.width = `${Math.min(100, Math.max(minThumbPercent, progressWidth))}%`;
+      progress.style.transform = `scaleX(${Math.max(0.2, scrollPercentage)})`;
+    }
+    if (indicator) {
+      indicator.style.setProperty('--scroll-percentage', `${scrollPercentage}`);
+      indicator.style.setProperty('--scroll-percent', `${Math.round(scrollPercentage * 100)}%`);
+    }
+
+    // Desktop arrow buttons disabled state
+    if (prevBtn) {
+      if (scrollLeft <= 5) {
+        prevBtn.disabled = true;
+        prevBtn.setAttribute('aria-disabled', 'true');
+      } else {
+        prevBtn.disabled = false;
+        prevBtn.removeAttribute('aria-disabled');
+      }
+    }
+
+    if (nextBtn) {
+      if (maxScroll <= 0 || scrollLeft >= maxScroll - 5) {
+        nextBtn.disabled = true;
+        nextBtn.setAttribute('aria-disabled', 'true');
+      } else {
+        nextBtn.disabled = false;
+        nextBtn.removeAttribute('aria-disabled');
+      }
+    }
+  }
+
+  // Get scroll step: width of one card + track gap
+  function getScrollStep() {
+    const card = track.querySelector('.project-card');
+    if (card) {
+      const cardRect = card.getBoundingClientRect();
+      const style = window.getComputedStyle(track);
+      const gap = parseFloat(style.gap || style.columnGap) || 16;
+      return cardRect.width + gap;
+    }
+    return track.clientWidth * 0.75;
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      track.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      track.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+    });
+  }
+
+  track.addEventListener('scroll', updateScrollState, { passive: true });
+  window.addEventListener('resize', updateScrollState, { passive: true });
+
+  // Initial update
+  updateScrollState();
+}
+
+/**
+ * Initializes Project Cards interaction, Horizontal Track, and Case Study Modal.
  */
 export function initProjects() {
-  // Bind global helper for inline onclick handlers
+  // Bind global helper for inline onclick handlers inside modal
   window.__portfolioProjects = {
-    goToProject,
-    nextProject,
-    prevProject,
     openCaseStudyModal,
     closeCaseStudyModal,
     setGallerySlide,
@@ -620,38 +730,63 @@ export function initProjects() {
     prevGallerySlide
   };
 
-  // Bind desktop arrow controls
-  const prevBtn = document.getElementById('showcase-prev-btn');
-  const nextBtn = document.getElementById('showcase-next-btn');
-  if (prevBtn) prevBtn.addEventListener('click', prevProject);
-  if (nextBtn) nextBtn.addEventListener('click', nextProject);
+  // Wire up horizontal scrolling track & desktop arrow controls
+  initProjectsTrack();
 
-  // Bind mobile arrow controls
-  const mobilePrevBtn = document.getElementById('showcase-mobile-prev-btn');
-  const mobileNextBtn = document.getElementById('showcase-mobile-next-btn');
-  if (mobilePrevBtn) mobilePrevBtn.addEventListener('click', prevProject);
-  if (mobileNextBtn) mobileNextBtn.addEventListener('click', nextProject);
+  // Wire up project cards and explore buttons
+  document.querySelectorAll('.project-card').forEach((card) => {
+    const projectId = card.getAttribute('data-project-id');
+    let isDragging = false;
+    let startX = 0;
 
-  // Bind Explore Case Study button
-  const exploreBtn = document.getElementById('btn-explore-case-study');
-  if (exploreBtn) {
-    exploreBtn.addEventListener('click', () => openCaseStudyModal());
-  }
+    card.addEventListener('mousedown', (e) => {
+      startX = e.clientX;
+      isDragging = false;
+    });
 
-  // Bind click on stage background image to open modal
-  const bgImg = document.getElementById('showcase-bg');
-  if (bgImg) {
-    bgImg.style.cursor = 'pointer';
-    bgImg.addEventListener('click', () => openCaseStudyModal());
-  }
+    card.addEventListener('mousemove', (e) => {
+      if (Math.abs(e.clientX - startX) > 8) {
+        isDragging = true;
+      }
+    });
 
-  // Bind modal close button
+    // Clicking anywhere on the card opens the modal (unless clicking an inner link or button or if dragging)
+    card.addEventListener('click', (e) => {
+      if (isDragging) {
+        isDragging = false;
+        return;
+      }
+      if (e.target.closest('a') || e.target.closest('button')) {
+        return;
+      }
+      openCaseStudyModal(projectId);
+    });
+
+    // Keyboard activation when card itself is focused (Enter or Space)
+    card.addEventListener('keydown', (e) => {
+      if ((e.key === 'Enter' || e.key === ' ') && e.target === card) {
+        e.preventDefault();
+        openCaseStudyModal(projectId);
+      }
+    });
+
+    // Direct Explore Case Study button
+    const exploreBtn = card.querySelector('.btn-card-explore');
+    if (exploreBtn) {
+      exploreBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openCaseStudyModal(projectId);
+      });
+    }
+  });
+
+  // Modal close button
   const closeBtn = document.getElementById('modal-close-btn');
   if (closeBtn) {
     closeBtn.addEventListener('click', closeCaseStudyModal);
   }
 
-  // Bind modal backdrop click
+  // Modal backdrop click
   const modalOverlay = document.getElementById('project-detail-modal');
   if (modalOverlay) {
     modalOverlay.addEventListener('click', (e) => {
@@ -659,11 +794,7 @@ export function initProjects() {
     });
   }
 
-  setupCarouselSwipe();
   setupKeyboardEvents();
-
-  // Render initial project state
-  updateShowcaseDOM();
 }
 
 /**
@@ -675,8 +806,6 @@ export function renderProjects(targetOrLang = 'en', lang = 'en') {
   currentLang = (typeof targetOrLang === 'string' && (targetOrLang === 'en' || targetOrLang === 'es'))
     ? targetOrLang
     : (typeof lang === 'string' ? lang : 'en');
-
-  updateShowcaseDOM();
 
   // If modal is open, re-render it in new language
   const modalOverlay = document.getElementById('project-detail-modal');

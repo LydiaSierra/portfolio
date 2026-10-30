@@ -1,41 +1,88 @@
 /**
  * Lydia Sierra — Personal Developer Portfolio
  * Design System Tokens (CSS Custom Properties)
- * Conforming to DESIGN_SPEC.md v1.0
+ * Hybrid Emerald & Slate Design System
+ * Strict Token-Based Architecture (No Hardcoded Colors in Components)
  */
 
 :root,
 [data-theme="light"] {
   /* ==========================================================================
-     Color System — Light Theme (Default)
+     Color System — Hybrid Emerald & Slate (Light Theme)
      ========================================================================== */
-  --color-bg: #F8F5F2;
-  --color-surface: #FFFFFF;
-  --color-surface-subtle: #FBF9F7;
+  --color-bg:                 #FAFAFA; /* Clean Cool Gray */
+  --color-surface:            #FFFFFF; /* Pure White Cards */
+  --color-surface-subtle:     #F8F9FA;
 
-  --color-text-main: #2E2A27;
-  --color-text-muted: #6E6862;
+  --color-text-main:          #334155; /* Soft Slate */
+  --color-text-muted:         #64748B; /* Muted Slate */
 
-  --color-primary: #4A5D4E;
-  --color-primary-hover: #3C4B3F;
-  --color-primary-active: #313E34;
-  --color-primary-contrast: #FFFFFF;
+  --color-primary:            #10B981; /* Vibrant Emerald */
+  --color-primary-hover:      #059669; /* Darker Emerald */
+  --color-primary-active:     #047857;
+  --color-primary-contrast:   #FFFFFF;
 
-  --color-accent-turquoise: #7BCBC4;
-  --color-turquoise-text: #25726B; /* Darkened for WCAG AA compliance (5.2:1 on cream canvas, 5.7:1 on white) */
-  --color-accent-pink: #F2D5D5;
+  --color-accent-turquoise:   #14B8A6; /* Mint Turquoise */
+  --color-turquoise-text:     #0D9488; /* Darkened for WCAG AA compliance */
+  --color-accent-pink:        #F1F5F9; /* Neutral subtle slate */
 
-  --color-border: #E6E1DC;
-  --color-border-subtle: #F0ECE7;
+  --color-border:             #E2E8F0;
+  --color-border-subtle:      #F1F5F9;
 
-  --color-focus-ring: rgba(74, 93, 78, 0.45);
-  --color-selection-bg: #E4ECE5;
-  --color-selection-text: #2E2A27;
+  /* Base RGB Channels for Opacity & Alpha Blending */
+  --color-bg-rgb:             250, 250, 250;
+  --color-surface-rgb:        255, 255, 255;
+  --color-surface-subtle-rgb: 248, 249, 250;
+  --color-text-main-rgb:      51, 65, 85;
+  --color-text-muted-rgb:     100, 116, 139;
+  --color-primary-rgb:        16, 185, 129;
+  --color-primary-hover-rgb:  5, 150, 105;
+  --color-accent-turquoise-rgb: 20, 184, 166;
+  --color-accent-pink-rgb:    241, 245, 249;
+  --color-border-rgb:         226, 232, 240;
+  --color-shadow-rgb:         15, 23, 42;
+  --color-overlay-rgb:        15, 23, 42;
+
+  /* Functional / Status Tokens */
+  --color-status-success:       #10B981;
+  --color-status-success-rgb:   16, 185, 129;
+  --color-status-success-bg:    rgba(var(--color-primary-rgb), 0.12);
+  --color-status-success-border: rgba(var(--color-primary-rgb), 0.25);
+
+  --color-error:              #DC2626;
+  --color-error-hover:        #B91C1C;
+  --color-error-rgb:          220, 38, 38;
+  --color-error-bg:           rgba(220, 38, 38, 0.1);
+  --color-error-border:       rgba(220, 38, 38, 0.3);
+
+  --color-warning:            #C2410C;
+  --color-warning-rgb:        194, 65, 12;
+
+  /* Header & Navigation Glassmorphism */
+  --color-header-bg:          rgba(var(--color-bg-rgb), 0.88);
+  --color-header-border:      rgba(var(--color-border-rgb), 0.85);
+  --color-drawer-bg:          rgba(var(--color-surface-rgb), 0.96);
+
+  /* Modal & Lightbox Overlays */
+  --color-overlay-backdrop:   rgba(var(--color-overlay-rgb), 0.75);
+  --color-gallery-overlay:    rgba(var(--color-overlay-rgb), 0.7);
+  --color-overlay-border:     rgba(var(--color-border-rgb), 0.25);
+  --color-overlay-text:       #FFFFFF;
+
+  /* Pure Values & Utilities */
+  --color-white:              #FFFFFF;
+  --color-white-rgb:          255, 255, 255;
+  --color-black:              #000000;
+  --color-black-rgb:          0, 0, 0;
+
+  --color-focus-ring:         rgba(var(--color-primary-rgb), 0.4);
+  --color-selection-bg:       #D1FAE5;
+  --color-selection-text:     #065F46;
 
   /* ==========================================================================
-     Typography Families with System Fallbacks
+     Typography Families with Modern Sans-Serif Stack
      ========================================================================== */
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
 
@@ -92,9 +139,9 @@
   /* ==========================================================================
      Elevation & Shadows
      ========================================================================== */
-  --shadow-sm: 0 1px 3px rgba(46, 42, 39, 0.04), 0 1px 2px rgba(46, 42, 39, 0.02);
-  --shadow-md: 0 4px 16px rgba(46, 42, 39, 0.06), 0 2px 6px rgba(46, 42, 39, 0.03);
-  --shadow-lg: 0 12px 32px rgba(46, 42, 39, 0.08), 0 4px 12px rgba(46, 42, 39, 0.04);
+  --shadow-sm: 0 1px 3px rgba(var(--color-shadow-rgb), 0.05), 0 1px 2px rgba(var(--color-shadow-rgb), 0.03);
+  --shadow-md: 0 4px 16px rgba(var(--color-shadow-rgb), 0.08), 0 2px 6px rgba(var(--color-shadow-rgb), 0.04);
+  --shadow-lg: 0 12px 32px rgba(var(--color-shadow-rgb), 0.10), 0 4px 12px rgba(var(--color-shadow-rgb), 0.06);
 
   /* ==========================================================================
      Layout Boundaries (Mobile: ~1rem - 1.25rem, Desktop: ~1.5rem - 1.75rem)
@@ -115,61 +162,137 @@
    Activated via [data-theme="dark"] or system preference when not overridden
    ========================================================================== */
 [data-theme="dark"] {
-  --color-bg: #181614;
-  --color-surface: #24201D;
-  --color-surface-subtle: #2D2825;
+  --color-bg:                 #121212; /* Near Black */
+  --color-surface:            #1E1E1E; /* Dark Charcoal */
+  --color-surface-subtle:     #27272A;
 
-  --color-text-main: #F5F2EE;
-  --color-text-muted: #A8A199;
+  --color-text-main:          #E2E8F0; /* Light Slate */
+  --color-text-muted:         #94A3B8;
 
-  --color-primary: #6E8E74;
-  --color-primary-hover: #82A388;
-  --color-primary-active: #5B7760;
-  --color-primary-contrast: #181614;
+  --color-primary:            #34D399; /* Luminous Emerald */
+  --color-primary-hover:      #10B981;
+  --color-primary-active:     #059669;
+  --color-primary-contrast:   #121212;
 
-  --color-accent-turquoise: #7BCBC4;
-  --color-turquoise-text: #7BCBC4; /* High contrast on dark background */
-  --color-accent-pink: #F2D5D5;
+  --color-accent-turquoise:   #5EEAD4;
+  --color-turquoise-text:     #5EEAD4;
+  --color-accent-pink:        #1E293B; /* Subtle dark slate */
 
-  --color-border: #3A342F;
-  --color-border-subtle: #2F2925;
+  --color-border:             #334155;
+  --color-border-subtle:      #1E293B;
 
-  --color-focus-ring: rgba(110, 142, 116, 0.55);
-  --color-selection-bg: #354538;
-  --color-selection-text: #F5F2EE;
+  /* Base RGB Channels for Opacity & Alpha Blending */
+  --color-bg-rgb:             18, 18, 18;
+  --color-surface-rgb:        30, 30, 30;
+  --color-surface-subtle-rgb: 39, 39, 42;
+  --color-text-main-rgb:      226, 232, 240;
+  --color-text-muted-rgb:     148, 163, 184;
+  --color-primary-rgb:        52, 211, 153;
+  --color-primary-hover-rgb:  16, 185, 129;
+  --color-accent-turquoise-rgb: 94, 234, 212;
+  --color-accent-pink-rgb:    30, 41, 59;
+  --color-border-rgb:         51, 65, 85;
+  --color-shadow-rgb:         0, 0, 0;
+  --color-overlay-rgb:        0, 0, 0;
 
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
-  --shadow-md: 0 4px 18px rgba(0, 0, 0, 0.35);
-  --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.45);
+  /* Functional / Status Tokens */
+  --color-status-success:       #34D399;
+  --color-status-success-rgb:   52, 211, 153;
+  --color-status-success-bg:    rgba(var(--color-primary-rgb), 0.15);
+  --color-status-success-border: rgba(var(--color-primary-rgb), 0.3);
+
+  --color-error:              #F87171;
+  --color-error-hover:        #EF4444;
+  --color-error-rgb:          248, 113, 113;
+  --color-error-bg:           rgba(248, 113, 113, 0.15);
+  --color-error-border:       rgba(248, 113, 113, 0.35);
+
+  --color-warning:            #FB923C;
+  --color-warning-rgb:        251, 146, 60;
+
+  /* Header & Navigation Glassmorphism */
+  --color-header-bg:          rgba(var(--color-bg-rgb), 0.88);
+  --color-header-border:      rgba(var(--color-border-rgb), 0.85);
+  --color-drawer-bg:          rgba(var(--color-surface-rgb), 0.96);
+
+  /* Modal & Lightbox Overlays */
+  --color-overlay-backdrop:   rgba(var(--color-overlay-rgb), 0.8);
+  --color-gallery-overlay:    rgba(var(--color-overlay-rgb), 0.75);
+  --color-overlay-border:     rgba(var(--color-border-rgb), 0.35);
+  --color-overlay-text:       #FFFFFF;
+
+  --color-focus-ring:         rgba(var(--color-primary-rgb), 0.4);
+  --color-selection-bg:       #064E3B;
+  --color-selection-text:     #ECFDF5;
+
+  --shadow-sm: 0 1px 3px rgba(var(--color-shadow-rgb), 0.4);
+  --shadow-md: 0 4px 18px rgba(var(--color-shadow-rgb), 0.5);
+  --shadow-lg: 0 12px 36px rgba(var(--color-shadow-rgb), 0.6);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-bg: #181614;
-    --color-surface: #24201D;
-    --color-surface-subtle: #2D2825;
+    --color-bg:                 #121212;
+    --color-surface:            #1E1E1E;
+    --color-surface-subtle:     #27272A;
 
-    --color-text-main: #F5F2EE;
-    --color-text-muted: #A8A199;
+    --color-text-main:          #E2E8F0;
+    --color-text-muted:         #94A3B8;
 
-    --color-primary: #6E8E74;
-    --color-primary-hover: #82A388;
-    --color-primary-active: #5B7760;
-    --color-primary-contrast: #181614;
+    --color-primary:            #34D399;
+    --color-primary-hover:      #10B981;
+    --color-primary-active:     #059669;
+    --color-primary-contrast:   #121212;
 
-    --color-accent-turquoise: #7BCBC4;
-    --color-turquoise-text: #7BCBC4;
-    --color-accent-pink: #F2D5D5;
+    --color-accent-turquoise:   #5EEAD4;
+    --color-turquoise-text:     #5EEAD4;
+    --color-accent-pink:        #1E293B;
 
-    --color-border: #3A342F;
-    --color-border-subtle: #2F2925;
+    --color-border:             #334155;
+    --color-border-subtle:      #1E293B;
 
-    --color-focus-ring: rgba(110, 142, 116, 0.55);
-    --color-selection-bg: #354538;
-    --color-selection-text: #F5F2EE;
+    --color-bg-rgb:             18, 18, 18;
+    --color-surface-rgb:        30, 30, 30;
+    --color-surface-subtle-rgb: 39, 39, 42;
+    --color-text-main-rgb:      226, 232, 240;
+    --color-text-muted-rgb:     148, 163, 184;
+    --color-primary-rgb:        52, 211, 153;
+    --color-primary-hover-rgb:  16, 185, 129;
+    --color-accent-turquoise-rgb: 94, 234, 212;
+    --color-accent-pink-rgb:    30, 41, 59;
+    --color-border-rgb:         51, 65, 85;
+    --color-shadow-rgb:         0, 0, 0;
+    --color-overlay-rgb:        0, 0, 0;
 
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25);
-    --shadow-md: 0 4px 18px rgba(0, 0, 0, 0.35);
-    --shadow-lg: 0 12px 36px rgba(0, 0, 0, 0.45);
+    --color-status-success:       #34D399;
+    --color-status-success-rgb:   52, 211, 153;
+    --color-status-success-bg:    rgba(var(--color-primary-rgb), 0.15);
+    --color-status-success-border: rgba(var(--color-primary-rgb), 0.3);
+
+    --color-error:              #F87171;
+    --color-error-hover:        #EF4444;
+    --color-error-rgb:          248, 113, 113;
+    --color-error-bg:           rgba(248, 113, 113, 0.15);
+    --color-error-border:       rgba(248, 113, 113, 0.35);
+
+    --color-warning:            #FB923C;
+    --color-warning-rgb:        251, 146, 60;
+
+    --color-header-bg:          rgba(var(--color-bg-rgb), 0.88);
+    --color-header-border:      rgba(var(--color-border-rgb), 0.85);
+    --color-drawer-bg:          rgba(var(--color-surface-rgb), 0.96);
+
+    --color-overlay-backdrop:   rgba(var(--color-overlay-rgb), 0.8);
+    --color-gallery-overlay:    rgba(var(--color-overlay-rgb), 0.75);
+    --color-overlay-border:     rgba(var(--color-border-rgb), 0.35);
+    --color-overlay-text:       #FFFFFF;
+
+    --color-focus-ring:         rgba(var(--color-primary-rgb), 0.4);
+    --color-selection-bg:       #064E3B;
+    --color-selection-text:     #ECFDF5;
+
+    --shadow-sm: 0 1px 3px rgba(var(--color-shadow-rgb), 0.4);
+    --shadow-md: 0 4px 18px rgba(var(--color-shadow-rgb), 0.5);
+    --shadow-lg: 0 12px 36px rgba(var(--color-shadow-rgb), 0.6);
   }
 }
