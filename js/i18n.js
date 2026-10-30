@@ -186,7 +186,7 @@ export const translations = {
     'lang.en.assessmentLabel': 'Assessment:',
     'lang.en.assessmentVal': 'EF Standard English Test (EF SET)',
     'lang.en.scoreLabel': 'Verified Score:',
-    'lang.en.scoreVal': 'C2 Proficient (Score 71+/100)',
+    'lang.en.scoreVal': 'C2 Proficient (Score 85/100)',
 
     'lang.es.name': 'Spanish',
     'lang.es.status': 'Native Language',
@@ -216,7 +216,7 @@ export const translations = {
     'contact.headingLine1': "Let's build something",
     'contact.headingAccent': 'amazing',
     'contact.headingLine2': 'together.',
-    'contact.headingHtml': "Let's build something <span class=\"accent-text\"><em>amazing</em></span> together.",
+    'contact.headingHtml': "Let's build something <span class=\"accent-text\"><em>amazing</em></span> &nbsp;together.",
     'contact.subtitle': "I'm currently open to new opportunities. Whether you have a question, want to discuss a project, or just want to say hi, feel free to reach out!",
     'contact.location': 'Pereira, Colombia · Remote',
     'contact.linkedinAria': 'Lydia Sierra on LinkedIn (opens in new tab)',
@@ -248,7 +248,7 @@ export const translations = {
     'footer.githubAria': 'Lydia Sierra on GitHub (opens in new tab)',
     'footer.linkedinAria': 'Lydia Sierra on LinkedIn (opens in new tab)',
     'footer.emailAria': 'Send email to lydia.sierra.ibata@gmail.com',
-    'footer.copy': '© 2024 Lydia Sierra. Crafted with semantic HTML, vanilla CSS & modern JavaScript.',
+    'footer.copy': '© 2026 Lydia Sierra. Crafted with semantic HTML, vanilla CSS & modern JavaScript.',
     'footer.backToTop': 'Back to top',
     'footer.backToTopAria': 'Back to top of page'
   },
@@ -413,7 +413,7 @@ export const translations = {
     'lang.en.assessmentLabel': 'Evaluación:',
     'lang.en.assessmentVal': 'EF Standard English Test (EF SET)',
     'lang.en.scoreLabel': 'Puntaje verificado:',
-    'lang.en.scoreVal': 'C2 Competente (Puntaje 71+/100)',
+    'lang.en.scoreVal': 'C2 (Puntaje 85/100)',
 
     'lang.es.name': 'Español',
     'lang.es.status': 'Lengua materna',
@@ -443,7 +443,7 @@ export const translations = {
     'contact.headingLine1': 'Construyamos algo',
     'contact.headingAccent': 'increíble',
     'contact.headingLine2': 'juntos.',
-    'contact.headingHtml': 'Construyamos algo <span class="accent-text"><em>increíble</em></span> juntos.',
+    'contact.headingHtml': 'Construyamos algo <span class="accent-text"><em>increíble </em></span> &nbsp;juntos.',
     'contact.subtitle': 'Actualmente estoy disponible para nuevas oportunidades. Si tienes una consulta, quieres conversar sobre un proyecto o simplemente saludar, ¡no dudes en escribirme!',
     'contact.location': 'Pereira, Colombia · Remoto',
     'contact.linkedinAria': 'Lydia Sierra en LinkedIn (abre en pestaña nueva)',
@@ -475,7 +475,7 @@ export const translations = {
     'footer.githubAria': 'Lydia Sierra en GitHub (abre en pestaña nueva)',
     'footer.linkedinAria': 'Lydia Sierra en LinkedIn (abre en pestaña nueva)',
     'footer.emailAria': 'Enviar correo a lydia.sierra.ibata@gmail.com',
-    'footer.copy': '© 2024 Lydia Sierra. Creado con HTML semántico, CSS puro y JavaScript moderno.',
+    'footer.copy': '© 2026 Lydia Sierra. Creado con HTML semántico, CSS puro y JavaScript moderno.',
     'footer.backToTop': 'Volver arriba',
     'footer.backToTopAria': 'Volver al inicio de la página'
   }
