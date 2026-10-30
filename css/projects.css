@@ -1,11 +1,11 @@
 /**
  * Lydia Sierra — Personal Developer Portfolio
- * Featured Projects Section Styles: Full-Width Immersive Spotlight & Visual Case Study Modal
- * Conforming to Approved Immersive Showcase Design Specification
+ * Featured Projects Section Styles: Clean, Scannable Project Card Grid & Visual Case Study Modal
+ * Conforming to WCAG 2.1 AA keyboard accessibility and responsive design.
  */
 
 /* ==========================================================================
-   1. Featured Projects Section & Wide Container
+   1. Featured Projects Section & Container
    ========================================================================== */
 .projects-section {
   position: relative;
@@ -19,7 +19,7 @@
 .projects-panel {
   background-color: transparent;
   border: none;
-  box-shadow:none;
+  box-shadow: none;
   padding: 0;
   transition:
     background-color var(--transition-base),
@@ -32,7 +32,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-bottom: clamp(1rem, 0.75rem + 0.8vw, 1.5rem);
+  margin-bottom: clamp(1.25rem, 1rem + 1vw, 2rem);
 }
 
 .projects-header-bar .section-title {
@@ -44,358 +44,391 @@
 }
 
 /* ==========================================================================
-   2. Full-Width Immersive Showcase Stage (The Image IS the Showcase)
+   2. Horizontal Scrolling Project Track
    ========================================================================== */
-.showcase-stage {
+.projects-track-wrapper {
   position: relative;
   width: 100%;
-  height: clamp(540px, 70vh, 740px);
-  min-height: 520px;
+}
+
+.projects-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-4);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  padding-block: var(--space-2);
+  margin-block: calc(-1 * var(--space-2));
+}
+
+/* Hide native browser scrollbar across all engines */
+.projects-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* 2.1 Desktop Navigation Controls */
+.track-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.track-nav-btn:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border-color: var(--color-primary);
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+}
+
+.track-nav-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.track-nav-btn:disabled,
+.track-nav-btn[aria-disabled="true"] {
+  opacity: 0.25;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.track-nav-prev {
+  left: -1.25rem;
+}
+
+.track-nav-next {
+  right: -1.25rem;
+}
+
+/* Dark theme overrides for navigation buttons */
+[data-theme="dark"] .track-nav-btn {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+/* Hide navigation arrow buttons on mobile and tablet */
+@media (max-width: 1024px) {
+  .track-nav-prev,
+  .track-nav-next {
+    display: none !important;
+  }
+}
+
+/* 2.2 Mobile & Touch Visual Scroll Indicator */
+.projects-scroll-indicator {
+  display: none;
+  width: 140px;
+  max-width: 50%;
+  height: 4px;
+  background-color: var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  margin: var(--space-6) auto 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.projects-scroll-progress {
+  height: 100%;
+  width: 25%;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  transform-origin: left center;
+  transition: width 0.1s ease-out;
+}
+
+/* Show scroll indicator on mobile and tablet */
+@media (max-width: 1024px) {
+  .projects-scroll-indicator {
+    display: block;
+  }
+}
+
+/* Fallback support for .projects-grid if referenced */
+.projects-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--space-4);
+  overflow-x: auto;
+}
+
+/* ==========================================================================
+   3. Project Card Component
+   ========================================================================== */
+.project-card {
+  /* Exactly 4 cards fit on large desktop screens */
+  flex: 0 0 calc((100% - (3 * var(--space-4))) / 4);
+  width: calc((100% - (3 * var(--space-4))) / 4);
+  min-width: 260px;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-xl);
   overflow: hidden;
-  background-color: #141210;
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-lg);
-  user-select: none;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  cursor: pointer;
+  position: relative;
 }
 
-/* 2.1 Full-Bleed Image Background Layer */
-.showcase-bg-layer {
-  position: absolute;
-  inset: 0;
+/* Tablet: 2 cards in view */
+@media (max-width: 1024px) {
+  .project-card {
+    flex: 0 0 calc((100% - var(--space-4)) / 2);
+    width: calc((100% - var(--space-4)) / 2);
+    min-width: 250px;
+  }
+}
+
+/* Mobile: 1 card with slight overflow peek of the next card */
+@media (max-width: 640px) {
+  .project-card {
+    flex: 0 0 84%;
+    width: 84%;
+    min-width: 230px;
+  }
+}
+
+@media (max-width: 440px) {
+  .project-card {
+    flex: 0 0 88%;
+    width: 88%;
+    min-width: 210px;
+  }
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.project-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.project-card:focus-within {
+  border-color: var(--color-primary);
+}
+
+/* 3.1 Card Media Container */
+.project-card-media {
+  position: relative;
   width: 100%;
-  height: 100%;
-  z-index: 1;
+  aspect-ratio: 16 / 10;
+  background-color: var(--color-surface-subtle);
   overflow: hidden;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
-.showcase-bg-img {
+.project-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: opacity 300ms ease, transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-  transform: scale(1);
+  transition: transform var(--transition-base);
 }
 
-.showcase-stage:hover .showcase-bg-img {
-  transform: scale(1.02);
+.project-card:hover .project-card-img {
+  transform: scale(1.03);
 }
 
-/* 2.2 Reduced-Intensity Directional Gradient Scrim (~50% of prototype)
-   Preserves vibrant screenshot visibility while maintaining text contrast */
-.showcase-scrim {
+/* 3.2 Visually Distinct "Available Demo" Overlay Badge */
+.project-demo-badge {
   position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-  background:
-    /* Top bar vignette reduced by 50% */
-    linear-gradient(180deg, rgba(16, 14, 12, 0.052) 0%, rgba(16, 14, 12, 0.12) 18%, transparent 35%),
-    /* Bottom-to-top gradient reduced by 50% */
-    linear-gradient(0deg, rgba(16, 14, 12, 0.54) 0%, rgba(16, 14, 12, 0.104) 28%, rgba(16, 14, 12, 0.12) 55%, transparent 85%),
-    /* Directional left-to-right vignette reduced by 50% */
-    linear-gradient(90deg, rgba(16, 14, 12, 0.38) 0%, rgba(16, 14, 12, 0.15) 38%, transparent 75%);
-}
-
-/* 2.3 Interactive Overlay (Floats Directly Over the Image) */
-.showcase-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: clamp(1.5rem, 3.2vw, 3.25rem);
-  pointer-events: none;
-}
-
-/* Top Row: Category Eyebrow Pill + Position Stepper */
-.showcase-top-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  pointer-events: auto;
-  flex-wrap: wrap;
-}
-
-.showcase-eyebrow-pill {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #7BCBC4;
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-full);
-  background: rgba(20, 18, 16, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(123, 203, 196, 0.35);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-.showcase-stepper {
-  display: flex;
-  align-items: center;
-  gap: 0.45rem;
-  background: rgba(20, 18, 16, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  padding: 0.3rem 0.4rem 0.3rem 0.85rem;
-  border-radius: var(--radius-full);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-.showcase-counter {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  margin-right: 0.4rem;
-}
-
-.showcase-step-btn {
-  padding: 0.25rem 0.65rem;
-  border-radius: var(--radius-full);
-  border: 1px solid transparent;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.72);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  cursor: pointer;
-  transition: all var(--transition-fast);
+  top: 1rem;
+  right: 1rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-}
-
-.showcase-step-btn:hover {
-  color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.showcase-step-btn.active {
-  background: var(--color-primary);
-  color: #FFFFFF;
-  border-color: rgba(255, 255, 255, 0.25);
+  gap: 0.45rem;
+  background-color: var(--color-primary);
+  color: var(--color-primary-contrast);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 600;
-}
-
-/* Floating Edge Navigation Arrows */
-.showcase-edge-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 52px;
-  height: 52px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.35rem 0.8rem;
   border-radius: var(--radius-full);
-  background: rgba(24, 22, 20, 0.65);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.3rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
-  z-index: 10;
-  pointer-events: auto;
-  transition: all var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+  z-index: 2;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.showcase-edge-arrow:hover {
-  background: var(--color-primary);
-  border-color: var(--color-primary);
-  transform: translateY(-50%) scale(1.08);
-  box-shadow: 0 8px 24px rgba(74, 93, 78, 0.45);
+.demo-indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: #34A853;
+  box-shadow: 0 0 0 2px rgba(52, 168, 83, 0.35);
+  display: inline-block;
+  flex-shrink: 0;
 }
 
-.showcase-arrow-prev { left: clamp(1rem, 2.5vw, 2.5rem); }
-.showcase-arrow-next { right: clamp(1rem, 2.5vw, 2.5rem); }
-
-/* Bottom Information Cluster */
-.showcase-info-cluster {
-  pointer-events: auto;
-  max-width: 820px;
+/* 3.3 Card Body */
+.project-card-body {
+  padding: clamp(1rem, 0.85rem + 0.4vw, 1.35rem);
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  transition: opacity 250ms ease, transform 300ms ease;
+  flex-grow: 1;
+  gap: var(--space-2);
 }
 
-.showcase-title {
+.project-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.project-card-title {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 2rem + 1.8vw, 4rem);
-  line-height: 1.1;
-  color: #FFFFFF;
+  font-size: clamp(1.25rem, 1.15rem + 0.35vw, 1.55rem);
+  color: var(--color-text-main);
+  line-height: 1.25;
   margin: 0;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65), 0 1px 3px rgba(0, 0, 0, 0.85);
-  font-weight: 400;
-  letter-spacing: -0.01em;
+  transition: color var(--transition-fast);
 }
 
-.showcase-desc {
-  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.1rem);
-  color: rgba(245, 242, 238, 0.92);
-  line-height: 1.55;
-  max-width: 64ch;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+.project-card:hover .project-card-title {
+  color: var(--color-primary);
 }
 
-.showcase-tags {
+.project-card-desc {
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 3.4 Tech Tags */
+.project-card-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.45rem;
-  margin-top: 0.15rem;
   list-style: none;
   padding: 0;
+  margin: 0.35rem 0 0 0;
 }
 
-.showcase-tag-pill {
-  font-family: var(--font-body);
-  font-size: 0.76rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-full);
-  background: rgba(24, 22, 20, 0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: #FFFFFF;
+.project-card-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
   font-weight: 500;
-  white-space: nowrap;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-subtle);
+  color: var(--color-text-main);
+  transition: all var(--transition-fast);
 }
 
-.showcase-tag-pill.accent-primary {
-  background: rgba(74, 93, 78, 0.45);
-  border-color: rgba(110, 142, 116, 0.55);
-  color: #E2ECE4;
+.project-card-tag.accent-primary {
+  background-color: rgba(74, 93, 78, 0.1);
+  border-color: rgba(74, 93, 78, 0.25);
+  color: var(--color-primary);
 }
 
-.showcase-tag-pill.accent-turquoise {
-  background: rgba(123, 203, 196, 0.25);
-  border-color: rgba(123, 203, 196, 0.5);
-  color: #BBECE7;
+.project-card-tag.accent-turquoise {
+  background-color: rgba(123, 203, 196, 0.15);
+  border-color: rgba(123, 203, 196, 0.35);
+  color: var(--color-turquoise-text);
 }
 
-.showcase-tag-pill.accent-pink {
-  background: rgba(242, 213, 213, 0.25);
-  border-color: rgba(242, 213, 213, 0.5);
-  color: #F8E5E5;
+.project-card-tag.accent-pink {
+  background-color: rgba(242, 213, 213, 0.2);
+  border-color: rgba(242, 213, 213, 0.4);
+  color: var(--color-text-main);
 }
 
-/* Actions Row */
-.showcase-actions {
+/* Dark Mode Tag Overrides */
+[data-theme="dark"] .project-card-tag.accent-primary {
+  background-color: rgba(110, 142, 116, 0.2);
+  border-color: rgba(110, 142, 116, 0.4);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .project-card-tag.accent-turquoise {
+  background-color: rgba(123, 203, 196, 0.2);
+  border-color: rgba(123, 203, 196, 0.4);
+  color: var(--color-accent-turquoise);
+}
+
+[data-theme="dark"] .project-card-tag.accent-pink {
+  background-color: rgba(242, 213, 213, 0.2);
+  border-color: rgba(242, 213, 213, 0.4);
+  color: #F5F2EE;
+}
+
+/* 3.5 Card Action Controls */
+.project-card-actions {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
   flex-wrap: wrap;
-  margin-top: 0.5rem;
 }
 
-.btn-showcase-primary {
-  background: var(--color-primary);
-  color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  padding: 0.75rem 1.65rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.92rem;
+.btn-card-explore {
   font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-  transition: all var(--transition-fast);
-  text-decoration: none;
-}
-
-.btn-showcase-primary:hover {
-  background: var(--color-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(74, 93, 78, 0.4);
-}
-
-.btn-showcase-secondary {
-  background: rgba(24, 22, 20, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  color: #FFFFFF;
-  padding: 0.75rem 1.35rem;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  transition: all var(--transition-fast);
 }
 
-.btn-showcase-secondary:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: #FFFFFF;
-  transform: translateY(-2px);
-}
-
-/* Mobile Quick Navigation Cluster */
-.mobile-nav-cluster {
-  display: none;
+.btn-card-repo {
+  font-weight: 500;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-left: auto;
+  gap: 0.45rem;
 }
 
-.mobile-arrow-btn {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-full);
-  background: rgba(24, 22, 20, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.15rem;
-}
-
-@media (max-width: 768px) {
-  .showcase-stage {
-    height: clamp(540px, 80vh, 660px);
-  }
-  .showcase-overlay {
-    padding: 1.35rem;
-  }
-  .showcase-edge-arrow {
-    display: none;
-  }
-  .mobile-nav-cluster {
-    display: flex;
-  }
-  .showcase-title {
-    font-size: clamp(1.85rem, 1.6rem + 1vw, 2.4rem);
-  }
-  .showcase-desc {
-    font-size: 0.9rem;
-    line-height: 1.45;
-  }
-  .showcase-stepper .step-title {
-    display: none;
-  }
+.btn-card-explore:focus-visible,
+.btn-card-repo:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 /* ==========================================================================
-   3. Visual, Gallery-Based Case Study Modal (Substantially Wider)
+   4. Project Detail Modal (Substantially Wider with Screenshot Gallery)
    ========================================================================== */
 .modal-overlay {
   position: fixed;

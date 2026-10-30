@@ -84,11 +84,10 @@ export const translations = {
     // Projects Header
     'projects.title': 'Featured projects',
     'projects.badge': 'Selected Works',
-    'projects.exploreCaseStudy': 'Explore Case Study',
-    'projects.githubRepo': 'GitHub Repository',
+    'projects.demoAvailable': 'Available Demo',
+    'projects.exploreCaseStudy': 'View Project',
+    'projects.githubRepo': 'GitHub',
     'projects.liveDemo': 'Live Demo',
-    'projects.prevProject': 'Previous project',
-    'projects.nextProject': 'Next project',
     'projects.closeModal': 'Close project details',
     'projects.purposeHeading': '01. Project Purpose & Overview',
     'projects.problemHeading': '02. The Problem Addressed',
@@ -98,6 +97,27 @@ export const translations = {
     'projects.galleryPrev': 'Previous screenshot',
     'projects.galleryNext': 'Next screenshot',
     'projects.viewGalleryImg': 'View screenshot',
+    'projects.trackPrevAria': 'Scroll projects left',
+    'projects.trackNextAria': 'Scroll projects right',
+    'projects.trackPrevTitle': 'Previous projects',
+    'projects.trackNextTitle': 'Next projects',
+
+    // Project Cards - English
+    'projects.flashcards.title': 'Flashcards App',
+    'projects.flashcards.desc': 'Interactive web application for active recall and spaced-repetition learning with fine-grained reactive state and offline persistence.',
+    'projects.flashcards.alt': 'Flashcards App interface preview showing a study card on Angular Signals with progress tracking',
+
+    'projects.gedocs.title': 'GeDocs — Document Management',
+    'projects.gedocs.desc': 'Centralized administrative tracking and searchable document archive platform with relational database integrity and role-based access.',
+    'projects.gedocs.alt': 'GeDocs administrative interface preview displaying document records, categories, search filtering, and approval status',
+
+    'projects.portfolio.title': 'Personal Developer Portfolio',
+    'projects.portfolio.desc': 'High-performance static developer portfolio built with semantic HTML5, modern vanilla CSS3, and native ES modules.',
+    'projects.portfolio.alt': 'Personal developer portfolio architecture diagram and design token system preview',
+
+    'projects.freelance.title': 'Commercial Web Solutions',
+    'projects.freelance.desc': 'Lightweight, mobile-first commercial websites for small independent businesses optimized for search engines and swift customer contact.',
+    'projects.freelance.alt': 'Commercial responsive websites mockup on desktop and mobile smartphone with Lighthouse 100 performance scores',
 
     // Experience & Education Section
     'experience.title': 'Experience & Education',
@@ -108,7 +128,7 @@ export const translations = {
     'experience.eduTypeBadge': 'Academic',
 
     // Experience Timeline items
-    'exp.globant.date': '2024 — Present',
+    'exp.globant.date': 'April 2024 — October 2026',
     'exp.globant.tag': 'Internship',
     'exp.globant.role': 'Software Development Intern',
     'exp.globant.desc': 'Collaborating within agile engineering teams to support enterprise web applications using modern low-code and web technologies. Contributing to component development, QA testing cycles, workflow automation, and cross-functional sprint planning while adhering to code standards and team best practices.',
@@ -117,13 +137,7 @@ export const translations = {
     'exp.globant.tech3': 'Agile / Scrum',
     'exp.globant.tech4': 'Quality Assurance',
 
-    'exp.independent.date': '2023 — 2024',
-    'exp.independent.tag': 'Independent',
-    'exp.independent.role': 'Full-Stack Project Development',
-    'exp.independent.company': 'Independent & Academic',
-    'exp.independent.desc': 'Engineered multiple full-stack applications—including document management systems (GeDocs) and reactive client-side learning tools—focusing on clean MVC patterns, relational database schemas, and responsive user experiences.',
-
-    'exp.freelance.date': '2022 — 2023',
+    'exp.freelance.date': '2024 — 2026',
     'exp.freelance.tag': 'Freelance',
     'exp.freelance.role': 'Web Developer',
     'exp.freelance.company': 'Freelance',
@@ -131,7 +145,7 @@ export const translations = {
     'exp.freelance.tech3': 'Responsive UI',
     'exp.freelance.tech4': 'SEO & Performance',
 
-    'edu.sena.date': '2023 — Present',
+    'edu.sena.date': '2024 — 2026',
     'edu.sena.tag': 'Technologist',
     'edu.sena.role': 'Software Analysis and Development (ADSO)',
     'edu.sena.institution': 'SENA',
@@ -306,11 +320,10 @@ export const translations = {
     // Projects Header
     'projects.title': 'Proyectos destacados',
     'projects.badge': 'Trabajos seleccionados',
-    'projects.exploreCaseStudy': 'Explorar caso de estudio',
-    'projects.githubRepo': 'Repositorio en GitHub',
+    'projects.demoAvailable': 'Demo disponible',
+    'projects.exploreCaseStudy': 'Ver proyecto',
+    'projects.githubRepo': 'GitHub',
     'projects.liveDemo': 'Ver demo en vivo',
-    'projects.prevProject': 'Proyecto anterior',
-    'projects.nextProject': 'Proyecto siguiente',
     'projects.closeModal': 'Cerrar detalles del proyecto',
     'projects.purposeHeading': '01. Propósito y visión general',
     'projects.problemHeading': '02. El problema abordado',
@@ -320,6 +333,27 @@ export const translations = {
     'projects.galleryPrev': 'Captura anterior',
     'projects.galleryNext': 'Siguiente captura',
     'projects.viewGalleryImg': 'Ver captura',
+    'projects.trackPrevAria': 'Desplazar proyectos a la izquierda',
+    'projects.trackNextAria': 'Desplazar proyectos a la derecha',
+    'projects.trackPrevTitle': 'Proyectos anteriores',
+    'projects.trackNextTitle': 'Proyectos siguientes',
+
+    // Project Cards - Spanish
+    'projects.flashcards.title': 'Flashcards App',
+    'projects.flashcards.desc': 'Aplicación web interactiva para estudio mediante recuerdo activo y repetición espaciada con reactividad precisa y persistencia offline.',
+    'projects.flashcards.alt': 'Vista previa de la interfaz de Flashcards App mostrando una tarjeta de estudio sobre Angular Signals con seguimiento de progreso',
+
+    'projects.gedocs.title': 'GeDocs — Gestión Documental',
+    'projects.gedocs.desc': 'Plataforma centralizada de gestión administrativa y archivo digital de documentos con integridad relacional y control de acceso.',
+    'projects.gedocs.alt': 'Vista previa de la interfaz administrativa de GeDocs mostrando registros de documentos, categorías y filtros de búsqueda',
+
+    'projects.portfolio.title': 'Portafolio de Desarrollador',
+    'projects.portfolio.desc': 'Portafolio estático de alto rendimiento desarrollado con HTML5 semántico, CSS3 moderno y módulos nativos de JavaScript.',
+    'projects.portfolio.alt': 'Diagrama de arquitectura del portafolio personal y sistema de tokens de diseño',
+
+    'projects.freelance.title': 'Sitios Web Comerciales',
+    'projects.freelance.desc': 'Sitios web ligeros con enfoque mobile-first para negocios locales optimizados para motores de búsqueda y contacto ágil.',
+    'projects.freelance.alt': 'Maqueta de sitios web comerciales en escritorio y móvil con puntuación de 100 en Lighthouse',
 
     // Experience & Education Section
     'experience.title': 'Experiencia y educación',
@@ -330,7 +364,7 @@ export const translations = {
     'experience.eduTypeBadge': 'Académica',
 
     // Experience Timeline items
-    'exp.globant.date': '2024 — Presente',
+    'exp.globant.date': 'Abril 2026 — Octubre 2026',
     'exp.globant.tag': 'Pasantía',
     'exp.globant.role': 'Practicante de Desarrollo de Software',
     'exp.globant.desc': 'Colaboración en equipos de ingeniería ágiles apoyando aplicaciones web empresariales con tecnologías low-code y web modernas. Contribución al desarrollo de componentes, ciclos de pruebas QA, automatización de flujos y planificación en sprints, siguiendo estándares de código y buenas prácticas del equipo.',
@@ -339,13 +373,7 @@ export const translations = {
     'exp.globant.tech3': 'Agile / Scrum',
     'exp.globant.tech4': 'Control de Calidad (QA)',
 
-    'exp.independent.date': '2023 — 2024',
-    'exp.independent.tag': 'Independiente',
-    'exp.independent.role': 'Desarrollo de Proyectos Full-Stack',
-    'exp.independent.company': 'Independiente y Académico',
-    'exp.independent.desc': 'Diseño e implementación de aplicaciones full-stack completas —incluyendo sistemas de gestión documental (GeDocs) y herramientas reactivas de estudio en cliente— con enfoque en patrones MVC limpios, esquemas relacionales y experiencias responsivas.',
-
-    'exp.freelance.date': '2022 — 2023',
+    'exp.freelance.date': '2024 — 2026',
     'exp.freelance.tag': 'Freelance',
     'exp.freelance.role': 'Desarrolladora Web',
     'exp.freelance.company': 'Freelance',
@@ -353,7 +381,7 @@ export const translations = {
     'exp.freelance.tech3': 'UI Responsiva',
     'exp.freelance.tech4': 'SEO y Rendimiento',
 
-    'edu.sena.date': '2023 — Presente',
+    'edu.sena.date': '2024 — 2026',
     'edu.sena.tag': 'Tecnología',
     'edu.sena.role': 'Análisis y Desarrollo de Software (ADSO)',
     'edu.sena.institution': 'SENA',
@@ -362,15 +390,6 @@ export const translations = {
     'edu.sena.tech2': 'Bases de Datos Relacionales',
     'edu.sena.tech3': 'Programación Orientada a Objetos',
     'edu.sena.tech4': 'Ingeniería de Requisitos',
-
-    'edu.continuous.date': '2023 — Presente',
-    'edu.continuous.tag': 'Autodidacta',
-    'edu.continuous.role': 'Arquitectura Frontend y Frameworks Modernos',
-    'edu.continuous.institution': 'Aprendizaje Continuo',
-    'edu.continuous.desc': 'Estudio autodidacta enfocado en desarrollo frontend reactivo moderno, dominando Angular Signals, seguridad de tipos en TypeScript, estándares de accesibilidad web (WCAG 2.1 AA) y diseño limpio de interfaces.',
-    'edu.continuous.tech1': 'Angular y TypeScript',
-    'edu.continuous.tech2': 'Accesibilidad Web (a11y)',
-    'edu.continuous.tech3': 'CSS Moderno y Sistemas de Diseño',
 
     // Milestones / By the numbers
     'milestones.heading': 'En cifras',
@@ -626,7 +645,7 @@ export function setLanguage(lang, persist = true) {
   });
 
   // 5. Update dynamic project presentations
-  renderProjects('.projects-grid', lang);
+  renderProjects('.projects-track', lang);
 
   // 6. Update contact validation & banner messages
   setContactLanguage(lang);
